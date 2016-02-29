@@ -66,7 +66,6 @@ values."
    '(
      nix-sandbox
      tramp
-     eww : variables default-search-engine 'google
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
