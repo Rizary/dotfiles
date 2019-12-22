@@ -1,0 +1,20 @@
+{ pkgs, config, lib, ... }:
+let
+  cfg = config.keymap;
+  keymapType = pkgs.callPackage ../../../../lib/type/keymap {};
+in
+{
+  options.keymap = lib.mkOption {
+    type = lib.types.nullOr keymapType;
+    default = null;
+  };
+
+  config = lib.mkIf (cfg != null) {
+    i18n.consoleKeyMap = pkgs.runCommand "console-keymap" {} ''
+      '${pkgs.ckbcomp}/bin/ckbcomp' \
+        -layout '${cfg.layout}' \
+        -option '${cfg.options}' \
+        -variant '${cfg.variant}' > "$out"
+    '';
+  };
+}
