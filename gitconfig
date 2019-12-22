@@ -1,0 +1,41 @@
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+    interactive = true
+[credential]
+    helper = cache
+[user]
+    email = andika.riyan@gmail.com
+    name = rizary
+[includeIf "gitdir:$HOME/rizilab/"]
+    [user]
+        email = "andika.riyan@gmail.com"
+    [core]
+        sshCommand = "ssh -i $HOME/.ssh/rizilab_rsa"
+[includeIf "gitdir:$HOME/rizilab/projects/nusaaidu/"]
+    [user]
+        email = "andika.riyan@nusaaidu.com"
+    [core]
+        sshCommand = "ssh -i $HOME/.ssh/nusaaidu_rsa"
+[alias]
+    co = checkout
+    cob = checkout -b
+    coo = !git fetch && git checkout
+    br = branch
+    st = status
+    rs = reset --soft
+    rh = reset --hard
+    aA = add -A .
+    aa = add
+    cm = commit -m
+    cwm = commit
+    po = push -u origin @
+    plu = pull upstream
+    ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    clone-gh = !"f() { mkdir -p $HOME/work/github/$1 && cd $HOME/work/github/$1/ && git clone git@github:$1/$2.git; }; f"
+    clone-gl = !"f() { mkdir -p $HOME/work/gitlab/$1 && cd $HOME/work/gitlab/$1/ && git clone git@gitlab:$1/$2.git; }; f"
+    f = "!git ls-files | grep -i"
+    gr = grep -Ii
+    la = "!git config -l | grep alias | cut -c 7-"
