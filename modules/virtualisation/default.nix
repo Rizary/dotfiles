@@ -3,8 +3,8 @@
 {
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = false;
-  virtualisation.virutalbox.host.enable = true;
-  virtualisation.virutalbox.host.headless = false;
+  virtualisation.virtualbox.host.enable = true;
+  virtualisation.virtualbox.host.headless = false;
   networking.firewall.checkReversePath = false;
   primary-user.extraGroups = [ "libvirtd" "docker" ];
   virtualisation.libvirtd.enable = true;

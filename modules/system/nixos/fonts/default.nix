@@ -7,8 +7,5 @@
     emacs-all-the-icons-fonts
     powerline-fonts
     source-code-pro
-    nerdfonts
-    emojione
-    noto-fonts-emoji
   ];
 }

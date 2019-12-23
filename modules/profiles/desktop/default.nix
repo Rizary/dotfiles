@@ -4,7 +4,7 @@
     # base is a common thing for all profiles
     ../base
 
-    ../../config/boot/grub-boot
+    ../../config/boot/systemd-boot
     ../../config/boot/logind
 
     ../../config/data/xdg-user-dirs

@@ -2,7 +2,7 @@
 
 let
   boot = {
-    device = "/dev/disk/by-uuid/9856-93FE";
+    device = "/dev/disk/by-uuid/787B-885A";
     fsType = "fat32";
   };
 in
@@ -24,7 +24,7 @@ in
 
 
   boot.crypt-initrd.enable = true;
-  boot.crypt-initrd.device = "/dev/nvme0n1";
+  boot.crypt-initrd.device = "/dev/sde1";
   boot.crypt-initrd.key.device = boot;
   boot.crypt-initrd.key.keyPath = "/spitfire";
   boot.crypt-initrd.key.headerPath = "/header.img";

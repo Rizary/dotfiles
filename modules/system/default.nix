@@ -12,6 +12,9 @@
   primary-user.home-manager = _: {
     imports = [
       ./home-manager/default-terminal
+      ./home-manager/keymap
+      ./home-manager/font
+      ./home-manager/fzf
     ];
   };
 
