@@ -2,8 +2,8 @@
 
 let
   boot = {
-    device = "/dev/disk/by-uuid/31DB-5F66";
-    fsType = "vfat";
+    device = "/dev/disk/by-uuid/9856-93FE";
+    fsType = "fat32";
   };
 in
 
@@ -38,7 +38,7 @@ in
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-uuid/c54c75e1-7d3f-461f-a95c-bcfec8ecba9a";
+      device = "/dev/disk/by-uuid/58f899b4-0e0b-4115-bb4c-a6ae494ce23a";
       fsType = "ext4";
     };
 
@@ -47,19 +47,19 @@ in
     };
 
     "/home" = {
-      device = "/dev/disk/by-uuid/1e8a4c25-733b-4571-9586-fd210c858581";
+      device = "/dev/disk/by-uuid/414a85ff-69a3-4eb3-baec-83b8fadf0f72";
       fsType = "ext4";
     };
 
     "/var" = {
-      device = "/dev/disk/by-uuid/faf29f4a-44f9-4703-8c07-2f257aa51fa2";
+      device = "/dev/disk/by-uuid/96745560-5a4e-4413-ac71-7abecb53e611";
       fsType = "ext4";
     };
   };
 
   swapDevices = [
     {
-      device = "/dev/disk/by-uuid/ec587887-96e6-43d3-b48b-caa1c678af11";
+      device = "/dev/disk/by-uuid/2386bc78-599c-4dd4-84d9-e453626c5651";
     }
   ];
 

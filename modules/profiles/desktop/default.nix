@@ -32,7 +32,7 @@
     ../../programs/gtk
     ../../programs/log
     ../../programs/opengl
-    ../../programs/rofi-pass
+    #../../programs/rofi-pass
     ../../programs/screen-locker
     ../../programs/urxvt
     ../../programs/xmobar

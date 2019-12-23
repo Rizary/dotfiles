@@ -1,6 +1,7 @@
 { ... }:
 
-let umask = "umask 077";
+let
+  umask = "umask 077";
 in
 {
   primary-user.home-manager.home.file.".profile".text = umask;

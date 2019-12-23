@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 with lib;
 {
   imports = [ <nixpkgs/nixos/modules/profiles/hardened.nix> ];

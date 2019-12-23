@@ -1,4 +1,4 @@
-{ pkgs, lib, ...}:
+{ pkgs, lib, ... }:
 let
   ssh-path = lib.makeBinPath [
     pkgs.coreutils

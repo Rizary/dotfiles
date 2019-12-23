@@ -1,3 +1,3 @@
-self: super: {
+_: super: {
   lock-screen = super.callPackage ./lock-screen.nix {};
 }

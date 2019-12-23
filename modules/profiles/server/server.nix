@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 with lib;
 {
   imports = [ ./hardening.nix ];
@@ -6,5 +6,5 @@ with lib;
   services.openssh.passwordAuthentication = false;
   services.fail2ban.enable = true;
 
-  networking.firewall.allowedTCPPorts = [22];
+  networking.firewall.allowedTCPPorts = [ 22 ];
 }

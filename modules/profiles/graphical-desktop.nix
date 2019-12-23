@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 {
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -10,7 +10,7 @@
   services.xserver.displayManager.lightdm.autoLogin.user = "rizary";
 
   # MongoDBssh configuration
-  services.mongodb = { enable = true;  };
+  services.mongodb = { enable = true; };
 
   # nfs configuration
   services.nfs.server.enable = true;
@@ -20,7 +20,7 @@
   '';
   fileSystems."/home/rizilab/nixosNFS" = {
     device = "/mnt/nixosNFS";
-    options = ["bind"];
+    options = [ "bind" ];
   };
 
   environment.systemPackages = with pkgs; [

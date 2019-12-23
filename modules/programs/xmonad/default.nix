@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ ... }:
 {
   primary-user.home-manager.xsession.enable = true;
   primary-user.home-manager.xsession.windowManager.xmonad.enable = true;
