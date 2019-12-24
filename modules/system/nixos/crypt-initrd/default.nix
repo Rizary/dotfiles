@@ -58,7 +58,7 @@ in
 
   config = lib.mkIf cfg.enable {
     boot.initrd = {
-      kernelModules = [ cfg.key.device.fsType "usb_storage" "loop" ];
+      kernelModules = [ cfg.key.device.fsType ]; #"usb_storage" "loop" ];
 
       preLVMCommands = lib.mkMerge [
         (

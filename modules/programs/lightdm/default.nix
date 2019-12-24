@@ -1,8 +1,9 @@
 { pkgs, ... }:
 {
   services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.displayManager.lightdm.autoLogin.enable = true;
-  services.xserver.displayManager.lightdm.autoLogin.user = "rizary";
+  services.xserver.displayManager.sddm.enable = false;
+  #services.xserver.displayManager.lightdm.autoLogin.enable = true;
+  #services.xserver.displayManager.lightdm.autoLogin.user = "rizary";
   services.xserver.desktopManager.session = [
     {
       name = "home-manager";

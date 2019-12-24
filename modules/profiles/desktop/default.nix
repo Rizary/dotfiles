@@ -30,6 +30,7 @@
     ../../programs/audio
     ../../programs/dunst
     ../../programs/gtk
+    ../../programs/lightdm
     ../../programs/log
     ../../programs/opengl
     #../../programs/rofi-pass

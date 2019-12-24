@@ -25,7 +25,7 @@ let
   lint = pkgs.writeShellScriptBin "lint" "nix-linter ${files}";
   format = pkgs.writeShellScriptBin "format" "nixpkgs-fmt ${files}";
   deploy-config-cmd = pkgs.writeShellScript "deploy-config-cmd" ''
-    export dotfiles="$(nix-build --argstr host rizilab --no-out-link)"
+    export dotfiles="$(nix-build --argstr host $1 --no-out-link)"
     export NIX_PATH="${nix-path}"
     nixos-rebuild switch --show-trace
   '';
@@ -46,7 +46,7 @@ let
       exit 1
     fi
 
-    sudo ${deploy-config-cmd} 
+    sudo ${deploy-config-cmd} $1 
   '';
   collect-garbage =
     pkgs.writeShellScriptBin "collect-garbage" "sudo nix-collect-garbage -d";
