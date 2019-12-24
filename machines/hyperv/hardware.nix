@@ -2,8 +2,8 @@
 
 let
   boot = {
-    device = "/dev/disk/by-uuid/B8C2-3318";
-    fsType = "fat32";
+    device = "/dev/disk/by-uuid/2994-5D76";
+    fsType = "vfat";
   };
 in
 
