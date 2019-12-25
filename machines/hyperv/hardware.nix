@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 
 let
   boot = {
@@ -13,15 +13,16 @@ in
   ];
 
 
-  boot.crypt-initrd.enable = true;
-  boot.crypt-initrd.device = "/dev/sda1";
-  boot.crypt-initrd.key.device = boot;
-  boot.crypt-initrd.key.keyPath = "/spitfire";
-  boot.crypt-initrd.key.headerPath = "/header.img";
+  #boot.crypt-initrd.enable = true;
+  #boot.crypt-initrd.device = "/dev/sda1";
+  #boot.crypt-initrd.key.device = boot;
+  #boot.crypt-initrd.key.keyPath = "/spitfire";
+  #boot.crypt-initrd.key.headerPath = "/header.img";
 
-  boot.initrd.kernelModules = [ "dm-snapshot" "nls_cp437" "nls_iso8859_1" ];
-
+  #boot.initrd.kernelModules = [ "dm-snapshot" "nls_cp437" "nls_iso8859_1" ];
+  boot.kernelParams = [ "video=hyperv_fb:1920x1080 elevator=noop" ];
   services.xserver.videoDrivers = [ "hyperv_fb" ];
+  services.xserver.modules = [ pkgs.xorg.xf86videofbdev ];
 
   fileSystems = {
     "/" = {
@@ -30,7 +31,7 @@ in
     };
 
     "/boot" = boot // {
-      options = [ "noauto" ];
+      options = [ "defaults" ];
     };
 
     "/home" = {
