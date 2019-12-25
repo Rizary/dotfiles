@@ -20,10 +20,12 @@ in
   #boot.crypt-initrd.key.headerPath = "/header.img";
 
   #boot.initrd.kernelModules = [ "dm-snapshot" "nls_cp437" "nls_iso8859_1" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.initrd.availableKernelModules = [ "sd_mod" "sr_mod" ];
   boot.kernelParams = [ "video=hyperv_fb:1920x1080 elevator=noop" ];
   services.xserver.videoDrivers = [ "hyperv_fb" ];
   services.xserver.modules = [ pkgs.xorg.xf86videofbdev ];
-
+  services.urxvtd.enable = true;
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/5dd9c0c1-5175-4404-8f87-a1ce6e05148b";
@@ -43,6 +45,11 @@ in
       device = "/dev/disk/by-uuid/4993a25d-1762-462c-95a5-5d13fc8de524";
       fsType = "ext4";
     };
+
+    "/secure" = {
+      device = "/dev/disk/by-uuid/62d00748-312e-407e-876b-e35b699f9b7f";
+      fsType = "ext4";
+    };
   };
 
   swapDevices = [
@@ -52,5 +59,6 @@ in
   ];
 
   nix.maxJobs = lib.mkDefault 8;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  #powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  virtualisation.hypervGuest.enable = true;
 }

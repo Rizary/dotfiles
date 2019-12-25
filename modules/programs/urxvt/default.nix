@@ -18,12 +18,4 @@ in
     "url-select.launcher" = "browse";
     "url-select.underline" = true;
   };
-
-  # urxvtd daemon
-  #primary-user.home-manager.services.urxvtd.enable = true;
-
-  systemd.user.services.urxvtd.description = "rxvt terminal daemon";
-  systemd.user.services.urxvtd.partOf = [ "graphical-session.target" ];
-  systemd.user.services.urxvtd.wantedBy = [ "graphical-session.target" ];
-  systemd.user.services.urxvtd.serviceConfig.ExecStart = "${urxvt}/bin/urxvtd";
 }

@@ -1,7 +1,37 @@
 { ... }:
+
+#let
+#email = pkgs.callPackage ./email.nix {};
+#vpn = pkgs.callPackage ./vpn.nix {};
+#volume = pkgs.callPackage ./volume.nix {};
+#bluetooth = pkgs.callPackage ./bluetooth.nix {};
+#battery = pkgs.callPackage ./battery.nix {};
+#network = pkgs.callPackage ./network.nix {};
+#date = pkgs.callPackage ./date.nix {};
+#in
+
 {
-  primary-user.home-manager.home.file.".xmonad/xmobar.hs" = {
-    source = ./xmobar.hs;
-    recursive = true;
-  };
+  primary-user.home-manager.home.file.".xmobarrc".text = ''
+    Config
+      { font = "xft:DejaVu Sans Mono:size=10"
+      , additionalFonts =
+        [ "xft:Font Awesome 5 Free:size=9:style=Solid"
+        , "xft:DejaVu Sans Mono:style=Bold:size=10"
+        , "xft:Font Awesome 5 Brands:size=9"
+        ]
+      , position = BottomSize C 100 35
+      , border = TopB
+      , borderColor = "#859900"
+      , borderWidth = 3
+      , textOffset = 25
+      , textOffsets = [ 25, 25, 25 ]
+      , bgColor = "#002b36"
+      , fgColor = "#268bd2"
+      , overrideRedirect = False
+      , commands =
+        [ Run UnsafeStdinReader
+        ]
+      , template = " %UnsafeStdinReader%}{%email%%vpn%%bluetooth%%network%%volume%%battery%%date%        "
+      }
+  '';
 }
