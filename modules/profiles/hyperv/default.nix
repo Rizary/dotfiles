@@ -15,7 +15,7 @@
     # desktop security
     ../../security/gpg
     ../../security/pass
-    # ../../security/secure
+    #../../security/secure
     ../../security/ssh
     ../../security/sshd
 
@@ -37,6 +37,7 @@
     ../../programs/screen-locker
     ../../programs/urxvt
     ../../programs/xmobar
+    ../../programs/taffybar
     ../../programs/xmonad
     ../../programs/xorg
     ../../programs/fzf

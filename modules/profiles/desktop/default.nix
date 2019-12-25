@@ -36,6 +36,7 @@
     #../../programs/rofi-pass
     ../../programs/screen-locker
     ../../programs/urxvt
+    ../../programs/taffybar
     ../../programs/xmobar
     ../../programs/xmonad
     ../../programs/xorg

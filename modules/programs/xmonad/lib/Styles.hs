@@ -4,7 +4,7 @@ import qualified XMonad as XMonad
 
 --
 font :: String
-font = "xft:DejaVu Sans Mono-10"
+font = "xft:DejaVu Sans Mono-14"
 
 --
 normalBorderColor :: String

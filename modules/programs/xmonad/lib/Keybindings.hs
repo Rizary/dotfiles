@@ -33,10 +33,11 @@ directions =
 
 -- List bound keys.
 keybindings ::
+  XMonad.KeyMask ->
   Paths.Paths ->
   XMonad.XConfig XMonad.Layout ->
   Map.Map (XMonad.ButtonMask, XMonad.KeySym) (XMonad.X ())
-keybindings paths _ = Map.fromList $
+keybindings modMask paths _ = Map.fromList $
 
   -- Switch layouts
   [ ((modMask, XMonad.xK_Tab), XMonad.sendMessage XMonad.NextLayout)
@@ -62,26 +63,26 @@ keybindings paths _ = Map.fromList $
   , ((modMask .|. XMonad.shiftMask, XMonad.xK_q), XMonad.kill)
 
   -- Launcher
-  , ((modMask, XMonad.xK_d), XMonad.spawn $ Paths.launch paths)
-  , ((modMask .|. XMonad.shiftMask, XMonad.xK_d), XMonad.spawn $ Paths.launch paths ++ " $(" ++ Paths.xclip paths ++ " -o)")
-  , ((modMask, XMonad.xK_Return), XMonad.spawn $ Paths.terminal paths)
+  --, ((modMask, XMonad.xK_d), XMonad.spawn $ Paths.launch paths)
+  --, ((modMask .|. XMonad.shiftMask, XMonad.xK_d), XMonad.spawn $ Paths.launch paths ++ " $(" ++ Paths.xclip paths ++ " -o)")
+  --, ((modMask, XMonad.xK_Return), XMonad.spawn $ Paths.terminal paths)
 
   -- Screen Locker
   , ((modMask .|. XMonad.shiftMask, XMonad.xK_Return), XMonad.spawn $ Paths.i3lock paths ++ " -c 000000")
 
   -- Volume
-  , ((modMask, XMonad.xK_End), XMonad.spawn $ Paths.volume paths ++ " toggle")
-  , ((XMonad.noModMask, XF86.xF86XK_AudioMute), XMonad.spawn $ Paths.volume paths ++ " toggle")
-  , ((modMask, XMonad.xK_Page_Up), XMonad.spawn $ Paths.volume paths ++ " + 5")
-  , ((XMonad.noModMask, XF86.xF86XK_AudioRaiseVolume), XMonad.spawn $ Paths.volume paths ++ " + 5")
-  , ((modMask, XMonad.xK_Page_Down), XMonad.spawn $ Paths.volume paths ++ " - 5")
-  , ((XMonad.noModMask, XF86.xF86XK_AudioLowerVolume), XMonad.spawn $ Paths.volume paths ++ " - 5")
+  --, ((modMask, XMonad.xK_End), XMonad.spawn $ Paths.volume paths ++ " toggle")
+  --, ((XMonad.noModMask, XF86.xF86XK_AudioMute), XMonad.spawn $ Paths.volume paths ++ " toggle")
+  --, ((modMask, XMonad.xK_Page_Up), XMonad.spawn $ Paths.volume paths ++ " + 5")
+  --, ((XMonad.noModMask, XF86.xF86XK_AudioRaiseVolume), XMonad.spawn $ Paths.volume paths ++ " + 5")
+  --, ((modMask, XMonad.xK_Page_Down), XMonad.spawn $ Paths.volume paths ++ " - 5")
+  --, ((XMonad.noModMask, XF86.xF86XK_AudioLowerVolume), XMonad.spawn $ Paths.volume paths ++ " - 5")
 
   -- Backlight
-  , ((XMonad.noModMask, XF86.xF86XK_MonBrightnessUp), XMonad.spawn $ Paths.backlight paths ++ " + 5")
-  , ((XMonad.noModMask, XF86.xF86XK_Launch6), XMonad.spawn $ Paths.backlight paths ++ " + 5")
-  , ((XMonad.noModMask, XF86.xF86XK_MonBrightnessDown), XMonad.spawn $ Paths.backlight paths ++ " - 5")
-  , ((XMonad.noModMask, XF86.xF86XK_Launch5), XMonad.spawn $ Paths.backlight paths ++ " - 5")
+  --, ((XMonad.noModMask, XF86.xF86XK_MonBrightnessUp), XMonad.spawn $ Paths.backlight paths ++ " + 5")
+  --, ((XMonad.noModMask, XF86.xF86XK_Launch6), XMonad.spawn $ Paths.backlight paths ++ " + 5")
+  --, ((XMonad.noModMask, XF86.xF86XK_MonBrightnessDown), XMonad.spawn $ Paths.backlight paths ++ " - 5")
+  --, ((XMonad.noModMask, XF86.xF86XK_Launch5), XMonad.spawn $ Paths.backlight paths ++ " - 5")
 
   ] ++
 

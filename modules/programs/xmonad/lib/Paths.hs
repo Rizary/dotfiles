@@ -1,12 +1,10 @@
 module Paths where
 
 data Paths = Paths
-  { xmobar :: String
+  { taffybar :: String
   , xsetroot :: String
   , launch :: String
   , xclip :: String
   , i3lock :: String
-  , backlight :: String
-  , volume :: String
   , terminal :: String
   }

@@ -1,0 +1,16 @@
+_: super:
+let
+  ghcVer = "ghc865";
+  taffybar-json = builtins.fromJSON (builtins.readFile ./git.json);
+  taffybar-src = builtins.fetchGit { inherit (taffybar-json) url rev; };
+  haskellPackages = super.haskell.packages.${ghcVer}.override (
+    old: {
+      overrides = super.lib.composeExtensions (old.overrides or (_:_: {})) (
+        newHaskell: _: {
+          taffybar = newHaskell.callCabal2nix "taffybar" taffybar-src { inherit (pkgs) gtk3; };
+        }
+      );
+    }
+  );
+in
+{ taffybar = haskellPackages.taffybar; }

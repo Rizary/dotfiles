@@ -59,6 +59,5 @@ in
   ];
 
   nix.maxJobs = lib.mkDefault 8;
-  #powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  virtualisation.hypervGuest.enable = true;
+  #powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";  virtualisation.hypervGuest.enable = true;
 }

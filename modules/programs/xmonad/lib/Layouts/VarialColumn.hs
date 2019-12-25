@@ -291,7 +291,7 @@ instance LayoutClass LS Window where
                                                                       (norm $
                                                                        S.fromList $
                                                                        take (S.length $ S.index cs col) $
-                                                                       iterate (* gen) 1)
+                                                                        iterate (* gen) 1)
                                                                       cs)))}
     | (Just (Embiggen dr dc w)) <- fromMessage msg =
         let change q s a = norm $ S.adjust (+ q) s $ fmap ((flip (-)) (q / (fromIntegral $ S.length a))) a
