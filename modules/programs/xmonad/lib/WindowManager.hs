@@ -30,7 +30,7 @@ startXmonad myModMask paths = -- statusbarPipe =
   , XMonad.mouseBindings = Mousebindings.mousebindings
   , XMonad.layoutHook = Layouts.layoutHook
   , XMonad.manageHook = WindowRules.windowRules
-  -- , XMonad.logHook = Logging.logHook statusbarPipe
+  -- , XMonad.logHook = 
   }
 
 -- WM-level plugins

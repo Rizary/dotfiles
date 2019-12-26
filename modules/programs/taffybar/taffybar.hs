@@ -75,7 +75,6 @@ main = do
           , cpu
           , mem
           , net
-          , textBatteryNew "Batt: $percentage$% $status$ $time$"
           , tray
           ]
         , barPosition = Top
@@ -84,5 +83,5 @@ main = do
         , widgetSpacing = 0
         --, monitorsAction = usePrimaryMonitor -- This doesn't actually pick the right display at Taffybar 3.1.2
         }
-  dyreTaffybar $ withBatteryRefresh $ withLogServer $ withToggleServer $
+  dyreTaffybar $ withLogServer $ withToggleServer $
     toTaffyConfig myConfig

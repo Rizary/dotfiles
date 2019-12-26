@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, lib, ... }:
 
 let
   restart-taffybar = ''
@@ -11,6 +11,7 @@ let
 in
 {
   primary-user.home-manager.services.taffybar.enable = true;
+  primary-user.home-manager.home.packages = lib.mkForce [ pkgs.taffybar ];
   primary-user.home-manager.home.file.".config/taffybar/taffybar.hs" = {
     source = ./taffybar.hs;
     onChange = restart-taffybar;

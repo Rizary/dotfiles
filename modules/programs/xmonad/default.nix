@@ -23,6 +23,7 @@ in
         hp.xmonad-contrib
         hp.xmonad-extras
         hp.taffybar
+        hp.dbus
       ];
       config =
         let

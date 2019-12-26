@@ -14,5 +14,6 @@ in
     XDG_MUSIC_DIR="${home}/Music"
     XDG_PICTURES_DIR="${home}/Camera"
     XDG_VIDEOS_DIR="${home}/Camera"
+    XDG_CONFIG_HOME="${home}/.config"
   '';
 }

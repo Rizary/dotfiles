@@ -27,7 +27,10 @@
     gla = "git config -l | grep alias | cut -c 7-";
 
   };
-  #primary-user.home-manager.programs.fish.shellInit
+  primary-user.home-manager.programs.fish.shellInit = ''
+    setxkbmap -layout us -variant dvorak
+  '';
+
   #primary-user.home-manager.programs.fish.promptInit
 
 }

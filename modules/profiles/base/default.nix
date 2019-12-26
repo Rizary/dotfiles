@@ -20,6 +20,7 @@
     ../../programs/dvp
     ../../programs/lorri
     ../../programs/fish
+    ../../programs/status-notifier-watcher
 
   ];
 }
