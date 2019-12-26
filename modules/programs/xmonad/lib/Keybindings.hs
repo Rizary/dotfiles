@@ -65,7 +65,7 @@ keybindings modMask paths _ = Map.fromList $
   -- Launcher
   --, ((modMask, XMonad.xK_d), XMonad.spawn $ Paths.launch paths)
   --, ((modMask .|. XMonad.shiftMask, XMonad.xK_d), XMonad.spawn $ Paths.launch paths ++ " $(" ++ Paths.xclip paths ++ " -o)")
-  --, ((modMask, XMonad.xK_Return), XMonad.spawn $ Paths.terminal paths)
+  , ((modMask, XMonad.xK_Return), XMonad.spawn $ Paths.terminal paths)
 
   -- Screen Locker
   , ((modMask .|. XMonad.shiftMask, XMonad.xK_Return), XMonad.spawn $ Paths.i3lock paths ++ " -c 000000")

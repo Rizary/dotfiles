@@ -12,14 +12,6 @@ in
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
   ];
 
-
-  #boot.crypt-initrd.enable = true;
-  #boot.crypt-initrd.device = "/dev/sda1";
-  #boot.crypt-initrd.key.device = boot;
-  #boot.crypt-initrd.key.keyPath = "/spitfire";
-  #boot.crypt-initrd.key.headerPath = "/header.img";
-
-  #boot.initrd.kernelModules = [ "dm-snapshot" "nls_cp437" "nls_iso8859_1" ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.initrd.availableKernelModules = [ "sd_mod" "sr_mod" ];
   boot.kernelParams = [ "video=hyperv_fb:1920x1080 elevator=noop" ];
@@ -59,5 +51,5 @@ in
   ];
 
   nix.maxJobs = lib.mkDefault 8;
-  #powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";  virtualisation.hypervGuest.enable = true;
+  virtualisation.  hypervGuest.enable = true;
 }
