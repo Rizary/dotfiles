@@ -1,0 +1,26 @@
+{ callPackage }:
+let
+  colors = callPackage ./colors.nix {};
+in
+{
+  black = colors.nord1;
+  white = colors.nord6;
+  grey = colors.nord4;
+  lightGrey = colors.nord5;
+  red = colors.nord11;
+  lightRed = colors.nord12;
+  green = colors.nord14;
+  lightGreen = colors.nord18;
+  yellow = colors.nord17;
+  lightYellow = colors.nord13;
+  blue = colors.nord10;
+  lightBlue = colors.nord9;
+  purple = colors.nord15;
+  lightPurple = colors.nord16;
+  cyan = colors.nord7;
+  lightCyan = colors.nord8;
+
+  bright = colors.nord10;
+  urgent = colors.nord11;
+  warn = colors.nord17;
+}

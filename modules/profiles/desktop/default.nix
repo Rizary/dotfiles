@@ -2,7 +2,7 @@
 {
   imports = [
     # base is a common thing for all profiles
-    ../base
+    ../base-desktop
 
     ../../config/boot/systemd-boot
     ../../config/boot/logind

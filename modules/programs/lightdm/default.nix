@@ -4,6 +4,9 @@
   services.xserver.displayManager.sddm.enable = false;
   services.xserver.displayManager.lightdm.autoLogin.enable = true;
   services.xserver.displayManager.lightdm.autoLogin.user = "rizary";
+
+  services.xserver.displayManager.lightdm.background = "../../../wallpaper/Rizilab/rizilab-nordic.png";
+
   services.xserver.desktopManager.session = [
     {
       name = "home-manager";

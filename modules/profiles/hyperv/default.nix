@@ -2,7 +2,10 @@
 {
   imports = [
     # base is a common thing for all profiles
-    ../base
+    ../base-desktop
+
+    # theme
+    ../../config/data/theme
 
     ../../config/boot/systemd-boot
     ../../config/boot/logind
@@ -37,13 +40,20 @@
     ../../programs/screen-locker
     ../../programs/urxvt
     ../../programs/xmobar
+    ../../programs/tmux
     ../../programs/taffybar
     ../../programs/xmonad
     ../../programs/xorg
     ../../programs/fzf
+    ../../programs/firefox
+
+
+    # theming and fonts related program
+    ../../programs/all-fonts
 
     ../../printers
     ../../virtualisation
+
 
     # timezone
     ../../config/locale

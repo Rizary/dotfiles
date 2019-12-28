@@ -31,6 +31,8 @@
     setxkbmap -layout us -variant dvorak
   '';
 
-  #primary-user.home-manager.programs.fish.promptInit
+  primary-user.home-manager.programs.fish.interactiveShellInit = ''
+    direnv hook fish | source
+  '';
 
 }

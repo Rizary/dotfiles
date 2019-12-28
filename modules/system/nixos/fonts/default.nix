@@ -8,4 +8,5 @@
     powerline-fonts
     source-code-pro
   ];
+  fonts.fontconfig.enable = true;
 }
