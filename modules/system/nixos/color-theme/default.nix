@@ -12,22 +12,22 @@ in
 
   config = lib.mkIf (cfg != null) {
     i18n.consoleColors = map (builtins.replaceStrings [ "#" ] [ "" ]) [
-      cfg.background
-      cfg.foreground
-      cfg.red
+      cfg.black
+      cfg.urgent
       cfg.green
-      cfg.yellow
-      cfg.blue
-      cfg.purple
-      cfg.cyan
-      cfg.grey
-      cfg.lightRed
-      cfg.lightGreen
       cfg.lightYellow
       cfg.lightBlue
-      cfg.lightPurple
+      cfg.purple
       cfg.lightCyan
-      cfg.white
+      cfg.lightGrey
+      cfg.highlightBackground
+      cfg.urgent
+      cfg.green
+      cfg.lightYellow
+      cfg.lightBlue
+      cfg.purple
+      cfg.cyan
+      cfg.highlightForeground
     ];
   };
 }

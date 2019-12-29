@@ -73,4 +73,12 @@ lib*.pc
 /tmp_install/
 /static/images/
 
+# emacs unnecessary file
+*~
+\#*\#
+auto-save-list
+tramp
+.\#*
+
+.org-id-locations
 

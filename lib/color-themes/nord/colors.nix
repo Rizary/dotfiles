@@ -30,7 +30,7 @@ _:
   nord18 = "#d2f5b5"; # green light (leaf-ish)
 
   darkbg = "#2e3440";
-  darkfg = "#e5e9f0";
+  darkfg = "#d8dee9";
   lightbg = "#eceff4";
   lightfg = "#2e3440";
 }

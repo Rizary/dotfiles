@@ -19,24 +19,39 @@ in
       # Color Scheme
 
       "background" = cfg.background;
-      "foreground" = "${cfg.foreground}";
-      "cursorColor" = "${cfg.secondaryContent}";
-      "color0" = "${cfg.background}";
-      "color1" = "${cfg.secondaryContent}";
-      "color2" = "${cfg.selection}";
-      "color3" = "${cfg.highlightBackground}";
-      "color4" = "${cfg.grey}";
-      "color5" = "${cfg.lightGrey}";
-      "color6" = "${cfg.white}";
-      "color7" = "${cfg.cyan}";
-      "color8" = "${cfg.lightCyan}";
-      "color9" = "${cfg.lightBlue}";
-      "color10" = "${cfg.blue}";
-      "color11" = "${cfg.red}";
-      "color12" = "${cfg.lightRed}";
-      "color13" = "${cfg.lightYellow}";
-      "color14" = "${cfg.green}";
-      "color15" = "${cfg.purple}";
+      "foreground" = cfg.foreground;
+
+      # terminal cursor
+
+      "cursorColor" = cfg.blue;
+
+      "color0" = cfg.black;
+      "color8" = cfg.highlightBackground;
+
+      # warning or error color after terminal command
+      "color1" = cfg.urgent;
+      "color9" = cfg.urgent;
+
+      "color2" = cfg.green;
+      "color10" = cfg.green;
+
+      "color3" = cfg.lightYellow;
+      "color11" = cfg.lightYellow;
+
+
+      "color4" = cfg.lightBlue;
+      "color12" = cfg.lightBlue;
+
+      # Application warning
+
+      "color5" = cfg.purple;
+      "color13" = cfg.purple;
+
+      "color6" = cfg.lightCyan;
+      "color14" = cfg.cyan;
+
+      "color7" = cfg.lightGrey;
+      "color15" = cfg.highlightForeground;
     };
 
     programs.fish.shellInit = ''
@@ -61,7 +76,7 @@ in
       set fish_pager_color_completion ${cfg.white}
       set fish_pager_color_description ${cfg.blue}
       set fish_pager_color_progress ${cfg.lightRed}
-      set fish_pager_color_secondary ${cfg.secondaryContent}
+      set fish_pager_color_secondary ${cfg.foreground}
     '';
   };
 }

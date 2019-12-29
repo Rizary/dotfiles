@@ -13,5 +13,5 @@
 
   primary-user.home-manager.font.package = pkgs.fira;
   primary-user.home-manager.font.face = "Fira Sans";
-  primary-user.home-manager.font.size = 14;
+  primary-user.home-manager.font.size = 12;
 }

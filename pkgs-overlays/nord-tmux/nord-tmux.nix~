@@ -1,9 +1,0 @@
-{ pkgs }:
-let
-  sources = import ../../nix/sources.nix;
-  inherit (pkgs.tmuxPlugins) mkDerivation;
-in
-mkDerivation {
-  pluginName = "nord";
-  src = sources.nord-tmux;
-}
