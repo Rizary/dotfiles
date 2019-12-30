@@ -1,7 +1,6 @@
 { config, ... }:
 {
   keymap.layout = "us";
-  keymap.variant = "dvp";
-  keymap.options = "caps:escape";
+  keymap.variant = "dvorak";
   primary-user.home-manager.keymap = config.keymap;
 }

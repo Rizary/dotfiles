@@ -17,10 +17,11 @@
 
     ../../programs/bash
     ../../programs/direnv
-    ../../programs/dvp
+    ../../programs/dvorak
+    ../../programs/syncthing
+    ../../programs/flameshot
     ../../programs/lorri
     ../../programs/fish
     ../../programs/status-notifier-watcher
-
   ];
 }

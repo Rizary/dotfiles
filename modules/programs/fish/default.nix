@@ -1,9 +1,14 @@
 { pkgs, ... }:
 
+#let
+#  cfg = config.colorTheme;
+#  removeOctothorpe = builtins.replaceStrings [ "#" ] [ "" ];
+
+#in
 {
   primary-user.shell = "${pkgs.fish}/bin/fish";
   primary-user.home-manager.programs.fish.enable = true;
-  #primary-user.home-manager.programs.fish.shellAliases = {};
+  primary-user.home-manager.home.file.".config/fish/functions/fish_greeting.fish".source = ./functions/fish_greeting.fish;
   primary-user.home-manager.programs.fish.shellAbbrs = {
     gco = "git checkout";
     gcob = "git checkout -b";
@@ -33,6 +38,10 @@
 
   primary-user.home-manager.programs.fish.interactiveShellInit = ''
     direnv hook fish | source
+  '';
+
+  primary-user.home-manager.programs.fish.promptInit = ''
+
   '';
 
 }

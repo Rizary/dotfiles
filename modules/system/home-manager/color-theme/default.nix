@@ -4,7 +4,7 @@ let
   cfg = config.colorTheme;
   colorThemeType = pkgs.callPackage ../../../../lib/type/color-theme {};
 
-  #removeOctothorpe = builtins.replaceStrings [ "#" ] [ "" ];
+  removeOctothorpe = builtins.replaceStrings [ "#" ] [ "" ];
 in
 {
   options.colorTheme = lib.mkOption {
@@ -55,28 +55,27 @@ in
     };
 
     programs.fish.shellInit = ''
-      set fish_color_normal ${cfg.grey}
-      set fish_color_command ${cfg.lightBlue}
-      set fish_color_quote ${cfg.green}
-      set fish_color_redirection ${cfg.lightBlue}
-      set fish_color_end ${cfg.white}
-      set fish_color_error ${cfg.red}
-      set fish_color_param ${cfg.grey}
-      set fish_color_comment ${cfg.highlightBackground}
-      set fish_color_match ${cfg.lightCyan}
-      set fish_color_search_match ${cfg.lightCyan}
-      set fish_color_operator ${cfg.lightBlue}
-      set fish_color_escape ${cfg.lightYellow}
-      set fish_color_cwd ${cfg.lightCyan}
-      set fish_color_autosuggestion ${cfg.white}
-      set fish_color_user ${cfg.grey}
-      set fish_color_host ${cfg.lightBlue}
-      set fish_color_cancel ${cfg.purple}
-      set fish_pager_color_prefix ${cfg.lightYellow}
-      set fish_pager_color_completion ${cfg.white}
-      set fish_pager_color_description ${cfg.blue}
-      set fish_pager_color_progress ${cfg.lightRed}
-      set fish_pager_color_secondary ${cfg.foreground}
+      set fish_color_normal ${removeOctothorpe cfg.grey}
+      set fish_color_command ${removeOctothorpe cfg.lightBlue}
+      set fish_color_quote ${removeOctothorpe cfg.green}
+      set fish_color_redirection ${removeOctothorpe cfg.lightBlue}
+      set fish_color_end ${removeOctothorpe cfg.white}
+      set fish_color_error ${removeOctothorpe cfg.red}
+      set fish_color_param ${removeOctothorpe cfg.grey}
+      set fish_color_comment ${removeOctothorpe cfg.highlightBackground}
+      set fish_color_match ${removeOctothorpe cfg.lightCyan}
+      set fish_color_search_match ${removeOctothorpe cfg.lightCyan}
+      set fish_color_operator ${removeOctothorpe cfg.lightBlue}
+      set fish_color_escape ${removeOctothorpe cfg.lightYellow}
+      set fish_color_autosuggestion ${removeOctothorpe cfg.white}
+      set fish_color_user ${removeOctothorpe cfg.grey}
+      set fish_color_host ${removeOctothorpe cfg.lightBlue}
+      set fish_color_cancel ${removeOctothorpe cfg.purple}
+      set fish_pager_color_prefix ${removeOctothorpe cfg.lightYellow}
+      set fish_pager_color_completion ${removeOctothorpe cfg.white}
+      set fish_pager_color_description ${removeOctothorpe cfg.blue}
+      set fish_pager_color_progress ${removeOctothorpe cfg.lightRed}
+      set fish_pager_color_secondary ${removeOctothorpe cfg.foreground}
     '';
   };
 }
