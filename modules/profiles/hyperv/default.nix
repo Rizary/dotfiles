@@ -12,8 +12,9 @@
 
     ../../config/data/xdg-user-dirs
 
-    # networking
+    # hardware
     ../../hardware/network/lan
+    ../../hardware/monitors
 
     # desktop security
     ../../security/gpg
@@ -46,6 +47,8 @@
     ../../programs/xorg
     ../../programs/fzf
     ../../programs/firefox
+    ../../programs/mpv
+    ../../programs/flameshot
 
 
     # theming and fonts related program

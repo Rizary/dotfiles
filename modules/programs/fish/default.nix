@@ -8,7 +8,8 @@
 {
   primary-user.shell = "${pkgs.fish}/bin/fish";
   primary-user.home-manager.programs.fish.enable = true;
-  primary-user.home-manager.home.file.".config/fish/functions/fish_greeting.fish".source = ./functions/fish_greeting.fish;
+  primary-user.home-manager.home.file.".config/fish/functions".source = ./functions;
+  primary-user.home-manager.home.file.".config/fish/functions".recursive = true;
   primary-user.home-manager.programs.fish.shellAbbrs = {
     gco = "git checkout";
     gcob = "git checkout -b";
