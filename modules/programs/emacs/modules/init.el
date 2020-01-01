@@ -14,7 +14,7 @@
       package-enable-at-startup nil)
 (package-initialize)
 
-(require 'use-package)
+(eval-when-compile (require 'use-package))
 
 (defun load-module (module)
   "Load all files in Module from the `user-emacs-directory`."

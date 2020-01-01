@@ -69,5 +69,4 @@
   epkgs.which-key
   epkgs.ws-butler
   epkgs.yaml-mode
-  epkgs.zoom-frm
 ]

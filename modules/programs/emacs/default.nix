@@ -1,12 +1,18 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   font = config.primary-user.home-manager.font;
+  emacsGit = (pkgs.emacsPackagesGen pkgs.emacsGit).emacsWithPackages (
+    epkgs: pkgs.callPackage ./packages.nix { inherit epkgs; }
+  );
 in
 
 {
-  # put everything in modules folder into emacs.d's modules
+  primary-user.home-manager.programs.emacs.enable = true;
+  primary-user.home-manager.services.emacs.enable = true;
+  primary-user.home-manager.home.packages = lib.mkForce [ emacsGit ];
 
+  # put everything in modules folder into emacs.d's modules
   primary-user.home-manager.home.file.".emacs.d/modules".source = ./modules;
   primary-user.home-manager.home.file.".emacs.d/modules".recursive = true;
 
@@ -30,19 +36,11 @@ in
                                        ))
     )))
 
-    (load (concat user-emacs-directory "modules/init"))
+    (load (concat user-emacs-directory (convert-standard-filename "modules/init")))
   '';
 
   # Systemd configuration to run emacs within daemon. I use --fg-daemon to force the daemon to run in the foreground
 
-  primary-user.home-manager.systemd.user.services.emacs-daemon.Unit.Description = "Emacs text editor";
-  primary-user.home-manager.Unit.Documentation = "info:emacs man:emacs(1) https://gnu.org/software/emacs/";
-
-  primary-user.home-manager.Install.WantedBy = [ "default.target" ];
-
-  primary-user.home-manager.Service.Type = "forking";
-  primary-user.home-manager.Service.ExecStart = "${pkgs.stdenv.shell} -l -c 'exec ${pkgs.emacs}/bin/emacs --fg-daemon'";
-  primary-user.home-manager.Service.ExecStop = "${pkgs.emacs}/bin/emacsclient --eval '(kill-emacs)'";
-  primary-user.home-manager.Service.Restart = "on-failure";
-  primary-user.home-manager.Service.SyslogIdentifier = "emacs-daemon";
+  #primary-user.home-manager.systemd.user.services.emacs-daemon.Service.Type = "forking";
+  primary-user.home-manager.systemd.user.services.emacs.Service.SyslogIdentifier = "emacs";
 }
