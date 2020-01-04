@@ -37,7 +37,7 @@ startXmonad myModMask paths = -- statusbarPipe =
 wmPlugins
   = ManageDocks.docks -- Make the status bar work well
   . EwmhDesktops.ewmh -- Implement EWMH for workspace support, xdotool, etc.
-  . PagerHints.pagerHints -- Implement taffybar
+  -- . PagerHints.pagerHints -- Implement taffybar
 
   -- Enable directional navigation
   . Navigation2D.withNavigation2DConfig Navigation2D.def

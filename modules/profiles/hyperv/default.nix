@@ -40,15 +40,20 @@
     #../../programs/rofi-pass
     ../../programs/screen-locker
     ../../programs/urxvt
-    ../../programs/xmobar
+    #../../programs/xmobar
     ../../programs/tmux
-    ../../programs/taffybar
+    #../../programs/taffybar
+    ../../programs/polybar
     ../../programs/xmonad
     ../../programs/xorg
     ../../programs/fzf
     ../../programs/firefox
     ../../programs/mpv
+    ../../programs/ranger
     ../../programs/flameshot
+    #../../programs/xmonad-log
+    #../../programs/xdotool
+    #../../programs/playerctl
 
 
     # theming and fonts related program

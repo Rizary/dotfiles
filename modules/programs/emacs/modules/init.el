@@ -20,6 +20,9 @@
   "Load all files in Module from the `user-emacs-directory`."
   (load (concat user-emacs-directory module)))
 
+(add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.d/themes/"))
+(load-theme 'nord t)
+
 ;; Keybinding should be loaded first here
 
 ;; Specific filetype or app configuration
