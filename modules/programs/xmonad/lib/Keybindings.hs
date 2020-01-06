@@ -6,8 +6,6 @@ import qualified Data.List as List
 import qualified Data.Map as Map
 import qualified Data.Maybe as Maybe
 import qualified Graphics.X11.ExtraTypes.XF86 as XF86
-import qualified Layouts.Tabbed as Tabbed
-import qualified Layouts.VarialColumn as VarialColumn
 import qualified Paths as Paths
 import qualified Workspaces as Workspaces
 import qualified XMonad as XMonad
@@ -17,10 +15,6 @@ import qualified XMonad.Layout.MouseResizableTile as MouseResizableTile
 import qualified XMonad.Layout.MultiToggle as MultiToggle
 import qualified XMonad.Layout.MultiToggle.Instances as MultiToggleInstances
 import qualified XMonad.StackSet as StackSet
-
--- Use mod4 (OS key) as the primary modifier
-modMask :: XMonad.KeyMask
-modMask = XMonad.mod4Mask
 
 -- Vim-style mapping from keybinding to direction.
 directions :: [(Navigation2D.Direction2D, XMonad.KeySym)]
@@ -34,20 +28,14 @@ directions =
 -- List bound keys.
 keybindings ::
   XMonad.KeyMask ->
-  Paths.Paths ->
   XMonad.XConfig XMonad.Layout ->
   Map.Map (XMonad.ButtonMask, XMonad.KeySym) (XMonad.X ())
-keybindings modMask paths _ = Map.fromList $
+keybindings modMask _ = Map.fromList $
 
   -- Switch layouts
   [ ((modMask, XMonad.xK_Tab), XMonad.sendMessage XMonad.NextLayout)
   , ((modMask .|. XMonad.shiftMask, XMonad.xK_Tab), goPreviousLayout)
 
-  -- Resize
-  , ((modMask .|. XMonad.controlMask, XMonad.xK_k), XMonad.withFocused $ XMonad.sendMessage . VarialColumn.Embiggen 0 (-0.05))
-  , ((modMask .|. XMonad.controlMask, XMonad.xK_j), XMonad.withFocused $ XMonad.sendMessage . VarialColumn.Embiggen 0 0.05)
-  , ((modMask .|. XMonad.controlMask, XMonad.xK_h), XMonad.withFocused $ XMonad.sendMessage . VarialColumn.Embiggen (-0.05) 0)
-  , ((modMask .|. XMonad.controlMask, XMonad.xK_l), XMonad.withFocused $ XMonad.sendMessage . VarialColumn.Embiggen 0.05 0)
 
   -- Floating/fullscreen toggle
   , ((modMask, XMonad.xK_space), Navigation2D.switchLayer)
@@ -55,50 +43,16 @@ keybindings modMask paths _ = Map.fromList $
   , ((modMask, XMonad.xK_f), XMonad.withFocused (XMonad.sendMessage . Maximize.maximizeRestore))
   , ((modMask .|. XMonad.shiftMask, XMonad.xK_f), XMonad.sendMessage $ MultiToggle.Toggle MultiToggleInstances.FULL)
 
-  -- Number of windows in master
-  , ((modMask, XMonad.xK_comma), XMonad.withFocused $ XMonad.sendMessage . VarialColumn.UpOrLeft)
-  , ((modMask, XMonad.xK_period), XMonad.withFocused $ XMonad.sendMessage . VarialColumn.DownOrRight)
 
   -- Close window
   , ((modMask .|. XMonad.shiftMask, XMonad.xK_q), XMonad.kill)
 
-  -- Launcher
-  --, ((modMask, XMonad.xK_d), XMonad.spawn $ Paths.launch paths)
-  --, ((modMask .|. XMonad.shiftMask, XMonad.xK_d), XMonad.spawn $ Paths.launch paths ++ " $(" ++ Paths.xclip paths ++ " -o)")
-  , ((modMask, XMonad.xK_Return), XMonad.spawn $ Paths.terminal paths)
+  , ((modMask, XMonad.xK_Return), XMonad.spawn $ "urxvt")
 
   -- Screen Locker
-  , ((modMask .|. XMonad.shiftMask, XMonad.xK_Return), XMonad.spawn $ Paths.i3lock paths ++ " -c 000000")
-
-  -- Volume
-  --, ((modMask, XMonad.xK_End), XMonad.spawn $ Paths.volume paths ++ " toggle")
-  --, ((XMonad.noModMask, XF86.xF86XK_AudioMute), XMonad.spawn $ Paths.volume paths ++ " toggle")
-  --, ((modMask, XMonad.xK_Page_Up), XMonad.spawn $ Paths.volume paths ++ " + 5")
-  --, ((XMonad.noModMask, XF86.xF86XK_AudioRaiseVolume), XMonad.spawn $ Paths.volume paths ++ " + 5")
-  --, ((modMask, XMonad.xK_Page_Down), XMonad.spawn $ Paths.volume paths ++ " - 5")
-  --, ((XMonad.noModMask, XF86.xF86XK_AudioLowerVolume), XMonad.spawn $ Paths.volume paths ++ " - 5")
-
-  -- Backlight
-  --, ((XMonad.noModMask, XF86.xF86XK_MonBrightnessUp), XMonad.spawn $ Paths.backlight paths ++ " + 5")
-  --, ((XMonad.noModMask, XF86.xF86XK_Launch6), XMonad.spawn $ Paths.backlight paths ++ " + 5")
-  --, ((XMonad.noModMask, XF86.xF86XK_MonBrightnessDown), XMonad.spawn $ Paths.backlight paths ++ " - 5")
-  --, ((XMonad.noModMask, XF86.xF86XK_Launch5), XMonad.spawn $ Paths.backlight paths ++ " - 5")
+  , ((modMask .|. XMonad.shiftMask, XMonad.xK_Return), XMonad.spawn $ "i3lock-fancy -c 000000")
 
   ] ++
-
-  -- Move focus with mod + direction
-  (directionalKeys modMask Navigation2D.windowGo
-    [ ((XMonad.description Tabbed.layout, XMonad.xK_h), XMonad.windows StackSet.focusUp)
-    , ((XMonad.description Tabbed.layout, XMonad.xK_l), XMonad.windows StackSet.focusDown)
-    ]
-  ) ++
-
-  -- Swap windows with mod + shift + direction
-  (directionalKeys (modMask .|. XMonad.shiftMask) Navigation2D.windowSwap
-    [ ((XMonad.description Tabbed.layout, XMonad.xK_h), XMonad.windows StackSet.swapUp)
-    , ((XMonad.description Tabbed.layout, XMonad.xK_l), XMonad.windows StackSet.swapDown)
-    ]
-  ) ++
 
   -- Move screens with mod + ctrl + shift + direction
   (directionalKeys (modMask .|. XMonad.shiftMask .|. XMonad.controlMask) Navigation2D.screenSwap []) ++

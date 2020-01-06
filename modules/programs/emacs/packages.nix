@@ -13,6 +13,7 @@ with epkgs;
   counsel-projectile
   csv-mode
   delight
+  dart-mode
   direnv
   dhall-mode
   dockerfile-mode
@@ -27,6 +28,7 @@ with epkgs;
   evil-smartparens
   fill-column-indicator
   flow-minor-mode
+  flutter
   flx
   flycheck
   flycheck-haskell
@@ -52,7 +54,6 @@ with epkgs;
   nord-theme
   org
   org-pdfview
-  org-pdftools
   org-bullets
   pdf-tools
   pkgbuild-mode
@@ -71,7 +72,7 @@ with epkgs;
   typescript-mode
   unicode-fonts
   use-package
-  wat-mode
+  #wat-mode
   web
   web-beautify
   web-mode

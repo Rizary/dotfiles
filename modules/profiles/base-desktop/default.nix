@@ -24,5 +24,6 @@
     ../../programs/fish
     ../../programs/status-notifier-watcher
     ../../programs/emacs
+    ../../programs/pavucontrol
   ];
 }

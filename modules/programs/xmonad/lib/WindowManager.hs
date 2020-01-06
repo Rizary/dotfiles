@@ -12,25 +12,28 @@ import qualified XMonad as XMonad
 import qualified XMonad.Actions.Navigation2D as Navigation2D
 import qualified XMonad.Hooks.EwmhDesktops as EwmhDesktops
 import qualified XMonad.Hooks.ManageDocks as ManageDocks
+import qualified XMonad.Hooks.DynamicLog as DynamicLog
 import qualified XMonad.Config.Desktop as ConfigDesktop
 import qualified XMonad.Util.Run as Run
-import System.Taffybar.Support.PagerHints as PagerHints
 
-start myModMask paths = startXmonad myModMask paths
+start myModMask = --startXmobar paths >>=
+  startXmonad myModMask
 
--- startXmobar = Run.spawnPipe . Paths.xmobar
+--startXmobar = Run.spawnPipe . Paths.xmobar
 
-startXmonad myModMask paths = -- statusbarPipe =
+startXmonad =
   XMonad.xmonad $ wmPlugins $ XMonad.def
   { XMonad.workspaces = Workspaces.workspaceNames
+  , XMonad.terminal = "urxvt"
   , XMonad.borderWidth = Styles.borderWidth
   , XMonad.normalBorderColor = Styles.normalBorderColor
   , XMonad.focusedBorderColor = Styles.focusedBorderColor
-  , XMonad.keys = Keybindings.keybindings myModMask paths
+  , XMonad.keys = Keybindings.keybindings myModMask
   , XMonad.mouseBindings = Mousebindings.mousebindings
   , XMonad.layoutHook = Layouts.layoutHook
   , XMonad.manageHook = WindowRules.windowRules
-  -- , XMonad.logHook = 
+  , XMonad.logHook = DynamicLog.dynamicLogString DynamicLog.xmobarPP
+    { DynamicLog.ppTitle = DynamicLog.xmobarColor "green" "" . DynamicLog.shorten 30 } >>= DynamicLog.xmonadPropLog
   }
 
 -- WM-level plugins

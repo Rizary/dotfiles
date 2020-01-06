@@ -32,18 +32,13 @@ in
           else "mod4Mask";
         in
           pkgs.writeText "xmonad.hs" ''
-            import XMonad as XMonad
             import qualified Paths as Paths
             import qualified WindowManager as WindowManager
       
             main :: IO ()
-            main = WindowManager.start myModMask Paths.Paths
-                { Paths.i3lock = "${pkgs.i3lock}/bin/i3lock"
-                , Paths.terminal = myTerminal  
-                }
+            main = WindowManager.start myModMask
 
             myModMask = XMonad.${profileMask}
-            myTerminal = "urxvt"
           '';
     };
   };

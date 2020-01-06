@@ -1,7 +1,7 @@
 module Paths where
 
 data Paths = Paths
-  { taffybar :: String
+  { xmobar :: String
   , xsetroot :: String
   , launch :: String
   , xclip :: String

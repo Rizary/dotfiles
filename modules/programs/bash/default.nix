@@ -1,4 +1,4 @@
 { ... }:
 {
-  primary-user.home-manager.programs.bash.enable = true;
+  primary-user.home-manager.programs.feh.enable = true;
 }

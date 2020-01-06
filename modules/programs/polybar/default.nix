@@ -1,10 +1,12 @@
 { config, pkgs, ... }:
-let fonts = import ./fonts;
-    cfg = config.colorTheme;
-    caffein = pkgs.callPackage ./caffein.nix {};
-    switch = pkgs.callPackage ./switch.nix {};
+let
+  fonts = import ./fonts;
+  cfg = config.colorTheme;
+  caffein = pkgs.callPackage ./caffein.nix {};
+  switch = pkgs.callPackage ./switch.nix {};
 
-in {
+in
+{
   primary-user.home-manager.services.polybar.enable = true;
   primary-user.home-manager.services.polybar.package = pkgs.polybar.override {
     githubSupport = true;
@@ -18,9 +20,9 @@ in {
     };
 
     # Main bars
-    
+
     "bar/xmonad" = fonts // {
-      monitor = "\''${env:MONITOR:HDMI-1}";
+      #monitor = "\''${env:MONITOR:HDMI-1}";
       override-redirect = false;
 
       enable-ipc = true;
@@ -38,7 +40,7 @@ in {
 
       border-bottom = "0";
       border-bottom-color = cfg.cyan;
-                        
+
       cursor-click = "pointer";
       cursor-scroll = "ns-resize";
       spacing = 1;
@@ -47,12 +49,12 @@ in {
       module-margin-left = 1;
       module-margin-right = 2;
 
-      modules-left      = "workspaces layout";
-      modules-center    = "music";
-      modules-right     = "date volume caffeine lock userswitch powermenu";
+      modules-left = "workspaces layout";
+      modules-center = "music";
+      modules-right = "date volume caffeine lock userswitch powermenu";
 
       tray-position = "right";
-      tray-padding = 2;      
+      tray-padding = 2;
 
     };
 
@@ -66,12 +68,12 @@ in {
 
       click-left = "sleep 0.1; ${pkgs.xdotool}/bin/xdotool key Super w g";
 
-      format= "<label>";
+      format = "<label>";
       format-background = colours.basebg-alt;
       format-foreground = colours.base02;
       format-padding = 2;
     };
-    
+
     "module/layout" = {
       type = "custom/script";
       exec = "tail -f /tmp/xmonad-layout";
@@ -95,7 +97,7 @@ in {
       format-foreground = colours.basebg;
       format-padding = 3;
 
-      click-left="wmctrl -x -a spotify";
+      click-left = "wmctrl -x -a spotify";
 
       label = "  %output%";
     };
@@ -144,12 +146,12 @@ in {
     "module/cpu" = {
       type = "internal/cpu";
       interval = 2;
-      format-prefix = " "
+      format-prefix = " ";
       format-prefix-foreground = cfg.foreground;
       format-underline = cfg.red;
       label = "%percentage%%";
     };
-    
+
     "module/lock" = {
       type = "custom/text";
       content = " ";
@@ -177,7 +179,7 @@ in {
       click-left = "sleep 0.1; ${pkgs.xdotool}/bin/xdotool key Super q m";
     };
   };
-  
+
   primary-user.home-manager.services.polybar.extraConfig = "";
   primary-user.home-manager.services.polybar.script = '' 
     pkill polybar

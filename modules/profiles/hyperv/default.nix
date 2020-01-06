@@ -40,10 +40,10 @@
     #../../programs/rofi-pass
     ../../programs/screen-locker
     ../../programs/urxvt
-    #../../programs/xmobar
+    ../../programs/xmobar
     ../../programs/tmux
     #../../programs/taffybar
-    ../../programs/polybar
+    #../../programs/polybar
     ../../programs/xmonad
     ../../programs/xorg
     ../../programs/fzf
