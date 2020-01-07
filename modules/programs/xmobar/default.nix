@@ -14,7 +14,7 @@ let
         , bgColor = "${cfg.background}"
         , fgColor = "${cfg.foreground}"
         , position = Top
-        , border = Top
+        , border = TopB
         , alpha = 210
         , commands =
             [ Run Cpu
@@ -24,7 +24,7 @@ let
               , "-l", "${cfg.green}"
               , "-h", "${cfg.red}" ] 10
             , Run Date "%a %d.%m %T" "date" 10
-            , Run XMonadLog
+            , Run UnsafeXMonadLog
             , Run Memory [] 10
             , Run DynNetwork 
                 [ "-t", "<tx>,<rx> KB/s | "
@@ -36,7 +36,7 @@ let
           ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%XMonadLog% } "}%memory% | %dynnetwork%%cpu% "}<fc=${cfg.red}>%date%</fc>"
+        , template = "%UnsafeXMonadLog% }{ %memory% | %dynnetwork%%cpu% <fc=${cfg.lightBlue}>%date%</fc> "
         }
     '';
 

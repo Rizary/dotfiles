@@ -68,7 +68,7 @@ layoutPlugins
 
 -- Available layouts
 availableLayouts =
-  bsp ||| tall ||| tcm ||| tabs
+  tabs ||| bsp ||| tcm ||| tall
 
 tabTheme = def
   { Tabbed.activeColor = base00

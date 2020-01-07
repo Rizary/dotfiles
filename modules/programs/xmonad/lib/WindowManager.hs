@@ -1,11 +1,10 @@
 module WindowManager where
 
-import qualified Styles as Styles
 import qualified Keybindings as Keybindings
 import qualified Layouts as Layouts
-import qualified Logging as Logging
 import qualified Mousebindings as Mousebindings
 import qualified Paths as Paths
+import qualified Statusbar as Statusbar
 import qualified WindowRules as WindowRules
 import qualified Workspaces as Workspaces
 import qualified XMonad as XMonad
@@ -16,24 +15,25 @@ import qualified XMonad.Hooks.DynamicLog as DynamicLog
 import qualified XMonad.Config.Desktop as ConfigDesktop
 import qualified XMonad.Util.Run as Run
 
+import Theme
+
 start myModMask = --startXmobar paths >>=
   startXmonad myModMask
 
 --startXmobar = Run.spawnPipe . Paths.xmobar
 
-startXmonad =
+startXmonad myModMask =
   XMonad.xmonad $ wmPlugins $ XMonad.def
   { XMonad.workspaces = Workspaces.workspaceNames
   , XMonad.terminal = "urxvt"
-  , XMonad.borderWidth = Styles.borderWidth
-  , XMonad.normalBorderColor = Styles.normalBorderColor
-  , XMonad.focusedBorderColor = Styles.focusedBorderColor
+  , XMonad.borderWidth = 3
+  , XMonad.normalBorderColor = Theme.base03
+  , XMonad.focusedBorderColor = Theme.base07 
   , XMonad.keys = Keybindings.keybindings myModMask
   , XMonad.mouseBindings = Mousebindings.mousebindings
   , XMonad.layoutHook = Layouts.layoutHook
   , XMonad.manageHook = WindowRules.windowRules
-  , XMonad.logHook = DynamicLog.dynamicLogString DynamicLog.xmobarPP
-    { DynamicLog.ppTitle = DynamicLog.xmobarColor "green" "" . DynamicLog.shorten 30 } >>= DynamicLog.xmonadPropLog
+  , XMonad.logHook = Statusbar.statusbar >>= DynamicLog.xmonadPropLog
   }
 
 -- WM-level plugins

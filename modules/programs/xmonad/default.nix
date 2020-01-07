@@ -32,7 +32,7 @@ in
           else "mod4Mask";
         in
           pkgs.writeText "xmonad.hs" ''
-            import qualified Paths as Paths
+            import qualified XMonad as XMonad
             import qualified WindowManager as WindowManager
       
             main :: IO ()

@@ -12,19 +12,19 @@ mousebindings ::
 mousebindings _ = Map.fromList $
 
     -- mod-button1, Set the window to floating mode and move by dragging
-    [ ((Keybindings.modMask, XMonad.button1), (\w ->
+    [ ((XMonad.mod4Mask, XMonad.button1), (\w ->
         XMonad.focus w >>
         XMonad.mouseMoveWindow w >>
         XMonad.windows StackSet.shiftMaster
       ))
 
     -- mod-button2, Raise the window to the top of the stack
-    , ((Keybindings.modMask, XMonad.button2), (\w ->
+    , ((XMonad.mod4Mask, XMonad.button2), (\w ->
         XMonad.focus w >> XMonad.windows StackSet.shiftMaster
       ))
 
     -- mod-button3, Set the window to floating mode and resize by dragging
-    , ((Keybindings.modMask, XMonad.button3), (\w ->
+    , ((XMonad.mod4Mask, XMonad.button3), (\w ->
         XMonad.focus w >>
         XMonad.mouseResizeWindow w >>
         XMonad.windows StackSet.shiftMaster

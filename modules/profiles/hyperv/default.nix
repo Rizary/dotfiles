@@ -52,7 +52,7 @@
     ../../programs/ranger
     ../../programs/flameshot
     #../../programs/xmonad-log
-    #../../programs/xdotool
+    ../../programs/xdotool
     #../../programs/playerctl
 
 
