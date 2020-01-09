@@ -42,8 +42,6 @@
     ../../programs/urxvt
     ../../programs/xmobar
     ../../programs/tmux
-    #../../programs/taffybar
-    #../../programs/polybar
     ../../programs/xmonad
     ../../programs/xorg
     ../../programs/fzf
@@ -51,9 +49,8 @@
     ../../programs/mpv
     ../../programs/ranger
     ../../programs/flameshot
-    #../../programs/xmonad-log
     ../../programs/xdotool
-    #../../programs/playerctl
+    ../../programs/playerctl
 
 
     # theming and fonts related program

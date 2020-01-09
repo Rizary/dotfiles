@@ -47,6 +47,18 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/96d73edaf33f4c9ee452f65504bfdfab9a653eaa.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "nixpkgs-mozilla": {
+        "branch": "master",
+        "description": "mozilla related nixpkgs (extends nixos/nixpkgs repo)",
+        "homepage": null,
+        "owner": "mozilla",
+        "repo": "nixpkgs-mozilla",
+        "rev": "9d08acc6e95a784cf7b9ba73ebcabe86dd24abc0",
+        "sha256": "1vr0crlfba2y2phar7rn4xyyh7m4v3i5lvvy9z1hgwdjx5ch2dfi",
+        "type": "tarball",
+        "url": "https://github.com/mozilla/nixpkgs-mozilla/archive/9d08acc6e95a784cf7b9ba73ebcabe86dd24abc0.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nord-dircolors": {
         "branch": "develop",
         "description": "An arctic, north-bluish clean and elegant dircolors theme.",

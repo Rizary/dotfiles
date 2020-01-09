@@ -10,6 +10,7 @@
     "https://jupyterwith.cachix.org"
     "https://miso-haskell.cachix.org"
     "https://taffybar.cachix.org"
+    "https://nix-tools.cachix.org"
   ];
   nix.trustedUsers = [ "root" "rizilab" ];
   nix.binaryCachePublicKeys = [
@@ -20,6 +21,7 @@
     "hercules-ci.cachix.org-1:ZZeDl9Va+xe9j+KqdzoBZMFJHVQ42Uu/c/1/KMC5Lw0="
     "jupyterwith.cachix.org-1:/kDy2B6YEhXGJuNguG1qyqIodMyO4w8KwWH4/vAc7CI="
     "taffybar.cachix.org-1:beZotJ1nVEsAnJxa3lWn0zwzZM7oeXmGh4ADRpHeelo="
+    "nix-tools.cachix.org-1:ebBEBZLogLxcCvipq2MTvuHIP7ZRdkazFSQsbs0Px1A="
   ];
 
   system.stateVersion = "19.09"; #Why you read the comment?
