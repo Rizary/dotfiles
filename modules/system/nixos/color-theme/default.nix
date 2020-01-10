@@ -11,7 +11,7 @@ in
   };
 
   config = lib.mkIf (cfg != null) {
-    i18n.consoleColors = map (builtins.replaceStrings [ "#" ] [ "" ]) [
+    console.colors = map (builtins.replaceStrings [ "#" ] [ "" ]) [
       cfg.black
       cfg.urgent
       cfg.green

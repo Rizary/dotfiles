@@ -20,12 +20,11 @@ with epkgs;
   edit-indirect
   editorconfig
   emojify
-  evil
-  evil-collection
-  evil-goggles
-  evil-org
-  evil-magit
-  evil-smartparens
+  #evil
+  #evil-collection
+  #evil-org
+  #evil-magit
+  #evil-smartparens
   fill-column-indicator
   flow-minor-mode
   flutter
@@ -58,7 +57,7 @@ with epkgs;
   pdf-tools
   pkgbuild-mode
   powerline
-  powerline-evil
+  #powerline-evil
   projectile
   psc-ide
   purescript-mode
