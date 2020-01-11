@@ -23,6 +23,18 @@
         "url": "https://github.com/rycee/home-manager/archive/1b7b1bc294e99ab1795fe7dad183c1d2ae58a099.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "naersk": {
+        "branch": "master",
+        "description": "Build rust crates in Nix. No configuration, no code generation. IFD and sandbox friendly.",
+        "homepage": "",
+        "owner": "nmattia",
+        "repo": "naersk",
+        "rev": "be6d7bfe6132d7b0bf93fa754f35fb6be516b25f",
+        "sha256": "05d0wkzaa3wp2jl4aqmrgwxq7r21vwc5s2q50ljbc42f3hl4jdmz",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/naersk/archive/be6d7bfe6132d7b0bf93fa754f35fb6be516b25f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nix-linter": {
         "branch": "master",
         "description": "Linter for the Nix expression language",
@@ -88,5 +100,17 @@
         "repo": "https://www.gitlab.com/Rizary/olai",
         "rev": "c86aef1de9247efc2a7cb6a7e7099073f6fb4b2b",
         "type": "git"
+    },
+    "rust-analyzer": {
+        "branch": "master",
+        "description": "An experimental Rust compiler front-end for IDEs",
+        "homepage": "",
+        "owner": "rust-analyzer",
+        "repo": "rust-analyzer",
+        "rev": "b77a7e29a5b345a5dcdf427a0b332630147bcd5b",
+        "sha256": "1jfpmcfnjsl8yd3bhsmavg5np67h6d6dh7kc4anyj69pv3fdzqyi",
+        "type": "tarball",
+        "url": "https://github.com/rust-analyzer/rust-analyzer/archive/b77a7e29a5b345a5dcdf427a0b332630147bcd5b.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

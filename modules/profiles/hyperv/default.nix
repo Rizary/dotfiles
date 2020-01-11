@@ -46,6 +46,7 @@
     ../../programs/xorg
     ../../programs/fzf
     ../../programs/firefox
+    ../../programs/chromium
     ../../programs/mpv
     ../../programs/ranger
     ../../programs/flameshot

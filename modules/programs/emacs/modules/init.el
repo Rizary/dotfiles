@@ -37,3 +37,6 @@
 ;; NOT READY: (load-module "modules/config/safe")
 (load-module "modules/config/startup")
 (load-module "modules/config/system")
+
+;; Tooling for emacs
+(load-module "modules/tools/direnv")

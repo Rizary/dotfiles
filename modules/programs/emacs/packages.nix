@@ -5,26 +5,30 @@ with epkgs;
 [
   mu
   aggressive-indent
+  cargo
   cask-mode
   company
   company-emoji
+  company-lsp
   company-quickhelp
   counsel
   counsel-projectile
   csv-mode
   delight
   dart-mode
+  dash
   direnv
   dhall-mode
   dockerfile-mode
   edit-indirect
   editorconfig
   emojify
-  #evil
+  evil
+  #evil-magit
   #evil-collection
   #evil-org
-  #evil-magit
   #evil-smartparens
+  #powerline-evil
   fill-column-indicator
   flow-minor-mode
   flutter
@@ -32,18 +36,23 @@ with epkgs;
   flycheck
   flycheck-haskell
   flycheck-pos-tip
+  flycheck-rust
   general
   git-gutter
   go-mode
   groovy-mode
   haskell-mode
   helpful
+  helm
   highlight-numbers
   hl-todo
+  ht
+  hydra
   imenu-list
   indent-guide
   ivy
   link-hint
+  lsp-mode
   magit
   markdown-mode
   mmm-mode
@@ -57,21 +66,21 @@ with epkgs;
   pdf-tools
   pkgbuild-mode
   powerline
-  #powerline-evil
   projectile
   psc-ide
   purescript-mode
   rainbow-delimiters
   rainbow-mode
+  racer
   ranger
   rust-mode
   smartparens
   solarized-theme
   swiper
+  toml-mode
   typescript-mode
   unicode-fonts
   use-package
-  #wat-mode
   web
   web-beautify
   web-mode
