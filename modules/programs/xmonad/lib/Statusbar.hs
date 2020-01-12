@@ -3,7 +3,6 @@ module Statusbar where
 import qualified Data.List as List
 import qualified Data.Maybe as Maybe
 import qualified GHC.IO.Handle.Types as HandleTypes
-import qualified Workspaces as Workspaces
 import qualified XMonad as XMonad
 import qualified XMonad.Actions.WorkspaceNames as WorkspaceNames
 import qualified XMonad.Hooks.DynamicLog as DynamicLog
@@ -15,13 +14,14 @@ statusbar :: XMonad.X String
 statusbar = statusbarPlugins options >>= DynamicLog.dynamicLogString
   where
     options = DynamicLog.xmobarPP
-      { DynamicLog.ppSep = "    "
+      { DynamicLog.ppSep = " \xf22d "
       , DynamicLog.ppLayout = showLayout
       , DynamicLog.ppCurrent = showCurrentWorkspace
-      , DynamicLog.ppHidden = showHiddenWorkspace
-      , DynamicLog.ppHiddenNoWindows = showHiddenNoWindows
+      , DynamicLog.ppHidden = showHiddenWorkspaceWithWindows
+      , DynamicLog.ppHiddenNoWindows = showHiddenWorkspaceWithNoWindows
       , DynamicLog.ppTitle = showTitle
       , DynamicLog.ppOrder = \(ws:l:t:_) -> [l, t, ws]
+      --, DynamicLog.ppOutput = \x -> DynamicLog.xmobarStrip x
       }
 
 -- Plugins that apply to status bar output
@@ -30,26 +30,33 @@ statusbarPlugins = WorkspaceNames.workspaceNamesPP
 
 -- Make layout indicator clickable
 showLayout :: String -> String
-showLayout = DynamicLog.wrap "<action=xdotool key 'super+Tab'>" "</action>"
+showLayout =
+  (\layout -> case layout of
+        "Fullscreen" -> "[^]"
+        "Tabbed" -> "[_]"
+        "Three Columns" -> "[| |]"
+        "Binary Partition" -> "[-]"
+        "Tall" -> "[|]"        
+  )
+  -- DynamicLog.xmobarAction "xdotool key super+tab" "1"
+  --DynamicLog.wrap "<action=xdotool key 'super+Tab'>" "</action>"
 
 -- Highlight visible workspace
 showCurrentWorkspace :: XMonad.WorkspaceId -> String
 showCurrentWorkspace = DynamicLog.wrap ("<fc=" ++ Theme.base08 ++ ">[") "]</fc>"
 
 -- Make workspace clickable
-showHiddenWorkspace :: XMonad.WorkspaceId -> String
-showHiddenWorkspace workspace =
-  DynamicLog.wrap ("<action=`xdotool key 'super+" ++ key ++ "'`> ") " </action>" workspace
-  where
-    key = Maybe.fromMaybe "" $
-      XMonad.keysymToString <$> snd <$> List.find ((== workspace) . fst) Workspaces.workspaces
+showHiddenWorkspaceWithWindows :: XMonad.WorkspaceId -> String
+showHiddenWorkspaceWithWindows =
+  DynamicLog.wrap ("<fc=" ++ Theme.base13 ++ ">") "</fc>"
 
-showHiddenNoWindows :: XMonad.WorkspaceId -> String
-showHiddenNoWindows =
+showHiddenWorkspaceWithNoWindows :: XMonad.WorkspaceId -> String
+showHiddenWorkspaceWithNoWindows =
   DynamicLog.wrap ("<fc=" ++ Theme.base03 ++ ">") "</fc>"
 
 -- Color and ellipsize the title
 showTitle :: String -> String
 showTitle
-  = DynamicLog.xmobarColor Theme.base10 ""
+  = DynamicLog.xmobarColor Theme.base07 ""
   . DynamicLog.shorten 100
+  . (\x -> if null x then "Rizary @ Rizilab" else x)

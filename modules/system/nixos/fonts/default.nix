@@ -7,6 +7,10 @@
     emacs-all-the-icons-fonts
     paper-icon-theme
     source-code-pro
+    font-awesome_4
+    font-awesome_5
+    noto-fonts
+    iosevka
   ];
   fonts.fontconfig.enable = true;
 }

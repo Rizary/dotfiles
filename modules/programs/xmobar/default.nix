@@ -5,7 +5,8 @@ let
   configFile = let
     fonts = lib.concatStringsSep "," [
       "Iosevka:size=12"
-      "Iosevka:style=bold:size=10"
+      "Iosevka:style=bold:size=12"
+      "FontAwesome:style=solid:size=14"
     ];
   in
     pkgs.writeText "xmobar-config" ''
@@ -17,14 +18,14 @@ let
         , border = TopB
         , alpha = 210
         , commands =
-            [ Run Cpu
+            [ Run UnsafeXMonadLog
+            , Run Cpu
               [ "-t", "<total>%"
               , "-L", "10"
               , "-H", "50"
               , "-l", "${cfg.green}"
               , "-h", "${cfg.red}" ] 10
             , Run Date "%a %d.%m %T" "date" 10
-            , Run UnsafeXMonadLog
             , Run Memory [] 10
             , Run DynNetwork 
                 [ "-t", "<tx>,<rx> KB/s | "

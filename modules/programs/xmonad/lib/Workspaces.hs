@@ -3,19 +3,25 @@ module Workspaces where
 import qualified XMonad as XMonad
 
 -- Map from the keybinding to the workspace name.
-workspaces :: [(String, XMonad.KeySym)]
+workspaces :: [String]
 workspaces =
-  [ ("1", XMonad.xK_parenleft)
-  , ("2", XMonad.xK_parenright)
-  , ("3", XMonad.xK_braceright)
-  , ("4", XMonad.xK_plus)
-  , ("5", XMonad.xK_braceleft)
-  , ("6", XMonad.xK_bracketright)
-  , ("7", XMonad.xK_bracketleft)
-  , ("8", XMonad.xK_exclam)
-  , ("9", XMonad.xK_equal)
-  , ("0", XMonad.xK_asterisk)
+  [ "\xf015" -- general
+  , "\xf121" -- development mainly for Haskell
+  , "\xf109" -- development mainly for Rust
+  , "\xf02d" -- reading book
+  , "\xf0ac" -- web browser
+  , "\xf233" -- SRE
+  , "\xf10a" -- mobile emulator
+  , "\xf032" -- blogging space
+  , "\xf074" -- random stuff
+  , "\xf01c" -- unread email/inbox
+  , "\xf03d" -- OBS
+  , "\xf144" -- Kids stuff
   ]
 
-workspaceNames :: [String]
-workspaceNames = map fst workspaces
+myWorkspaces :: [String]
+myWorkspaces = clickable workspaces
+  where
+      clickable l = [ "<action=xdotool key super+F" ++ show (n) ++ ">" ++ ws ++ "</action>"
+                    | (i,ws) <- zip [1..12] l, let n = i
+                    ]

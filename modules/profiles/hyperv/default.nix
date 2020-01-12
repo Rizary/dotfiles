@@ -55,7 +55,7 @@
 
 
     # theming and fonts related program
-    ../../programs/all-fonts
+    #../../programs/all-fonts
 
     ../../printers
     ../../virtualisation

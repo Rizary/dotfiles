@@ -2,6 +2,7 @@
 {
   primary-user.home-manager.home.packages = lib.mkForce [
     #pkgs.nerdfonts
+    pkgs.font-awesome_4
     pkgs.font-awesome_5
     pkgs.noto-fonts
     pkgs.iosevka

@@ -1,12 +1,12 @@
 module Keybindings where
 
 import XMonad ((.|.))
+import XMonad.Config (def)
 
 import qualified Data.List as List
 import qualified Data.Map as Map
 import qualified Data.Maybe as Maybe
 import qualified Graphics.X11.ExtraTypes.XF86 as XF86
-import qualified Paths as Paths
 import qualified Workspaces as Workspaces
 import qualified XMonad as XMonad
 import qualified XMonad.Actions.Navigation2D as Navigation2D
@@ -27,72 +27,46 @@ directions =
 
 -- List bound keys.
 keybindings ::
-  XMonad.KeyMask ->
+ -- XMonad.KeyMask ->
   XMonad.XConfig XMonad.Layout ->
   Map.Map (XMonad.ButtonMask, XMonad.KeySym) (XMonad.X ())
-keybindings modMask _ = Map.fromList $
+keybindings conf@(XMonad.XConfig {XMonad.modMask = modM}) = Map.fromList $
 
   -- Switch layouts
-  [ ((modMask, XMonad.xK_Tab), XMonad.sendMessage XMonad.NextLayout)
-  , ((modMask .|. XMonad.shiftMask, XMonad.xK_Tab), goPreviousLayout)
+  [ ((modM, XMonad.xK_Tab), XMonad.sendMessage XMonad.NextLayout)
+  , ((modM .|. XMonad.shiftMask, XMonad.xK_Tab), goPreviousLayout)
 
+  -- 
 
   -- Floating/fullscreen toggle
-  , ((modMask, XMonad.xK_space), Navigation2D.switchLayer)
-  , ((modMask .|. XMonad.shiftMask, XMonad.xK_space), XMonad.withFocused toggleFloating)
-  , ((modMask, XMonad.xK_f), XMonad.withFocused (XMonad.sendMessage . Maximize.maximizeRestore))
-  , ((modMask .|. XMonad.shiftMask, XMonad.xK_f), XMonad.sendMessage $ MultiToggle.Toggle MultiToggleInstances.FULL)
+  , ((modM, XMonad.xK_space), Navigation2D.switchLayer)
+  , ((modM .|. XMonad.shiftMask, XMonad.xK_space), XMonad.withFocused toggleFloating)
+  , ((modM, XMonad.xK_f), XMonad.withFocused (XMonad.sendMessage . Maximize.maximizeRestore))
+  , ((modM .|. XMonad.shiftMask, XMonad.xK_f), XMonad.sendMessage $ MultiToggle.Toggle MultiToggleInstances.FULL)
 
 
   -- Close window
-  , ((modMask .|. XMonad.shiftMask, XMonad.xK_q), XMonad.kill)
+  , ((modM .|. XMonad.shiftMask, XMonad.xK_q), XMonad.kill)
 
-  , ((modMask, XMonad.xK_Return), XMonad.spawn $ "urxvt")
+  , ((modM, XMonad.xK_Return), XMonad.spawn $ "urxvt")
 
   -- Screen Locker
-  , ((modMask .|. XMonad.shiftMask, XMonad.xK_Return), XMonad.spawn $ "i3lock-fancy -c 000000")
+  , ((modM .|. XMonad.shiftMask, XMonad.xK_Return), XMonad.spawn $ "i3lock-fancy")
+
+  -- Restart XMonad
+  , ((modM, XMonad.xK_r), XMonad.restart "xmonad" True)
 
   ] ++
 
-  -- Move screens with mod + ctrl + shift + direction
-  (directionalKeys (modMask .|. XMonad.shiftMask .|. XMonad.controlMask) Navigation2D.screenSwap []) ++
-
   -- Switch workspace with mod + workspace key
-  (workspaceKeys modMask StackSet.view) ++
-
   -- Move windows to other workspaces with mod + shift + workspace key
-  (workspaceKeys (modMask .|. XMonad.shiftMask) StackSet.shift)
+  [((m .|. modM, k), XMonad.windows $ f i)
+  | (i,k) <- zip (XMonad.workspaces conf) [XMonad.xK_F1..XMonad.xK_F12] -- ++ [XMonad.xK_F1, XMonad.xK_F2])
+  , (f,m) <- [(StackSet.greedyView, 0), (StackSet.shift, XMonad.shiftMask)]
+  ]
+  
+  
 
--- Map directional keys
-directionalKeys ::
-  XMonad.ButtonMask ->
-  (Navigation2D.Direction2D -> Bool -> XMonad.X ()) ->
-  [((String, XMonad.KeySym), XMonad.X ())] ->
-  [((XMonad.ButtonMask, XMonad.KeySym), (XMonad.X ()))]
-directionalKeys keymod action overrides = mappedKeys directions keymod overrides $ \arg ->
-  action arg True
-
--- Map workspace keys
-workspaceKeys ::
-  XMonad.ButtonMask ->
-  (String -> XMonad.WindowSet -> XMonad.WindowSet) ->
-  [((XMonad.ButtonMask, XMonad.KeySym), (XMonad.X ()))]
-workspaceKeys keymod action = mappedKeys Workspaces.workspaces keymod [] $ \arg ->
-  XMonad.windows $ action arg
-
--- Build keybindings out of a map of keybindings to arguments (for directional
--- keys or workspace keys)
-mappedKeys ::
-  [(b, XMonad.KeySym)] ->
-  XMonad.ButtonMask ->
-  [((String, XMonad.KeySym), XMonad.X ())] ->
-  (b -> (XMonad.X ())) ->
-  [((XMonad.ButtonMask, XMonad.KeySym), (XMonad.X ()))]
-mappedKeys keys keymod overrides makeAction = flip map keys $ \(arg, key) ->
-  ((keymod, key), withCurrentLayout $ \layout ->
-      Maybe.fromMaybe (makeAction arg) $
-        snd <$> List.find (\(condition, _) -> fst condition == layout && snd condition == key) overrides
-  )
 
 withCurrentLayout cb =
   XMonad.withWindowSet $ cb . XMonad.description . StackSet.layout . StackSet.workspace . StackSet.current

@@ -3,7 +3,6 @@ module WindowManager where
 import qualified Keybindings as Keybindings
 import qualified Layouts as Layouts
 import qualified Mousebindings as Mousebindings
-import qualified Paths as Paths
 import qualified Statusbar as Statusbar
 import qualified WindowRules as WindowRules
 import qualified Workspaces as Workspaces
@@ -24,12 +23,13 @@ start myModMask = --startXmobar paths >>=
 
 startXmonad myModMask =
   XMonad.xmonad $ wmPlugins $ XMonad.def
-  { XMonad.workspaces = Workspaces.workspaceNames
+  { XMonad.workspaces = Workspaces.workspaces
+  , XMonad.modMask = myModMask
   , XMonad.terminal = "urxvt"
   , XMonad.borderWidth = 3
   , XMonad.normalBorderColor = Theme.base03
   , XMonad.focusedBorderColor = Theme.base07 
-  , XMonad.keys = Keybindings.keybindings myModMask
+  , XMonad.keys = Keybindings.keybindings
   , XMonad.mouseBindings = Mousebindings.mousebindings
   , XMonad.layoutHook = Layouts.layoutHook
   , XMonad.manageHook = WindowRules.windowRules
