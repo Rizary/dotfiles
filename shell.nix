@@ -24,6 +24,7 @@ let
   files = "$(find . -name '*.nix' -not -wholename './niv/sources.nix')";
   lint = pkgs.writeShellScriptBin "lint" "nix-linter ${files}";
   format = pkgs.writeShellScriptBin "format" "nixpkgs-fmt ${files}";
+
   deploy-config-cmd = pkgs.writeShellScript "deploy-config-cmd" ''
     export dotfiles="$(nix-build --argstr host $1 --no-out-link)"
     export NIX_PATH="${nix-path}"

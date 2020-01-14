@@ -58,7 +58,7 @@ in
 
   config = lib.mkIf cfg.enable {
     boot.initrd = {
-      kernelModules = [ cfg.key.device.fsType ]; #"usb_storage" "loop" ];
+      kernelModules = [ cfg.key.device.fsType "loop" ];
 
       preLVMCommands = lib.mkMerge [
         (
@@ -87,7 +87,7 @@ in
         )
       ];
 
-      luks.devices.crypt = {
+      luks.devices."enc" = {
         device = cfg.device;
         keyFile = keyMountPoint + cfg.key.keyPath;
         header = keyMountPoint + cfg.key.headerPath;

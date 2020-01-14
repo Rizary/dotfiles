@@ -4,6 +4,8 @@
     # base is a common thing for all profiles
     ../base-desktop
 
+    ../../config/data/theme
+
     ../../config/boot/systemd-boot
     ../../config/boot/logind
 
@@ -11,6 +13,7 @@
 
     # networking
     ../../hardware/network/lan
+    ../../hardware/monitors
 
     # desktop security
     ../../security/gpg
@@ -36,11 +39,19 @@
     #../../programs/rofi-pass
     ../../programs/screen-locker
     ../../programs/urxvt
-    ../../programs/taffybar
     ../../programs/xmobar
+    ../../programs/tmux
     ../../programs/xmonad
     ../../programs/xorg
     ../../programs/fzf
+    ../../programs/firefox
+    ../../programs/chromium
+    ../../programs/mpv
+    ../../programs/ranger
+    ../../programs/flameshot
+    ../../programs/xdotool
+    ../../programs/playerctl
+    ../../programs/obs-studio
 
     ../../printers
     ../../virtualisation
@@ -48,4 +59,6 @@
     # timezone
     ../../config/locale
   ];
+
+  primary-user.secure.enableMount = true;
 }

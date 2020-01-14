@@ -1,12 +1,12 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 let
   boot = {
     device = "/dev/disk/by-uuid/787B-885A";
-    fsType = "fat32";
+    fsType = "vfat";
   };
-in
 
+in
 {
   imports = [
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
@@ -22,44 +22,49 @@ in
   ];
   boot.extraModulePackages = [];
 
-
   boot.crypt-initrd.enable = true;
-  boot.crypt-initrd.device = "/dev/sde1";
-  boot.crypt-initrd.key.device = boot;
-  boot.crypt-initrd.key.keyPath = "/spitfire";
+  boot.crypt-initrd.device = "/dev/sdb3";
+  boot.crypt-initrd.key.device = { inherit (config.primary-user.secure) device fsType; };
+  boot.crypt-initrd.key.keyPath = "/biohazard";
   boot.crypt-initrd.key.headerPath = "/header.img";
 
-  boot.initrd.availableKernelModules = [ "amdgpu" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ "dm-snapshot" "nls_cp437" "nls_iso8859_1" ];
 
   services.xserver.videoDrivers = [ "amdgpu" ];
   hardware.cpu.amd.updateMicrocode = true;
   hardware.enableRedistributableFirmware = true;
 
-  fileSystems = {
-    "/" = {
-      device = "/dev/disk/by-uuid/58f899b4-0e0b-4115-bb4c-a6ae494ce23a";
+  fileSystems."/" =
+    {
+      device = "/dev/disk/by-uuid/0f072f39-76e4-4446-b86c-8e4f615249a7";
       fsType = "ext4";
     };
-
-    "/boot" = boot // {
-      options = [ "noauto" ];
-    };
-
-    "/home" = {
-      device = "/dev/disk/by-uuid/414a85ff-69a3-4eb3-baec-83b8fadf0f72";
-      fsType = "ext4";
-    };
-
-    "/var" = {
-      device = "/dev/disk/by-uuid/96745560-5a4e-4413-ac71-7abecb53e611";
-      fsType = "ext4";
-    };
+  fileSystems."/boot" = boot // {
+    options = [ "noauto" ];
   };
+
+  fileSystems."/home" =
+    {
+      device = "/dev/disk/by-uuid/41ec78c0-6142-461b-be59-89e9f71f242d";
+      fsType = "ext4";
+    };
+
+  fileSystems."/var" =
+    {
+      device = "/dev/disk/by-uuid/e581a380-a61c-47e4-a198-04412ff40509";
+      fsType = "ext4";
+    };
+
+  fileSystems."/secure" =
+    {
+      device = "/dev/disk/by-uuid/3fc4b0f6-061b-4375-950b-84ab9826736b";
+      fsType = "ext4";
+    };
 
   swapDevices = [
     {
-      device = "/dev/disk/by-uuid/2386bc78-599c-4dd4-84d9-e453626c5651";
+      device = "/dev/disk/by-uuid/836f8914-43a1-45ee-85de-1a7e32494011";
     }
   ];
 

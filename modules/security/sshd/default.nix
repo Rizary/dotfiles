@@ -1,7 +1,29 @@
-{ ... }:
+{ pkgs, lib, config, ... }:
+
+let
+  ssh-path = lib.makeBinPath [
+    pkgs.coreutils
+    pkgs.gnused
+    pkgs.gnugrep
+    pkgs.git
+    pkgs.openssh
+  ];
+in
 
 {
-  services.openssh.enable = true;
-  services.openssh.permitRootLogin = "no";
-  services.openssh.passwordAuthentication = false;
+  options.enableSshdAtBoot = lib.mkEnableOption "SSH daemon auto-start at boot";
+
+  config.services.openssh.enable = true;
+  config.services.openssh.permitRootLogin = "no";
+  config.services.openssh.passwordAuthentication = false;
+  config.services.openssh.extraConfig = "PermitUserEnvironment yes";
+
+  config.systemd.services.sshd.wantedBy = lib.mkIf config.enableSshdAtBoot (lib.mkForce []);
+
+  config.primary-user.openssh.authorizedKeys.keys = [
+    #(builtins.extraBuiltins.publicSshKey pkgs config)
+  ];
+
+  config.primary-user.home-manager.home.file.".ssh/environment".text = "PATH=${ssh-path}";
+
 }
