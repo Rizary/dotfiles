@@ -52,6 +52,10 @@ keybindings conf@(XMonad.XConfig {XMonad.modMask = modM}) = Map.fromList $
 
   -- Screen Locker
   , ((modM .|. XMonad.shiftMask, XMonad.xK_Return), XMonad.spawn $ "i3lock-fancy")
+  
+  -- Browser
+  , ((modM .|. XMonad.shiftMask, XMonad.xK_F), XMonad.spawn $ "firefox")
+
 
   -- Restart XMonad
   , ((modM, XMonad.xK_r), XMonad.restart "xmonad" True)

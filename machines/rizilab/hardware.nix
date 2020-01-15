@@ -2,7 +2,7 @@
 
 let
   boot = {
-    device = "/dev/disk/by-uuid/787B-885A";
+    device = "/dev/disk/by-uuid/08A9-5923";
     fsType = "vfat";
   };
 

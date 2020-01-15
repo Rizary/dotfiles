@@ -61,7 +61,6 @@ in
   with pkgs;
   mkShell {
     nativeBuildInputs = [
-      git
       collect-garbage
       nix-prefetch-git
       cabal2nix
@@ -70,6 +69,7 @@ in
     ];
 
     buildInputs = [
+      git
       niv
       update-niv
       lint

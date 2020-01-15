@@ -32,7 +32,8 @@ startXmonad myModMask =
   , XMonad.keys = Keybindings.keybindings
   , XMonad.mouseBindings = Mousebindings.mousebindings
   , XMonad.layoutHook = Layouts.layoutHook
-  , XMonad.manageHook = WindowRules.windowRules
+  , XMonad.manageHook = WindowRules.myManageHook
+  , XMonad.startupHook = WindowRules.myStartupHook
   , XMonad.logHook = Statusbar.statusbar >>= DynamicLog.xmonadPropLog
   }
 

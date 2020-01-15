@@ -4,7 +4,7 @@ let
 in
 {
   primary-user.home-manager.default-terminal = "${urxvt}/bin/urxvtc";
-  primary-user.home-manager.home.packages = lib.mkForce [ pkgs.setterminfo ];
+  primary-user.home-manager.home.packages = lib.mkForce [ urxvt pkgs.setterminfo ];
   primary-user.home-manager.programs.urxvt.enable = true;
   primary-user.home-manager.programs.urxvt.package = urxvt;
   primary-user.home-manager.programs.urxvt.scroll.bar.enable = false;
@@ -27,6 +27,22 @@ in
 
 
 
+  };
+
+  primary-user.home-manager.systemd.user.services.urxvtd = {
+    Unit = {
+      Description = "urxvt daemon";
+      After = [ "graphical-session-pre.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStart = "${urxvt}/bin/urxvtd -q -o";
+      Restart = "on-failure";
+      RestartSec = 3;
+    };
   };
 
   primary-user.home-manager.programs.urxvt.extraConfig =
