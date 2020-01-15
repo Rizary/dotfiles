@@ -58,9 +58,9 @@ in
 
   config = lib.mkIf cfg.enable {
     boot.initrd = {
-      kernelModules = [ cfg.key.device.fsType "loop" ];
+      kernelModules = [ "loop" ];
 
-      preLVMCommands = lib.mkMerge [
+      postDeviceCommands = lib.mkMerge [
         (
           lib.mkBefore ''
             mkdir -m 0755 -p ${keyMountPoint}
@@ -91,7 +91,7 @@ in
         device = cfg.device;
         keyFile = keyMountPoint + cfg.key.keyPath;
         header = keyMountPoint + cfg.key.headerPath;
-        preLVM = true;
+        preLVM = false;
       };
     };
   };

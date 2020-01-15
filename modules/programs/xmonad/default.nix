@@ -18,13 +18,6 @@ in
     windowManager.xmonad = {
       enable = true;
       enableContribAndExtras = true;
-      extraPackages = hp: [
-        hp.xmonad
-        hp.xmonad-contrib
-        hp.xmonad-extras
-        hp.taffybar
-        hp.dbus
-      ];
       config =
         let
           profileMask = if profileName == "hyperv"
@@ -34,9 +27,9 @@ in
           pkgs.writeText "xmonad.hs" ''
             import qualified XMonad as XMonad
             import qualified WindowManager as WindowManager
-      
+        
             main :: IO ()
-            main = WindowManager.start myModMask
+            main = WindowManager.start myModMask 
 
             myModMask = XMonad.${profileMask}
           '';

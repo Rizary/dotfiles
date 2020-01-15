@@ -29,7 +29,7 @@ in
   boot.crypt-initrd.key.headerPath = "/header.img";
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" "nls_cp437" "nls_iso8859_1" ];
+  boot.initrd.kernelModules = [ "uas" "usbcore" "ext4" "nls_cp437" "nls_iso8859_1" ];
 
   services.xserver.videoDrivers = [ "amdgpu" ];
   hardware.cpu.amd.updateMicrocode = true;
