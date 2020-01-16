@@ -9,7 +9,9 @@
 ;; Turn off GUI
 (menu-bar-mode -1)
 (tool-bar-mode -1)
-(add-to-list 'default-flame-alist '(vertical-scroll-bars . nil))
+;; disable scrollbars
+(customize-set-variable 'scroll-bar-mode nil)
+(customize-set-variable 'horizontal-scroll-bar-mode nil)
 (setq x-gtk-use-system-tooltips nil)
 
 (provide 'gui) ;; to be available to another file

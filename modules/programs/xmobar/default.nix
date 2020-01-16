@@ -4,8 +4,8 @@ let
   cfg = config.colorTheme;
   configFile = let
     fonts = lib.concatStringsSep "," [
-      "Iosevka:size=12"
-      "Iosevka:style=bold:size=12"
+      "PragmataPro Mono:style=Regular:size=14"
+      "PragmataPro Mono:style=Bold:size=13"
       "FontAwesome:style=solid:size=14"
     ];
   in

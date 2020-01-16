@@ -47,6 +47,7 @@ in
 
   primary-user.home-manager.programs.urxvt.extraConfig =
     {
+      "clipboard.autocopy " = "true";
       "perl-ext-common" = "default,clipboard,url-select,keyboard-select,resize-font";
       "copyCommand" = "xclip -i -selection clipboard";
       "pasteCommand" = "xclip -o -selection clipboard";
@@ -58,10 +59,10 @@ in
 
       # Appearance
 
-      "font" = "xft:Iosevka:style=Bold:size=12";
-      "boldFont" = "xft:Iosevka:style=Extra Bold;size=12";
-      "italicFont" = "xft:Iosevka:style=Italic:size=12";
-      "boldItalicFont" = "xft:Iosevka:style=Bold Italic:size=14";
+      "font" = "xft:PragmataPro Mono Liga:style=Regular:size=14";
+      "boldFont" = "xft:PragmataPro Mono Liga:style=Bold;size=14";
+      "italicFont" = "xft:PragmataPro Mono Liga:style=Italic:size=14";
+      "boldItalicFont" = "xft:PragmataPro Mono Liga:style=Bold Italic:size=14";
       "letterSpace" = "0";
       "lineSpace" = "0";
       "geometry" = "92x24";

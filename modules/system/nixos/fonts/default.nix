@@ -1,4 +1,7 @@
 { pkgs, ... }:
+let
+  pragmatapro = pkgs.callPackage ./pragmatapro.nix {};
+in
 {
   # Font config
   fonts.enableFontDir = true;
@@ -11,6 +14,7 @@
     font-awesome_5
     noto-fonts
     iosevka
+    pragmatapro
   ];
   fonts.fontconfig.enable = true;
 }

@@ -22,7 +22,7 @@ in
         let
           profileMask = if profileName == "hyperv"
           then "mod1Mask"
-          else "mod4Mask";
+          else "mod1Mask";
         in
           pkgs.writeText "xmonad.hs" ''
             import qualified XMonad as XMonad

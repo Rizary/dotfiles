@@ -31,6 +31,7 @@
 ;; UI configuration
 (load-module "modules/ui/buffers")
 (load-module "modules/ui/gui")
+(load-module "modules/ui/pragmatapro")
 
 ;; General configuration
 (load-module "modules/config/files")

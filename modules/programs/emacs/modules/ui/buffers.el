@@ -40,11 +40,15 @@
   :config (global-git-gutter-mode))
 
 ;; Show emojis!
-(use-package emojify
-  :init (setq emojify-download-emojis-p t)
-  :config
-  (global-emojify-mode)
-  (global-emojify-mode-line-mode))
+;;(use-package emojify
+;;  :init (setq emojify-download-emojis-p t)
+;;  :config
+;;  (global-emojify-mode)
+;;  (global-emojify-mode-line-mode))
+
+;; warn when opening fies bigger than 100MB
+(setq large-file-warning-threshold 100000000)
+
 
 (provide 'buffers)
 ;;; buffers.el ends here

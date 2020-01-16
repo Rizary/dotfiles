@@ -10,5 +10,7 @@
 (setq inhibit-startup-screen t
       inhibit-startup-message t)
 
+
+
 (provide 'startup) ;; to be available to another file
 ;;; startup.el ends here

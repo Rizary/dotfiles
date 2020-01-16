@@ -30,6 +30,7 @@
     ../../config/nix/binary-cache
 
     # programs related to desktop configuration
+    #../../programs/all-fonts
     ../../programs/audio
     ../../programs/dunst
     ../../programs/gtk
@@ -41,6 +42,7 @@
     ../../programs/urxvt
     ../../programs/xmobar
     ../../programs/tmux
+    ../../programs/xclip
     ../../programs/xmonad
     ../../programs/xorg
     ../../programs/fzf
@@ -48,6 +50,7 @@
     ../../programs/chromium
     ../../programs/mpv
     ../../programs/ranger
+    ../../programs/redshift
     ../../programs/flameshot
     ../../programs/xdotool
     ../../programs/playerctl

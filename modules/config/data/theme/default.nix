@@ -14,7 +14,6 @@
   primary-user.home-manager.iconTheme.package = pkgs.paper-icon-theme;
   primary-user.home-manager.iconTheme.name = "Paper Icon";
 
-  primary-user.home-manager.font.package = pkgs.fira;
-  primary-user.home-manager.font.face = "Fira Sans";
-  primary-user.home-manager.font.size = 12;
+  primary-user.home-manager.font.face = "PragmataPro Mono Liga";
+  primary-user.home-manager.font.size = 14;
 }
