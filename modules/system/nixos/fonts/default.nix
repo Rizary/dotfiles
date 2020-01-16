@@ -1,7 +1,4 @@
 { pkgs, ... }:
-let
-  pragmatapro = pkgs.callPackage ./pragmatapro.nix {};
-in
 {
   # Font config
   fonts.enableFontDir = true;
