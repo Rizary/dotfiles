@@ -13,28 +13,29 @@ import qualified XMonad.Hooks.ManageDocks as ManageDocks
 import qualified XMonad.Hooks.DynamicLog as DynamicLog
 import qualified XMonad.Config.Desktop as ConfigDesktop
 import qualified XMonad.Util.Run as Run
+import qualified XMonad.Hooks.DynamicBars as Bars
 
 import Theme
 
-start myModMask = --startXmobar paths >>=
-  startXmonad myModMask
+start screenId myModMask = --startXmobar paths >>=
+  startXmonad screenId myModMask
 
 --startXmobar = Run.spawnPipe . Paths.xmobar
 
-startXmonad myModMask =
+startXmonad screenId myModMask =
   XMonad.xmonad $ wmPlugins $ XMonad.def
-  { XMonad.workspaces = Workspaces.workspaces
+  { XMonad.workspaces = (if screenId == 1 then id else withScreens n) Workspaces.workspaces
   , XMonad.modMask = myModMask
   , XMonad.terminal = "urxvt"
   , XMonad.borderWidth = 3
   , XMonad.normalBorderColor = Theme.base03
   , XMonad.focusedBorderColor = Theme.base07 
-  , XMonad.keys = Keybindings.keybindings
+  , XMonad.keys = Keybindings.keybindings screenId
   , XMonad.mouseBindings = Mousebindings.mousebindings
   , XMonad.layoutHook = Layouts.layoutHook
-  , XMonad.manageHook = WindowRules.myManageHook
+  , XMonad.manageHook = WindowRules.myManageHook 
   , XMonad.startupHook = WindowRules.myStartupHook
-  , XMonad.logHook = Statusbar.statusbar >>= DynamicLog.xmonadPropLog
+  , XMonad.logHook = Bars.multiPP Statusbar.optionsXMobarPP Statusbar.optionsXMobarPP--Statusbar.statusbar >>= DynamicLog.xmonadPropLog
   }
 
 -- WM-level plugins

@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ config, pkgs, lib, ... }:
 let
   hmCfg = config.primary-user.home-manager;
 

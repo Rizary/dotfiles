@@ -18,6 +18,7 @@
       ./home-manager/keymap
       ./home-manager/font
       ./home-manager/fzf
+      ./home-manager/scripts
       ./home-manager/xmobar
     ];
   };

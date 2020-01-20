@@ -57,7 +57,7 @@
     ../../programs/obs-studio
 
     ../../printers
-    #    ../../virtualisation
+    ../../virtualisation
 
     # timezone
     ../../config/locale

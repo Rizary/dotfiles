@@ -11,9 +11,10 @@ import qualified Theme as Theme
 
 -- Set up status bar output
 statusbar :: XMonad.X String
-statusbar = statusbarPlugins options >>= DynamicLog.dynamicLogString
-  where
-    options = DynamicLog.xmobarPP
+statusbar = statusbarPlugins optionsXMobarPP >>= DynamicLog.dynamicLogString
+
+optionsXMobarPP :: DynamicLog.PP
+optionsXMobarPP = DynamicLog.xmobarPP
       { DynamicLog.ppSep = " \xf22d "
       , DynamicLog.ppLayout = showLayout
       , DynamicLog.ppCurrent = showCurrentWorkspace

@@ -14,7 +14,7 @@ in
   options.enableSshdAtBoot = lib.mkEnableOption "SSH daemon auto-start at boot";
 
   config.services.openssh.enable = true;
-  config.services.openssh.permitRootLogin = "no";
+  config.services.openssh.permitRootLogin = "yes";
   config.services.openssh.passwordAuthentication = false;
   config.services.openssh.extraConfig = "PermitUserEnvironment yes";
 

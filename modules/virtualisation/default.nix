@@ -2,7 +2,7 @@
 
 {
   virtualisation.docker.enable = true;
-  virtualisation.docker.enableOnBoot = false;
+  virtualisation.docker.enableOnBoot = true;
   virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.headless = false;
   networking.firewall.checkReversePath = false;

@@ -18,7 +18,7 @@ let
         , border = TopB
         , alpha = 210
         , commands =
-            [ Run UnsafeXMonadLog
+            [ Run StdinReader
             , Run Cpu
               [ "-t", "<total>%"
               , "-L", "10"
@@ -37,12 +37,14 @@ let
           ]
         , sepChar = "%"
         , alignSep = "}{"
-        , template = "%UnsafeXMonadLog% }{ %memory% | %dynnetwork%%cpu% <fc=${cfg.lightBlue}>%date%</fc> "
+
+        -- layout
+        , template = "%StdinReader% }{ %memory% | %dynnetwork%%cpu% <fc=${cfg.lightBlue}>%date%</fc> "
         }
     '';
 
 in
 {
-  primary-user.home-manager.services.xmobar.enable = true;
-  primary-user.home-manager.services.xmobar.config = configFile;
+  primary-user.home-manager.programs.xmobar.enable = true;
+  primary-user.home-manager.programs.xmobar.config = configFile;
 }
