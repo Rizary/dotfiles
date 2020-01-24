@@ -4,12 +4,14 @@ import XMonad ((=?), (-->))
 
 import qualified XMonad as XMonad
 import qualified XMonad.Hooks.ManageDocks as ManageDocks
+import qualified XMonad.Config.Prime as Prime
 import qualified XMonad.Hooks.Place as Place
 import qualified XMonad.Actions.SpawnOn as SpawnOn
 import qualified XMonad.Util.SpawnOnce as SpawnOnce
 import qualified XMonad.Actions.WindowGo as WindowGo
 import qualified XMonad.Hooks.DynamicBars as Bars
 import qualified XMonad.Util.Run as Run
+import qualified Paths as Paths
 
 myManageHook :: XMonad.ManageHook
 myManageHook = XMonad.composeAll
@@ -25,8 +27,8 @@ floatsManageHook = XMonad.composeAll $ map (--> XMonad.doFloat)
 
 programManageHook :: XMonad.ManageHook
 programManageHook = XMonad.composeAll 
-  [ (XMonad.className =? "Firefox") --> XMonad.doShift "\xf0ac"
-  , (XMonad.className =? "Google-chrome-unstable") --> XMonad.doShift "\xf144"
+  [ --(XMonad.className =? "Firefox") --> XMonad.doShift "\xf0ac"
+    (XMonad.className =? "Google-chrome-unstable") --> XMonad.doShift "\xf144"
   ]
 
 -- Place new floating windows under the middle of the mouse
@@ -40,16 +42,16 @@ placeNewFloatsUnderMouse =
 -- Startup hook --
 ------------------
 
-myStartupHook :: X()
-myStartupHook = do
+myStartupHook :: Paths.Paths -> Prime.X ()
+myStartupHook paths = do
     (WindowGo.ifWindow (XMonad.className =? "Firefox") myManageHook (SpawnOn.spawnOn "\xf0ac" "firefox"))
     (WindowGo.ifWindow (XMonad.className =? "Google-chrome-unstable") myManageHook (SpawnOn.spawnOn "\xf144" "google-chrome-unstable"))
-    Bars.dynStatusBarStartup xmobarCreator xmobarDestroyer
+    Bars.dynStatusBarStartup (xmobarCreator paths) xmobarDestroyer
     SpawnOnce.spawnOnce "autorandr -c"
 
 
-xmobarCreator :: Bars.DynamicStatusBar
-xmobarCreator (S sid) = Run.spawnPipe $ "@xmobar@ -x " ++ show sid
+xmobarCreator :: Paths.Paths -> Bars.DynamicStatusBar
+xmobarCreator paths (Prime.S sid) = Run.spawnPipe $ (Paths.xmobar paths) ++ " -x " ++ show sid
 
 xmobarDestroyer :: Bars.DynamicStatusBarCleanup
 xmobarDestroyer = return ()

@@ -1,6 +1,6 @@
 module Keybindings where
 
-import XMonad ((.|.))
+import XMonad ((.|.), whenJust)
 import XMonad.Config (def)
 
 import qualified Data.List as List
@@ -9,12 +9,16 @@ import qualified Data.Maybe as Maybe
 import qualified Graphics.X11.ExtraTypes.XF86 as XF86
 import qualified Workspaces as Workspaces
 import qualified XMonad as XMonad
+import qualified XMonad.Operations as Operations
+import qualified XMonad.Config.Prime as Prime
 import qualified XMonad.Actions.Navigation2D as Navigation2D
 import qualified XMonad.Layout.Maximize as Maximize
+import qualified XMonad.Layout.IndependentScreens as IndependentScreens
 import qualified XMonad.Layout.MouseResizableTile as MouseResizableTile
 import qualified XMonad.Layout.MultiToggle as MultiToggle
 import qualified XMonad.Layout.MultiToggle.Instances as MultiToggleInstances
 import qualified XMonad.StackSet as StackSet
+import qualified XMonad.Actions.WindowBringer as WindowBringer
 
 -- Vim-style mapping from keybinding to direction.
 directions :: [(Navigation2D.Direction2D, XMonad.KeySym)]
@@ -27,7 +31,7 @@ directions =
 
 -- List bound keys.
 keybindings ::
- -- XMonad.KeyMask ->
+  Prime.ScreenId ->
   XMonad.XConfig XMonad.Layout ->
   Map.Map (XMonad.ButtonMask, XMonad.KeySym) (XMonad.X ())
 keybindings screenId conf@(XMonad.XConfig {XMonad.modMask = modM}) = Map.fromList $
@@ -38,38 +42,47 @@ keybindings screenId conf@(XMonad.XConfig {XMonad.modMask = modM}) = Map.fromLis
 
   -- 
   -- Launch emacs
-  , ((modM .|. controlMask, xK_e), spawn "@emacs@")
+  , ((modM .|. XMonad.controlMask, XMonad.xK_e), XMonad.spawn "emacs ~/Projects")
   -- Floating/fullscreen toggle
   , ((modM, XMonad.xK_space), Navigation2D.switchLayer)
   , ((modM .|. XMonad.shiftMask, XMonad.xK_space), XMonad.withFocused toggleFloating) -- make focused window float
   , ((modM, XMonad.xK_f), XMonad.withFocused (XMonad.sendMessage . Maximize.maximizeRestore))
-  , ((modM .|. XMonad.shiftMask, XMonad.xK_f), XMonad.sendMessage $ MultiToggle.Toggle MultiToggleInstances.FULL)
+  , ((modM .|. XMonad.shiftMask .|. XMonad.controlMask, XMonad.xK_f), XMonad.sendMessage $ MultiToggle.Toggle MultiToggleInstances.FULL)
 
 
   -- Close window
   , ((modM .|. XMonad.shiftMask, XMonad.xK_q), XMonad.kill)
 
-  , ((modM, XMonad.xK_Return), XMonad.spawn $ "urxvt")
-
+  , ((modM, XMonad.xK_Return), XMonad.spawn "urxvtc")
+  
   -- Screen Locker
   , ((modM .|. XMonad.shiftMask, XMonad.xK_Return), XMonad.spawn $ "i3lock-fancy")
   
   -- Browser
-  , ((modM .|. XMonad.shiftMask, XMonad.xK_F), XMonad.spawn $ "firefox")
-  , ((modM .|. XMonad.shiftMask, XMonad.xK_G), XMonad.spawn $ "google-chrome-unstable")
+  , ((modM .|. XMonad.shiftMask, XMonad.xK_f), XMonad.spawn $ "firefox")
+  , ((modM .|. XMonad.shiftMask, XMonad.xK_g), XMonad.spawn $ "google-chrome-unstable")
 
 
   -- Restart XMonad
   , ((modM, XMonad.xK_r), XMonad.restart "xmonad" True)
 
+  -- list existing window for switching
+  , ((modM .|. XMonad.shiftMask .|. XMonad.controlMask, XMonad.xK_g), WindowBringer.gotoMenu)
+
   ] ++
 
   -- Switch workspace with mod + workspace key
   -- Move windows to other workspaces with mod + shift + workspace key
-  [((m .|. modM, k), XMonad.windows $ (if screenId == 1 then id else onCurrentScreen) f i)
+  [((m .|. modM, k), XMonad.windows $ f i )--(if screenId == 1 then id else IndependentScreens.onCurrentScreen) f i)
   | (i,k) <- zip (XMonad.workspaces conf) [XMonad.xK_F1..XMonad.xK_F12] -- ++ [XMonad.xK_F1, XMonad.xK_F2])
   , (f,m) <- [(StackSet.greedyView, 0), (StackSet.shift, XMonad.shiftMask)]
-  ]
+  ] ++
+
+  -- mod-{w,e,r}, Switch to physical/Xinerama screens 1, 2, or 3
+  -- mod-shift-{w,e,r}, Move client to screen 1, 2, or 3
+  [((m .|. modM, key), Operations.screenWorkspace sc >>= flip whenJust (XMonad.windows . f))
+      | (key, sc) <- zip [XMonad.xK_w, XMonad.xK_e, XMonad.xK_r] [0..]
+      , (f, m) <- [(StackSet.view, 0), (StackSet.shift, XMonad.shiftMask)]]
   
   
 

@@ -55,7 +55,7 @@
     ../../programs/xdotool
     ../../programs/playerctl
     ../../programs/obs-studio
-
+    ../../programs/feh
     ../../printers
     ../../virtualisation
 

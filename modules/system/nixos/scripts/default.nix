@@ -2,17 +2,7 @@
 
 with lib;
 
-#let
-
-#scripts = builtins.attrValues (mapAttrs (name: path: {
-#  inherit name path;
-#}) config.primary-user.home-manager.scripts);
-
-#scriptDrv = pkgs.linkFarm "scripts" scripts;
-
-#in
 {
-
   options.scripts = mkOption {
     type = types.attrsOf types.str;
     default = {};
@@ -29,7 +19,8 @@ with lib;
       ''';
     '';
     description = ''
-      Scripts to be written to /run/current-system/<name>
+      Scripts to be written
     '';
   };
+
 }

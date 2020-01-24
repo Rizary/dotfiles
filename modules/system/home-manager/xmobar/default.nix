@@ -25,13 +25,7 @@ in
     };
     command = mkOption {
       description = "The command to execute for xmobar";
-      default = "${pkgs.haskellPackages.xmobar}/bin/xmobar ${cfg.config} $@";
-    };
-  };
-
-  config = mkIf cfg.enable {
-    scripts = {
-      xmobar = cfg.command;
+      default = "${pkgs.haskellPackages.xmobar}/bin/xmobar ${cfg.config}";
     };
   };
 }

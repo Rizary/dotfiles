@@ -8,6 +8,7 @@
     ./nixos/secure
     ./nixos/sudo-cmds
     ./nixos/fonts
+    ./nixos/scripts
   ];
 
   primary-user.home-manager = _: {
@@ -18,7 +19,6 @@
       ./home-manager/keymap
       ./home-manager/font
       ./home-manager/fzf
-      ./home-manager/scripts
       ./home-manager/xmobar
     ];
   };

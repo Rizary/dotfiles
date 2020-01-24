@@ -5,7 +5,7 @@ let
 
   nopasswd = command: {
     inherit command;
-    options = [ "NOPASSWD" ];
+    options = [ "SETENV" "NOPASSWD" ];
   };
 in
 

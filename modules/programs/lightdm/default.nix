@@ -9,6 +9,7 @@ let
       -layout 'us' \
       -variant 'dvorak' 
   '';
+  wallpaper = ../../../wallpaper/Rizilab/rizilab-nordic.png;
 
 in
 {
@@ -30,6 +31,16 @@ in
         waitPID=$! 
       '';
     }
+
+    {
+      manage = "window";
+      name = "setup-desktop";
+      start = ''
+        ${pkgs.runtimeShell} setxkbmap us -variant dvorak
+        ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
+      '';
+    }
+    # xloadimage -onroot -fullscreen -background black -center (for background)
   ];
 
   services.xserver.displayManager.sessionCommands = "${sessionScript}/bin/lll";
