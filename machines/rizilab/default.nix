@@ -6,7 +6,6 @@
     ./hardware.nix
     ../../modules/profiles/desktop
   ];
-
   primary-user.name = "rizary";
   networking.hostName = "rizilab";
 }

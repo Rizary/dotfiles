@@ -1,19 +1,12 @@
-_: _: {
-  # nightly.rust   # Aggregate all others. (recommended)
-  #rust = super.callPackage ./rust-overlays.nix {
-  #  terminfo = self.rxvt_unicode.terminfo;
-  #};
-
-  # nightly.cargo
-
-  # nightly.rustc
-
-  # nightly.rust-analysis
-
-  # nightly.rust-docs
-
-  # nightly.rust-src
-
-  # nightly.rust-std
-
+let
+  sources = import ../../niv/sources.nix;
+  pkgs = import sources.nixpkgs-mozilla;
+in
+self: super: rec {
+  nightly-rust =
+    (pkgs self super).rustChannelOf {
+      date = "2020-01-20";
+      channel = "nightly";
+      sha256 = "0dav93fxfhxgvmlp6kwh6dz5v3add4n5n7x0jcfy74rrlm76rs36";
+    };
 }

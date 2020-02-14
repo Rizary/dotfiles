@@ -26,7 +26,7 @@ with epkgs;
   evil
   #evil-magit
   #evil-collection
-  #evil-org
+  evil-org
   #evil-smartparens
   #powerline-evil
   fill-column-indicator

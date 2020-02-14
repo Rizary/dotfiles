@@ -76,6 +76,7 @@ in
               -t ${cfg.key.device.fsType} \
               -o ro \
               "${cfg.key.device.device}" ${keyMountPoint}
+            hwclock -s
           ''
         )
         (

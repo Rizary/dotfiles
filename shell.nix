@@ -19,7 +19,7 @@ let
     nixpkgs = sources.nixpkgs;
     nixpkgs-overlays = "$dotfiles/pkgs-overlays";
     nixos-config = "$dotfiles/current-config";
-    home-manager = sources.home-manager;
+    home-manager = ../Projects/github/home-manager; #sources.home-manager;
   };
   files = "$(find . -name '*.nix' -not -wholename './niv/sources.nix')";
   lint = pkgs.writeShellScriptBin "lint" "nix-linter ${files}";

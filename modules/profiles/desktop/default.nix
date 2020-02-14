@@ -4,6 +4,8 @@
     # base is a common thing for all profiles
     ../base-desktop
 
+    # android setup
+    ../../android
     ../../config/data/theme
 
     ../../config/boot/systemd-boot
@@ -32,6 +34,7 @@
     # programs related to desktop configuration
     #../../programs/all-fonts
     ../../programs/audio
+    ../../programs/evince
     ../../programs/dunst
     ../../programs/gtk
     ../../programs/lightdm
@@ -52,12 +55,16 @@
     ../../programs/ranger
     ../../programs/redshift
     ../../programs/flameshot
+    ../../programs/vscode
     ../../programs/xdotool
     ../../programs/playerctl
     ../../programs/obs-studio
     ../../programs/feh
     ../../printers
-    ../../virtualisation
+    #../../virtualisation
+
+    # devops tools
+    #../../devops
 
     # timezone
     ../../config/locale

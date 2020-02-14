@@ -27,6 +27,7 @@
 
 ;; Specific filetype or app configuration
 (load-module "modules/modes/text")
+(load-module "modules/modes/pdf")
 
 ;; UI configuration
 (load-module "modules/ui/buffers")

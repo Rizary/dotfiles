@@ -13,12 +13,16 @@ in
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [ "kvm-intel" "tun" "fuse" ];
   boot.kernelParams = [
     "amd_iommu=on"
     "ivrs_ioapic[32]=00:14.0"
     "pcie_aspm=off"
     "iommu=soft"
+    # KVM kernel
+    "kvm.allow_unsafe_assigned_interrupts=1"
+    "kvm.ignore_msrs=1"
+    "kvm-intel.nested=1"
   ];
   boot.extraModulePackages = [];
 
@@ -28,8 +32,33 @@ in
   boot.crypt-initrd.key.keyPath = "/biohazard";
   boot.crypt-initrd.key.headerPath = "/header.img";
 
-  boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ "uas" "usbcore" "ext4" "nls_cp437" "nls_iso8859_1" ];
+  boot.initrd.availableKernelModules = [
+    "xhci_pci"
+    "ahci"
+    "usb_storage"
+    "usbhid"
+    "sd_mod"
+
+    # QEMU kernel
+    "virtio_net"
+    "virtio_pci"
+    "virtio_blk"
+    "virtio_scsi"
+    "9p"
+    "9pnet_virtio"
+  ];
+  boot.initrd.kernelModules = [
+    "uas"
+    "usbcore"
+    "ext4"
+    "nls_cp437"
+    "nls_iso8859_1"
+
+    # QEMU kernel
+    "virtio_balloon"
+    "virtio_console"
+    "virtio_rng"
+  ];
 
   services.xserver.videoDrivers = [ "amdgpu" ];
   hardware.cpu.amd.updateMicrocode = true;

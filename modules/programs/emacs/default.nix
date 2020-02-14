@@ -13,7 +13,7 @@ in
 
 {
   primary-user.home-manager.programs.emacs.enable = true;
-  primary-user.home-manager.services.emacs.enable = true;
+  primary-user.home-manager.programs.emacs.package = myEmacs;
   primary-user.home-manager.home.packages = lib.mkForce [ myEmacs ];
 
   # put everything in modules folder into emacs.d's modules
@@ -45,6 +45,26 @@ in
 
   # Systemd configuration to run emacs within daemon. I use --fg-daemon to force the daemon to run in the foreground
 
-  #primary-user.home-manager.systemd.user.services.emacs-daemon.Service.Type = "forking";
-  primary-user.home-manager.systemd.user.services.emacs.Service.SyslogIdentifier = "emacs";
+  primary-user.home-manager.systemd.user.services.emacs = {
+    Unit = {
+      Description = "Emacs: the extensible, self-documenting text editor";
+      Documentation = "info:emacs man:emacs(1) https://gnu.org/software/emacs/";
+
+      # Avoid killing the Emacs session, which may be full of
+      # unsaved buffers.
+      X-RestartIfChanged = false;
+    };
+
+    Service = {
+      ExecStart = "${pkgs.runtimeShell} -l -c 'exec ${myEmacs}/bin/emacs --fg-daemon'";
+      ExecStop = "${myEmacs}/bin/emacsclient --eval '(kill-emacs)'";
+      Type = "forking";
+      SyslogIdentifier = "emacs";
+      Restart = "on-failure";
+    };
+
+    Install = {
+      WantedBy = [ "default.target" ];
+    };
+  };
 }

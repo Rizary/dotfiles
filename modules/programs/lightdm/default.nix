@@ -3,11 +3,12 @@ let
   sessionScript = pkgs.writeScriptBin "lll" ''
     #!${pkgs.stdenv.shell}
     sudo -u ${config.primary-user.name} \
-      mount ${config.primary-user.secure.device} ${config.primary-user.secure.mountPoint}
+      mount ${config.primary-user.secure.mountPoint}
 
-    '${pkgs.xorg.xkbcomp}/bin/xkbcomp' \ 
+    ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
+    ${pkgs.xorg.setxkbmap}/bin/setxkbmap \ 
       -layout 'us' \
-      -variant 'dvorak' 
+      -variant 'dvorak'
   '';
   wallpaper = ../../../wallpaper/Rizilab/rizilab-nordic.png;
 
@@ -27,8 +28,8 @@ in
       manage = "window";
       name = "home-manager";
       start = ''
-        ${pkgs.runtimeShell} $HOME/.hm-xsession &
-        waitPID=$! 
+         ${pkgs.runtimeShell} $HOME/.hm-xsession &
+         waitPID=$! 
       '';
     }
 
@@ -36,7 +37,7 @@ in
       manage = "window";
       name = "setup-desktop";
       start = ''
-        ${pkgs.runtimeShell} setxkbmap us -variant dvorak
+        ${pkgs.runtimeShell} setxkbmap -layout us -variant dvorak
         ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
       '';
     }
