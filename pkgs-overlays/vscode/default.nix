@@ -8,7 +8,7 @@ _: super: rec {
       src = super.fetchurl {
         name = "VSCode_latest_linux-x64.tar.gz";
         url = "https://vscode-update.azurewebsites.net/latest/linux-x64/insider";
-        sha256 = "010b3c7p4lxk3cbbvxb9q4dqxna8gwmqy5jv8c3w62k4g7x60y3l";
+        sha256 = "0jfhlcaaqh37w0q2y1i93zlcgw31qr7ipwhak9n388s5lkfqkvkw";
       };
     }
   );

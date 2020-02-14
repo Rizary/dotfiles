@@ -28,8 +28,8 @@ in
       manage = "window";
       name = "home-manager";
       start = ''
-         ${pkgs.runtimeShell} $HOME/.hm-xsession &
-         waitPID=$! 
+        ${pkgs.runtimeShell} $HOME/.hm-xsession &
+        waitPID=$! 
       '';
     }
 
