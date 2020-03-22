@@ -7,11 +7,11 @@ let
 
     ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
     ${pkgs.xorg.setxkbmap}/bin/setxkbmap \ 
-      -layout 'us' \
-      -variant 'dvorak'
+      -layout dvorak,ara \
+      -variant dvorak \
+      -option grp:alt_space_toggle,grp_led:scroll
   '';
   wallpaper = ../../../wallpaper/Rizilab/rizilab-nordic.png;
-
 in
 {
   services.xserver.displayManager.lightdm.enable = true;

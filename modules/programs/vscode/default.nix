@@ -5,14 +5,24 @@ let
     inherit (pkgs) vscode-utils;
     inherit lib;
   };
+  vscodeInsiders = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (
+    oldAttrs: rec {
+      name = "vscode-insiders";
+      src = pkgs.fetchurl {
+        name = "VSCode_latest_linux-x64.tar.gz";
+        url = "https://vscode-update.azurewebsites.net/latest/linux-x64/insider";
+        sha256 = "1v9l3wsx3mib3b25jxfn7rax058dvyx0f1hrbxzyh830bixr78lh";
+      };
+    }
+  );
 in
 {
   primary-user.home-manager.home.packages = lib.mkForce [ pkgs.vscode ];
   primary-user.home-manager.programs.vscode.enable = true;
-  primary-user.home-manager.programs.vscode.package = pkgs.vscode;
+  primary-user.home-manager.programs.vscode.package = vscodeInsiders;
   primary-user.home-manager.programs.vscode.userSettings = userSettings;
   primary-user.home-manager.programs.vscode.extensions = with pkgs.vscode-extensions; [
-    bbenoist.Nix
+    #bbenoist.Nix
     ms-azuretools.vscode-docker
     ms-kubernetes-tools.vscode-kubernetes-tools
     ms-vscode.cpptools

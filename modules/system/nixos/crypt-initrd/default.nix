@@ -1,10 +1,8 @@
 { config, lib, ... }:
-
 let
   cfg = config.boot.crypt-initrd;
   keyMountPoint = "/key";
 in
-
 {
   options.boot.crypt-initrd = {
     enable = lib.mkEnableOption "initrd to boot encrypted root";

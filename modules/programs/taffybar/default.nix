@@ -1,5 +1,4 @@
 { pkgs, lib, ... }:
-
 let
   restart-taffybar = ''
     echo "Restarting taffybar..."
@@ -7,7 +6,6 @@ let
     $DRY_RUN_CMD systemctl --user restart taffybar.service && true
     echo "Taffybar restart done"
   '';
-
 in
 {
   primary-user.home-manager.services.taffybar.enable = true;

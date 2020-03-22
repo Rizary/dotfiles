@@ -1,10 +1,8 @@
 { runCommand, requireFile, unzip }:
-
 let
   name = "pragmatapro-${version}";
   version = "0.828";
 in
-
 runCommand name
   rec {
     outputHashMode = "recursive";

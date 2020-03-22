@@ -1,5 +1,4 @@
 { config, lib, ... }:
-
 let
   cfg = config.sudo-cmds;
 
@@ -8,7 +7,6 @@ let
     options = [ "SETENV" "NOPASSWD" ];
   };
 in
-
 {
   options.sudo-cmds = lib.mkOption {
     type = lib.types.attrsOf (lib.types.listOf lib.types.str);

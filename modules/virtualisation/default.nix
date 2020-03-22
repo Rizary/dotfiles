@@ -4,8 +4,8 @@
   primary-user.extraGroups = [ "libvirtd" "docker" "vboxusers" "kvm" "networkmanager" ];
   services.xserver.displayManager.sessionCommands = ''
     ${pkgs.virtmanager}/bin/virt-manager &
-    ${pkgs.spice-vdagent}/bin/spice-vdagent
-  '';
+    
+  ''; # ${pkgs.spice-vdagent}/bin/spice-vdagent
 
   # Docker related config
   virtualisation.docker.enable = true;
@@ -16,20 +16,21 @@
 
   # Virtual Box related config
 
-  virtualisation.virtualbox.host.enable = true;
-  virtualisation.virtualbox.host.headless = false;
+  #virtualisation.virtualbox.host.enable = true;
+  #virtualisation.virtualbox.host.headless = false;
   networking.firewall.checkReversePath = false;
 
   # Libvirtd related config
   virtualisation.libvirtd.enable = true;
-  virtualisation.libvirtd.qemuPackage = pkgs.qemu_kvm.overrideDerivation (
-    p: {
-      patches = p.patches ++ [
-        ./nested_svm_disable_blockers.patch
-        ./nested_svm_disable_blockers2.patch
-      ];
-    }
-  );
+  virtualisation.libvirtd.qemuPackage = pkgs.qemu_kvm;
+  # .overrideDerivation (
+  # p: {
+  #   patches = p.patches ++ [
+  #     ./nested_svm_disable_blockers.patch
+  #     ./nested_svm_disable_blockers2.patch
+  #   ];
+  # }
+  #);
   virtualisation.libvirtd.qemuVerbatimConfig = ''
     namespaces = [];
     # if having virgl gpu issues uncomment
@@ -48,14 +49,14 @@
 
   # QEMU related config
   security.rngd.enable = false;
-  services.spice-vdagentd.enable = true;
-  services.xserver.videoDrivers = lib.mkOverride 50 [ "qxl" "modesetting" ];
+  #services.spice-vdagentd.enable = true;
+  #services.xserver.videoDrivers = lib.mkOverride 50 [ "qxl" "modesetting" ];
 
   # Kubernetes related config
   # export KUBECONFIG=/etc/kubernetes/cluster-admin.kubeconfig will make kubectl use this kubeconfig to access and authenticate the cluster
   #
   #
-  services.kubernetes.roles = [ "master" "node" ];
-  services.kubernetes.package = pkgs.kubernetes;
-  services.kubernetes.masterAddress = "localhost";
+  #services.kubernetes.roles = [ "master" "node" ];
+  #services.kubernetes.package = pkgs.kubernetes;
+  #services.kubernetes.masterAddress = "127.0.0.1";
 }

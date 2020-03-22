@@ -1,12 +1,10 @@
 { pkgs, lib, ... }:
-
 let
   boot = {
     device = "/dev/disk/by-uuid/2994-5D76";
     fsType = "vfat";
   };
 in
-
 {
   imports = [
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>

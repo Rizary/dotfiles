@@ -22,7 +22,7 @@ let
     home-manager = ../Projects/github/home-manager; #sources.home-manager;
   };
   files = "$(find . -name '*.nix' -not -wholename './niv/sources.nix')";
-  lint = pkgs.writeShellScriptBin "lint" "nix-linter ${files}";
+  #lint = pkgs.writeShellScriptBin "lint" "nix-linter ${files}";
   format = pkgs.writeShellScriptBin "format" "nixpkgs-fmt ${files}";
 
   deploy-config-cmd = pkgs.writeShellScript "deploy-config-cmd" ''
@@ -32,7 +32,7 @@ let
   '';
   deploy-config = pkgs.writeShellScriptBin "deploy-config" ''
     set -e
-    lint
+    # lint
     format
 
     if ! $(mount | grep /boot >/dev/null)
@@ -56,23 +56,22 @@ let
       nix-prefetch-git https://github.com/nmattia/niv /ref/heads/master \
         --fetch-submodules --deepClone > niv/github.json
     '';
-
 in
   with pkgs;
   mkShell {
     nativeBuildInputs = [
       collect-garbage
       nix-prefetch-git
-      cabal2nix
+      #cabal2nix
       nixpkgs-fmt
-      nix-linter.nix-linter
+      #nix-linter.nix-linter
     ];
 
     buildInputs = [
       git
       niv
       update-niv
-      lint
+      #lint
       format
       deploy-config
     ];

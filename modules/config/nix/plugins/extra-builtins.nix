@@ -1,5 +1,4 @@
 { exec, ... }:
-
 let
   stringify = pkgs: "${pkgs.gnused}/bin/sed '1s/^/\"/;$s/$/\"/'";
 
@@ -20,7 +19,6 @@ let
 
   passFileName = name: "pass-${builtins.replaceStrings [ "/" ] [ "-" ] name}";
 in
-
 {
   password = pkgs: config: name:
     builtins.elemAt (passSplit pkgs config name) 0;

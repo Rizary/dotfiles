@@ -1,5 +1,4 @@
 { pkgs, lib, config, ... }:
-
 let
   ssh-path = lib.makeBinPath [
     pkgs.coreutils
@@ -9,7 +8,6 @@ let
     pkgs.openssh
   ];
 in
-
 {
   options.enableSshdAtBoot = lib.mkEnableOption "SSH daemon auto-start at boot";
 

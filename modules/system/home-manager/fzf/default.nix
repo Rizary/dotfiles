@@ -1,5 +1,4 @@
 { lib, config, ... }:
-
 let
   cfg = config.programs.fzf;
 
@@ -26,7 +25,6 @@ let
     }
   );
 in
-
 {
   options.programs.fzf = {
     inline-info = lib.mkOption {

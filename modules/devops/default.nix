@@ -17,6 +17,7 @@
     # virt
     libvirt
     virtmanager
+    virtviewer
     vagrant
     packer
     libguestfs
@@ -51,6 +52,9 @@
     #docker
     docker
     docker-compose
+    docker-machine
+    docker-machine-kvm
+    docker-machine-kvm2
 
     # storage
     s3fs

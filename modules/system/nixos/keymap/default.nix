@@ -13,7 +13,8 @@ in
     console.keyMap = pkgs.runCommand "console-keymap" {} ''
       '${pkgs.ckbcomp}/bin/ckbcomp' \
         -layout '${cfg.layout}' \
-        -variant '${cfg.variant}' > "$out"
+        -variant '${cfg.variant}' \
+        -option '${cfg.options}' > "$out"
     '';
   };
 }

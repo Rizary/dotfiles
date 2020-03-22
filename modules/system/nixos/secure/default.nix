@@ -1,11 +1,9 @@
 { pkgs, config, lib, ... }:
-
 let
   cfg = config.secure;
 
   mountEnabledCfg = lib.filterAttrs (_: secure: secure.enableMount) cfg;
 in
-
 {
   options.secure = lib.mkOption {
     description = ''

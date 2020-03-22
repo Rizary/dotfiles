@@ -1,5 +1,4 @@
 { config, lib, ... }:
-
 let
   cfg = config.primary-user;
 in

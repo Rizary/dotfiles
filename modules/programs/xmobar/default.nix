@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }:
-
 let
   cfg = config.colorTheme;
   configFile = let
@@ -42,7 +41,6 @@ let
         , template = "%StdinReader% }{ %memory% | %dynnetwork%%cpu% <fc=${cfg.lightBlue}>%date%</fc> "
         }
     '';
-
 in
 {
   primary-user.home-manager.programs.xmobar.enable = true;

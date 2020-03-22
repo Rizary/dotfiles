@@ -1,9 +1,7 @@
 { lib, config, ... }:
-
 let
   cfg = config.font;
 in
-
 {
   options.font = {
     package = lib.mkOption {

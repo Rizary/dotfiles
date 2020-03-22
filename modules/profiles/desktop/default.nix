@@ -55,16 +55,16 @@
     ../../programs/ranger
     ../../programs/redshift
     ../../programs/flameshot
-    ../../programs/vscode
+    #../../programs/vscode
     ../../programs/xdotool
     ../../programs/playerctl
     ../../programs/obs-studio
     ../../programs/feh
     ../../printers
-    #../../virtualisation
+    ../../virtualisation
 
     # devops tools
-    #../../devops
+    ../../devops
 
     # timezone
     ../../config/locale

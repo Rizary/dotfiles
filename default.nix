@@ -1,5 +1,4 @@
 { host }:
-
 let
   dirPath = ./.;
   sources = import ./niv/sources.nix;
@@ -8,7 +7,6 @@ let
     path: type:
       type != "directory" || baseNameOf path != ".git"
   );
-
 in
 pkgs.stdenv.mkDerivation {
   name = "dotfiles";

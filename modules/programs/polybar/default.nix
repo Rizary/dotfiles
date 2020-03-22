@@ -4,7 +4,6 @@ let
   cfg = config.colorTheme;
   caffein = pkgs.callPackage ./caffein.nix {};
   switch = pkgs.callPackage ./switch.nix {};
-
 in
 {
   primary-user.home-manager.services.polybar.enable = true;

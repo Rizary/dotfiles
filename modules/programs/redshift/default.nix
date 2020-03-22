@@ -1,5 +1,7 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
+  primary-user.home-manager.home.packages = lib.mkForce [ pkgs.redshift ];
+
   primary-user.home-manager.services.redshift.enable = true;
 
   primary-user.home-manager.services.redshift.latitude = "-6.371971";
@@ -12,7 +14,7 @@
   primary-user.home-manager.services.redshift.temperature.night = 3500;
 
   primary-user.home-manager.services.redshift.brightness.day = "0.7";
-  primary-user.home-manager.services.redshift.brightness.night = "0.7";
+  primary-user.home-manager.services.redshift.brightness.night = "0.5";
 
   primary-user.home-manager.services.redshift.package = pkgs.redshift;
 

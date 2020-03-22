@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }:
-
 let
   cfg = config.colorTheme;
   colorThemeType = pkgs.callPackage ../../../../lib/type/color-theme {};

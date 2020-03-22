@@ -1,12 +1,10 @@
 { lib, pkgs }:
-
 let
   mkColorOption = color: lib.mkOption {
     description = "The color code for ${color}";
     type = lib.types.str;
   };
 in
-
 lib.types.submodule (
   { config, ... }: {
     options = {

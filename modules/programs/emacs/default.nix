@@ -1,5 +1,4 @@
 { config, lib, pkgs, ... }:
-
 let
   font = config.primary-user.home-manager.font;
   myEmacs = (
@@ -10,7 +9,6 @@ let
     }
   );
 in
-
 {
   primary-user.home-manager.programs.emacs.enable = true;
   primary-user.home-manager.programs.emacs.package = myEmacs;
