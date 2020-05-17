@@ -5,7 +5,7 @@ let
   taffybar-src = builtins.fetchGit { inherit (taffybar-json) url rev; };
   haskellPackages = super.haskell.packages.${ghcVer}.override (
     old: {
-      overrides = super.lib.composeExtensions (old.overrides or (_:_: {})) (
+      overrides = super.lib.composeExtensions (old.overrides or (_:_: { })) (
         newHaskell: _: {
           taffybar = newHaskell.callCabal2nix "taffybar" taffybar-src { inherit (super) gtk3; };
         }

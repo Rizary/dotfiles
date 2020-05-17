@@ -5,6 +5,6 @@
   primary-user.home-manager.programs.ssh.enable = true;
   primary-user.home-manager.programs.ssh.hashKnownHosts = true;
   primary-user.home-manager.programs.ssh.matchBlocks = {
-    inherit (import ../../../../../../secure/ssh/matchblocks.nix {}) "github.com" "gitlab.com" "gitlab.haskell.com";
+    inherit (import ../../../../../../secure/ssh/matchblocks.nix { }) "github.com" "gitlab.com" "gitlab.haskell.com";
   };
 }

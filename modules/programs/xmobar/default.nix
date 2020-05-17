@@ -1,13 +1,14 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.colorTheme;
-  configFile = let
-    fonts = lib.concatStringsSep "," [
-      "PragmataPro Mono:style=Regular:size=14"
-      "PragmataPro Mono:style=Bold:size=13"
-      "FontAwesome:style=solid:size=14"
-    ];
-  in
+  configFile =
+    let
+      fonts = lib.concatStringsSep "," [
+        "PragmataPro Mono:style=Regular:size=14"
+        "PragmataPro Mono:style=Bold:size=13"
+        "FontAwesome:style=solid:size=14"
+      ];
+    in
     pkgs.writeText "xmobar-config" ''
       Config
         { font = "xft:${fonts}"

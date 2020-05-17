@@ -17,7 +17,7 @@ in
   # put everything in modules folder into emacs.d's modules
   primary-user.home-manager.home.file.".emacs.d/modules".source = ./modules;
   primary-user.home-manager.home.file.".emacs.d/modules".recursive = true;
-  primary-user.home-manager.home.file.".emacs.d/modules/modes/ra-emacs-lsp.el".source = pkgs.raEmacsLsp;
+  #primary-user.home-manager.home.file.".emacs.d/modules/modes/ra-emacs-lsp.el".source = pkgs.raEmacsLsp;
 
   primary-user.home-manager.home.file.".emacs.d/init.el".text = ''
     (setq nix-config #s(hash-table

@@ -1,3 +1,3 @@
 self: _: {
-  nord-dircolors = self.callPackage ./nord-dircolors.nix {};
+  nord-dircolors = self.callPackage ./nord-dircolors.nix { };
 }

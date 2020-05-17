@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 let
-  keymapType = pkgs.callPackage ../../../../lib/type/keymap {};
+  keymapType = pkgs.callPackage ../../../../lib/type/keymap { };
 in
 {
   options.keymap = lib.mkOption {

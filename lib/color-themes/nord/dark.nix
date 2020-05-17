@@ -1,7 +1,7 @@
 { callPackage, nord-dircolors }:
 let
-  colors = callPackage ./colors.nix {};
-  common = callPackage ./common.nix {};
+  colors = callPackage ./colors.nix { };
+  common = callPackage ./common.nix { };
 in
 common // {
   background = colors.darkbg;

@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.colorTheme;
-  colorThemeType = pkgs.callPackage ../../../../lib/type/color-theme {};
+  colorThemeType = pkgs.callPackage ../../../../lib/type/color-theme { };
 
   removeOctothorpe = builtins.replaceStrings [ "#" ] [ "" ];
 in

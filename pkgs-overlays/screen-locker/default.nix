@@ -1,3 +1,3 @@
 _: super: {
-  lock-screen = super.callPackage ./lock-screen.nix {};
+  lock-screen = super.callPackage ./lock-screen.nix { };
 }

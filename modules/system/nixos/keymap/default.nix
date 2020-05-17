@@ -1,7 +1,7 @@
 { pkgs, config, lib, ... }:
 let
   cfg = config.keymap;
-  keymapType = pkgs.callPackage ../../../../lib/type/keymap {};
+  keymapType = pkgs.callPackage ../../../../lib/type/keymap { };
 in
 {
   options.keymap = lib.mkOption {
@@ -10,7 +10,8 @@ in
   };
 
   config = lib.mkIf (cfg != null) {
-    console.keyMap = pkgs.runCommand "console-keymap" {} ''
+    console.keyMap = pkgs.runCommand "console-keymap"
+      { } ''
       '${pkgs.ckbcomp}/bin/ckbcomp' \
         -layout '${cfg.layout}' \
         -variant '${cfg.variant}' \

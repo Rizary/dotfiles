@@ -16,7 +16,7 @@ in
   config.services.openssh.passwordAuthentication = false;
   config.services.openssh.extraConfig = "PermitUserEnvironment yes";
 
-  config.systemd.services.sshd.wantedBy = lib.mkIf config.enableSshdAtBoot (lib.mkForce []);
+  config.systemd.services.sshd.wantedBy = lib.mkIf config.enableSshdAtBoot (lib.mkForce [ ]);
 
   config.primary-user.openssh.authorizedKeys.keys = [
     #(builtins.extraBuiltins.publicSshKey pkgs config)

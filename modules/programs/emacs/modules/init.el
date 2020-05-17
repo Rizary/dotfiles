@@ -24,6 +24,8 @@
 (load-theme 'nord t)
 
 ;; Keybinding should be loaded first here
+(load-module "modules/keybindings/evil")
+(load-module "modules/keybindings/evilcollection")
 
 ;; Specific filetype or app configuration
 (load-module "modules/modes/text")
@@ -42,3 +44,8 @@
 
 ;; Tooling for emacs
 (load-module "modules/tools/direnv")
+;;; Org related module
+(load-module "modules/tools/evilmagit")
+(load-module "modules/tools/orgroam")
+(load-module "modules/tools/orgjournal")
+;;(load-module "modules/tools/companyorgroam")

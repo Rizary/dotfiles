@@ -24,9 +24,8 @@ with epkgs;
   editorconfig
   emojify
   evil
-  #evil-magit
-  #evil-collection
-  evil-org
+  evil-magit
+  evil-collection
   #evil-smartparens
   #powerline-evil
   fill-column-indicator
@@ -60,9 +59,20 @@ with epkgs;
   neotree
   nix-mode
   nord-theme
+  # org module
   org
-  org-pdfview
+  #org-pdfview
   org-bullets
+  evil-org
+  org-roam
+  #company-org-roam
+  org-journal
+  #org-protocol
+  #org-capture
+  #org-gcal
+  #org-super-agenda
+  #org-ref
+
   pdf-tools
   pkgbuild-mode
   powerline

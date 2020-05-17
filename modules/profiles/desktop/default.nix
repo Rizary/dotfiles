@@ -44,7 +44,7 @@
     ../../programs/screen-locker
     ../../programs/urxvt
     ../../programs/xmobar
-    ../../programs/tmux
+    #../../programs/tmux
     ../../programs/xclip
     ../../programs/xmonad
     ../../programs/xorg
@@ -53,9 +53,11 @@
     ../../programs/chromium
     ../../programs/mpv
     ../../programs/ranger
+    ../../programs/ripgrep-all
+    ../../programs/ripgrep
     ../../programs/redshift
     ../../programs/flameshot
-    #../../programs/vscode
+    ../../programs/vscode
     ../../programs/xdotool
     ../../programs/playerctl
     ../../programs/obs-studio

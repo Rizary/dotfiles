@@ -11,7 +11,7 @@ in
       Secure storage configurations consist of a root path, along with paths in
       the root pointing to password and gpg storage.
     '';
-    default = {};
+    default = { };
     type = lib.types.attrsOf (
       lib.types.submodule (
         { config, ... }: {
@@ -62,29 +62,35 @@ in
   };
 
   config = {
-    home-manager.users = lib.mapAttrs (
-      _: secure: {
-        home.sessionVariables = {
-          GNUPGHOME = secure.gnupg;
-          PASSWORD_STORE_DIR = secure.passwords;
-        };
-      }
-    ) mountEnabledCfg;
-
-    sudo-cmds = lib.mapAttrs (
-      _: secure: [
-        "${pkgs.utillinux}/bin/mount ${secure.mountPoint}"
-        "${pkgs.utillinux}/bin/umount ${secure.mountPoint}"
-      ]
-    ) mountEnabledCfg;
-
-    fileSystems = lib.mapAttrs' (
-      _: secure:
-        lib.nameValuePair secure.mountPoint {
-          device = secure.device;
-          fsType = secure.fsType;
-          options = secure.options;
+    home-manager.users = lib.mapAttrs
+      (
+        _: secure: {
+          home.sessionVariables = {
+            GNUPGHOME = secure.gnupg;
+            PASSWORD_STORE_DIR = secure.passwords;
+          };
         }
-    ) mountEnabledCfg;
+      )
+      mountEnabledCfg;
+
+    sudo-cmds = lib.mapAttrs
+      (
+        _: secure: [
+          "${pkgs.utillinux}/bin/mount ${secure.mountPoint}"
+          "${pkgs.utillinux}/bin/umount ${secure.mountPoint}"
+        ]
+      )
+      mountEnabledCfg;
+
+    fileSystems = lib.mapAttrs'
+      (
+        _: secure:
+          lib.nameValuePair secure.mountPoint {
+            device = secure.device;
+            fsType = secure.fsType;
+            options = secure.options;
+          }
+      )
+      mountEnabledCfg;
   };
 }

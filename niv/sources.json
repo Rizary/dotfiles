@@ -1,14 +1,26 @@
 {
+    "doom-emacs": {
+        "branch": "develop",
+        "description": "An Emacs configuration for the stubborn martian vimmer",
+        "homepage": "",
+        "owner": "hlissner",
+        "repo": "doom-emacs",
+        "rev": "375faedb1b27a8051207662418ef9610f0f1a782",
+        "sha256": "0prmcxrsvnmpdwk4zpqnmn3b4zqmmjcl65rp81jxrfbqq0wq7fj6",
+        "type": "tarball",
+        "url": "https://github.com/hlissner/doom-emacs/archive/375faedb1b27a8051207662418ef9610f0f1a782.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "emacs-overlay": {
         "branch": "master",
         "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "4acd562d4b099b83bd079ab767f9e9ef2f7b7056",
-        "sha256": "0s0n9qvj8r8sl12rz00774fya2lpqkl66qkpqbsqm06k5dcm7cxw",
+        "rev": "72a8788a266c7df2faec6da29d6497e465addc6e",
+        "sha256": "1chzjq3bmf8m5qncmmdxhf26q91c35hd5ixxk29afyrwyixv6728",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/4acd562d4b099b83bd079ab767f9e9ef2f7b7056.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/72a8788a266c7df2faec6da29d6497e465addc6e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -17,10 +29,10 @@
         "homepage": "",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "8571e568e05e3abcc676c86fa06ea13f6c09f9a4",
-        "sha256": "1ccj7cidjm0iawmna7whfci50clblryjc0jvfxj9hj2s1q9v6xxj",
+        "rev": "0fe984d575b2d0b65cd5e639eb1ccaab21d0862d",
+        "sha256": "17dzzjwv9prz5l7gzp7kw9s9gd9xmva8aj44zjkd5r7j8c83l3i9",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/8571e568e05e3abcc676c86fa06ea13f6c09f9a4.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/0fe984d575b2d0b65cd5e639eb1ccaab21d0862d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "naersk": {
@@ -29,10 +41,22 @@
         "homepage": "",
         "owner": "nmattia",
         "repo": "naersk",
-        "rev": "8ca25122562af4610a9df33e0e0ba64eb26cd64e",
-        "sha256": "098mqxyasjq2y1wq9njvnfjxkg7gaishh45245m36nhahwgjfdqj",
+        "rev": "a82fd7dc31a58c462b6dfa9d9d886fa2cc75dfd4",
+        "sha256": "00bjwir52y6jbf0b22qy9qxramw35k5fc7kp9hymr1zgpmw9kbwg",
         "type": "tarball",
-        "url": "https://github.com/nmattia/naersk/archive/8ca25122562af4610a9df33e0e0ba64eb26cd64e.tar.gz",
+        "url": "https://github.com/nmattia/naersk/archive/a82fd7dc31a58c462b6dfa9d9d886fa2cc75dfd4.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nix-doom-emacs": {
+        "branch": "master",
+        "description": "doom-emacs packaged for Nix",
+        "homepage": "",
+        "owner": "rizary",
+        "repo": "nix-doom-emacs",
+        "rev": "46c09a0e236edeeefe4146f8473624ecb8688472",
+        "sha256": "04jxrw4cpgi2i1cjk6sapmmxih43b43cs0l4q7g81v2fnshkmfi2",
+        "type": "tarball",
+        "url": "https://github.com/rizary/nix-doom-emacs/archive/46c09a0e236edeeefe4146f8473624ecb8688472.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nix-linter": {
@@ -53,10 +77,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "cc737967799d7495a3ab197b5a86227c937d9ece",
-        "sha256": "005f1xhjbd3sckkh8n1p7b2z08v58mdaqwq6ggj2711js3gnlgjh",
+        "rev": "044e733e8dbb652984f0db45506b8eed514b267e",
+        "sha256": "0xc8q8n4c1iii1i01whwm45ks9hx4nhm3y7lzdsa6fsd628cr4cr",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/cc737967799d7495a3ab197b5a86227c937d9ece.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/044e733e8dbb652984f0db45506b8eed514b267e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-mozilla": {
@@ -77,10 +101,10 @@
         "homepage": "https://www.nordtheme.com/ports/dircolors",
         "owner": "arcticicestudio",
         "repo": "nord-dircolors",
-        "rev": "c181c7bd35b099b91fe19ee5c57c15b65fc7c54d",
-        "sha256": "1c9fa6dip266z6hfqd5nan5v6qjp6dg074lvk4rxisirm26djlzz",
+        "rev": "addb3b427e008d23affc721450fde86f27566f1d",
+        "sha256": "0s7bd38269z4b9j6f90nscjkbdbh23z3mlg89fnk7ndyrpf5dqlj",
         "type": "tarball",
-        "url": "https://github.com/arcticicestudio/nord-dircolors/archive/c181c7bd35b099b91fe19ee5c57c15b65fc7c54d.tar.gz",
+        "url": "https://github.com/arcticicestudio/nord-dircolors/archive/addb3b427e008d23affc721450fde86f27566f1d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nord-tmux": {
@@ -100,17 +124,5 @@
         "repo": "https://www.gitlab.com/Rizary/olai",
         "rev": "c86aef1de9247efc2a7cb6a7e7099073f6fb4b2b",
         "type": "git"
-    },
-    "rust-analyzer": {
-        "branch": "master",
-        "description": "An experimental Rust compiler front-end for IDEs",
-        "homepage": "",
-        "owner": "rust-analyzer",
-        "repo": "rust-analyzer",
-        "rev": "6fe956420fc63609a84dd005b8190b1f19fff280",
-        "sha256": "09f9cncqgh3blidrg1p0gymspf32ygnhvwx5vyvga2dpxy2q1w8m",
-        "type": "tarball",
-        "url": "https://github.com/rust-analyzer/rust-analyzer/archive/6fe956420fc63609a84dd005b8190b1f19fff280.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

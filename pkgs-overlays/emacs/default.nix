@@ -12,5 +12,5 @@ self: super: rec {
   #}
   #)
   #);
-  raEmacsLsp = self.callPackage ./ra-emacs-lsp.nix { inherit sources; };
+  #raEmacsLsp = self.callPackage ./ra-emacs-lsp.nix { inherit sources; };
 }

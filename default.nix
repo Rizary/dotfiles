@@ -2,7 +2,7 @@
 let
   dirPath = ./.;
   sources = import ./niv/sources.nix;
-  pkgs = import sources.nixpkgs {};
+  pkgs = import sources.nixpkgs { };
   excludeGit = builtins.filterSource (
     path: type:
       type != "directory" || baseNameOf path != ".git"

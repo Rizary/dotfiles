@@ -5,7 +5,7 @@ with lib;
 {
   options.scripts = mkOption {
     type = types.attrsOf types.str;
-    default = {};
+    default = { };
     apply = mapAttrs (
       name: script: pkgs.writeScript name ''
         #!${pkgs.stdenv.shell}

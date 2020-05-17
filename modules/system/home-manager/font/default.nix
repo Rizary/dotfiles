@@ -24,6 +24,6 @@ in
   config = lib.mkIf (cfg.package != null) {
     home.packages = [ cfg.package ];
 
-    programs = {};
+    programs = { };
   };
 }

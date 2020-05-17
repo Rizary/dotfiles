@@ -22,7 +22,7 @@ in
     "kvm.ignore_msrs=1"
     "kvm-intel.nested=1"
   ];
-  boot.extraModulePackages = [];
+  boot.extraModulePackages = [ ];
 
   boot.crypt-initrd.enable = true;
   boot.crypt-initrd.device = "/dev/sdb3";

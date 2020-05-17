@@ -10,9 +10,9 @@
   # Docker related config
   virtualisation.docker.enable = true;
   virtualisation.docker.enableOnBoot = true;
-  virtualisation.docker.extraOptions = "--dns 172.17.0.1";
-  networking.firewall.interfaces.docker0.allowedTCPPorts = [ 53 9053 ];
-  networking.firewall.interfaces.docker0.allowedUDPPorts = [ 53 9053 ];
+  #virtualisation.docker.extraOptions = "--dns 172.17.0.1";
+  #networking.firewall.interfaces.docker0.allowedTCPPorts = [ 53 9053 ];
+  #networking.firewall.interfaces.docker0.allowedUDPPorts = [ 53 9053 ];
 
   # Virtual Box related config
 

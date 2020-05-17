@@ -1,6 +1,6 @@
 { sources ? import ./niv/sources.nix }:
 let
-  pkgs = import sources.nixpkgs {};
+  pkgs = import sources.nixpkgs { };
   niv = pkgs.symlinkJoin {
     name = "niv";
     paths = [ sources.niv ];
@@ -10,7 +10,7 @@ let
         --add-flags "--sources-file ${toString ./niv/sources.json}"
     '';
   };
-  nix-linter = pkgs.callPackage sources.nix-linter {};
+  nix-linter = pkgs.callPackage sources.nix-linter { };
   build-nix-path-env = path:
     builtins.concatStringsSep ":" (
       pkgs.lib.mapAttrsToList (k: v: "${k}=${v}") path
@@ -57,30 +57,30 @@ let
         --fetch-submodules --deepClone > niv/github.json
     '';
 in
-  with pkgs;
-  mkShell {
-    nativeBuildInputs = [
-      collect-garbage
-      nix-prefetch-git
-      #cabal2nix
-      nixpkgs-fmt
-      #nix-linter.nix-linter
-    ];
+with pkgs;
+mkShell {
+  nativeBuildInputs = [
+    collect-garbage
+    nix-prefetch-git
+    #cabal2nix
+    nixpkgs-fmt
+    #nix-linter.nix-linter
+  ];
 
-    buildInputs = [
-      git
-      niv
-      update-niv
-      #lint
-      format
-      deploy-config
-    ];
+  buildInputs = [
+    git
+    niv
+    update-niv
+    #lint
+    format
+    deploy-config
+  ];
 
-    LC_ALL = "en_US.UTF-8";
-    shellHook = ''
-      export NIX_GHC="${haskellPackages.ghc}/bin/ghc"
-      export NIX_GHCPKG="${haskellPackages.ghc}/bin/ghc-pkg"
-      export NIX_GHC_DOCDIR="${haskellPackages.ghc}/share/doc/ghc/html"
-      export NIX_GHC_LIBDIR=$( $NIX_GHC --print-libdir )
-    '';
-  }
+  LC_ALL = "en_US.UTF-8";
+  shellHook = ''
+    export NIX_GHC="${haskellPackages.ghc}/bin/ghc"
+    export NIX_GHCPKG="${haskellPackages.ghc}/bin/ghc-pkg"
+    export NIX_GHC_DOCDIR="${haskellPackages.ghc}/share/doc/ghc/html"
+    export NIX_GHC_LIBDIR=$( $NIX_GHC --print-libdir )
+  '';
+}

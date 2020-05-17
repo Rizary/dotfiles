@@ -5,7 +5,7 @@
   font-3 = "Noto Sans:style=light:pixelsize=12;3";
 
   xfonts = "xft:Iosevka:style=bold:size=12,"
-  + "xft:Iosevka:style=extra bold:size=12,"
-  + "xft:Iosevka:style=light:size=12,"
-  + "xft:Noto Sans:style=light;pixelsize=12";
+    + "xft:Iosevka:style=extra bold:size=12,"
+    + "xft:Iosevka:style=light:size=12,"
+    + "xft:Noto Sans:style=light;pixelsize=12";
 }
