@@ -14,16 +14,13 @@ let
   wallpaper = ../../../wallpaper/Rizilab/rizilab-nordic.png;
 in
 {
-  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.desktopManager.xfce.enable = true;
+  services.xserver.displayManager.lightdm.enable = false;
   services.xserver.displayManager.sddm.enable = false;
-  #services.xserver.displayManager.lightdm.autoLogin.enable = true;
-  services.xserver.displayManager.lightdm.autoLogin.user = "rizary";
-
-  #services.xserver.displayManager.lightdm.background = "../../../wallpaper/Rizilab/rizilab-nordic.png";
 
   primary-user.home-manager.xsession.scriptPath = ".hm-xsession";
 
-  services.xserver.displayManager.session = [
+  services.xserver.desktopManager.session = [
     {
       manage = "window";
       name = "home-manager";
@@ -44,5 +41,5 @@ in
     # xloadimage -onroot -fullscreen -background black -center (for background)
   ];
 
-  services.xserver.displayManager.sessionCommands = "${sessionScript}/bin/lll";
+  services.xserver.desktopManager.sessionCommands = "${sessionScript}/bin/lll";
 }

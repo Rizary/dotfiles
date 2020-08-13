@@ -40,10 +40,10 @@ keybindings screenId conf@(XMonad.XConfig {XMonad.modMask = modM}) = Map.fromLis
   [ ((modM, XMonad.xK_Tab), XMonad.sendMessage XMonad.NextLayout)
   , ((modM .|. XMonad.shiftMask, XMonad.xK_Tab), goPreviousLayout)
 
-  -- 
+  --
   -- Launch emacs
-  , ((modM .|. XMonad.controlMask, XMonad.xK_e), XMonad.spawn "emacs ~/Projects")
-  , ((modM .|. XMonad.controlMask, XMonad.xK_c), XMonad.spawn "code-insiders ~/Projects")
+  , ((modM .|. XMonad.controlMask, XMonad.xK_c), XMonad.spawn "emacs ~/Projects")
+  , ((modM .|. XMonad.controlMask, XMonad.xK_e), XMonad.spawn "code-insiders ~/Projects/rizilab-workspace.code-workspace")
   -- Floating/fullscreen toggle
   , ((modM, XMonad.xK_space), Navigation2D.switchLayer)
   , ((modM .|. XMonad.shiftMask, XMonad.xK_space), XMonad.withFocused toggleFloating) -- make focused window float
@@ -55,10 +55,10 @@ keybindings screenId conf@(XMonad.XConfig {XMonad.modMask = modM}) = Map.fromLis
   , ((modM .|. XMonad.shiftMask, XMonad.xK_q), XMonad.kill)
 
   , ((modM, XMonad.xK_Return), XMonad.spawn "urxvtc")
-  
+
   -- Screen Locker
   , ((modM .|. XMonad.shiftMask, XMonad.xK_Return), XMonad.spawn $ "i3lock-fancy")
-  
+
   -- Browser
   , ((modM .|. XMonad.shiftMask, XMonad.xK_f), XMonad.spawn $ "firefox")
   , ((modM .|. XMonad.shiftMask, XMonad.xK_g), XMonad.spawn $ "google-chrome-unstable")
@@ -84,8 +84,8 @@ keybindings screenId conf@(XMonad.XConfig {XMonad.modMask = modM}) = Map.fromLis
   [((m .|. modM, key), Operations.screenWorkspace sc >>= flip whenJust (XMonad.windows . f))
       | (key, sc) <- zip [XMonad.xK_w, XMonad.xK_e, XMonad.xK_r] [0..]
       , (f, m) <- [(StackSet.view, 0), (StackSet.shift, XMonad.shiftMask)]]
-  
-  
+
+
 
 
 withCurrentLayout cb =

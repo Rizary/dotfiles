@@ -41,7 +41,7 @@ in
     with marketPlaceExt; [
       crates
       better-toml
-
+      vscode-deno
     ]
   );
 

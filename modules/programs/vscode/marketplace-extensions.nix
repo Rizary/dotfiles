@@ -26,4 +26,16 @@ in
       license = lib.licenses.mit;
     };
   };
+
+  vscode-deno = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "vscode-deno";
+      publisher = "justjavac";
+      version = "1.31.0";
+      sha256 = "1wrs96hxcw2sww23icaimljpa44zldm39pkwywffga9ppys4h3h4";
+    };
+    meta = {
+      license = lib.licenses.mit;
+    };
+  };
 }
