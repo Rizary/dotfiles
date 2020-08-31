@@ -21,7 +21,6 @@
     ../../programs/syncthing
     ../../programs/flameshot
     ../../programs/lorri
-    ../../programs/bash
     ../../programs/status-notifier-watcher
     ../../programs/emacs
     ../../programs/pavucontrol

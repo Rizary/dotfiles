@@ -11,12 +11,19 @@
     "**/npm-debug.log" = true;
     "**/dist" = true;
     "**/*.bs.js" = true;
+    "**/result/" = true;
   };
   "files.trimTrailingWhitespace" = true;
   "files.insertFinalNewline" = true;
   "files.eol" = "\n";
+  "files.autoSave" = "off";
+
   # Workbench
-  "workbench.colorTheme" = "Pale Fire";
+  "workbench.colorTheme" = "Dark+ (Full black)";
+  "theme-by-language.themes" = {
+    "*" = "Dark+ (Full black)";
+    "rust" = "Pale Fire Dark";
+  };
   "workbench.list.horizontalScrolling" = true;
   "workbench.panel.defaultLocation" = "right";
   "workbench.fontAliasing" = "antialiased";
@@ -31,7 +38,6 @@
   "workbench.statusBar.feedback.visible" = false;
   "workbench.useExperimentalGridLayout" = true;
   "workbench.tree.indent" = 16;
-  # Editor
   "editor.accessibilitySupport" = "off";
   "editor.codeLens" = false;
   "editor.formatOnSave" = true;
@@ -54,11 +60,17 @@
   "editor.tabCompletion" = "onlySnippets";
   "editor.wordBasedSuggestions" = false;
   "editor.dragAndDrop" = false;
+  "editor.insertSpaces" = false;
+  "editor.detectIndentation" = false;
 
   # Fonts
   "editor.fontLigatures" = true;
   "editor.fontFamily" = "'PragmataPro Mono'";
-  "editor.fontSize" = 16;
+  "editor.wordWrap" = "wordWrapColumn";
+  "editor.wordWrapColumn" = 95;
+  "editor.wrappingIndent" = "same";
+  "editor.fontSize" = 18;
+  "editor.fontWeight" = "bold";
   "editor.formatOnType" = true;
   "editor.hover.enabled" = false;
   "editor.folding" = false;
@@ -67,18 +79,21 @@
   "editor.minimap.enabled" = false;
   "editor.cursorBlinking" = "solid";
   "editor.lineNumbers" = "on";
-  "editor.cursorStyle" = "block";
+  "editor.cursorStyle" = "line-thin";
+
   # Window
   "window.enableMenuBarMnemonics" = false;
   "window.menuBarVisibility" = "hidden";
   "window.restoreWindows" = "none";
-  "window.title" = "\${rootName}";
+  "window.title" = "\${activeEditorLong} ";
   "window.titleBarStyle" = "native";
-  "window.zoomLevel" = 0;
+  "window.zoomLevel" = 1;
   "window.newWindowDimensions" = "maximized";
+
   # Breadcrumbs
   "breadcrumbs.enabled" = true;
   "breadcrumbs.filePath" = "off";
+
   # Debug
   "debug.openDebug" = "neverOpen";
   "debug.showInStatusBar" = "never";
@@ -94,10 +109,16 @@
     "out" = true;
     "coverage" = true;
   };
+
   # Terminal
+  "terminal.integrated.shell.linux" = "/run/current-system/sw/bin/bash";
   "terminal.integrated.copyOnSelection" = true;
-  "terminal.integrated.fontSize" = 14;
+  "terminal.integrated.fontSize" = 16;
   "terminal.integrated.inheritEnv" = false;
+  "terminal.integrated.confirmOnExit" = true;
+  "terminal.integrated.cursorStyle" = "line";
+  "terminal.integrated.commandsToSkipShell" = [ "workbench.action.toggleSidebarVisibility" "-workbench.action.quickOpen" ];
+
   # Explorer
   "explorer.openEditors.visible" = 0;
   "explorer.confirmDelete" = false;
@@ -112,7 +133,24 @@
 
   # Rust
   "liveServer.settings.donotShowInfoMsg" = true;
+  "rust-client.autoStartRls" = false;
+  "rust-client.disableRustup" = true;
+  "rust-client.engine" = "rust-analyzer";
   "rust-analyzer.highlightingOn" = true;
   "rust-analyzer.enableCargoWatchOnStartup" = "disabled";
   "rust-analyzer.enableEnhancedTyping" = false;
+
+  # Go
+  "go.formatTool" = "gofmt";
+  "go.useLanguageServer" = true;
+  "go.languageServerExperimentalFeatures" = {
+    "diagnostics" = true;
+    "documentLink" = true;
+  };
+  "go.trace.server" = "verbose";
+
+  # Git
+  "git.enableCommitSigning" = true;
+
+
 }

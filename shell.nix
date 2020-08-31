@@ -19,7 +19,7 @@ let
     nixpkgs = sources.nixpkgs;
     nixpkgs-overlays = "$dotfiles/pkgs-overlays";
     nixos-config = "$dotfiles/current-config";
-    home-manager = ../Projects/github/home-manager; #sources.home-manager;
+    home-manager = sources.home-manager;
   };
   files = "$(find . -name '*.nix' -not -wholename './niv/sources.nix')";
   #lint = pkgs.writeShellScriptBin "lint" "nix-linter ${files}";
@@ -30,6 +30,7 @@ let
     export NIX_PATH="${nix-path}"
     nixos-rebuild switch --show-trace
   '';
+
   deploy-config = pkgs.writeShellScriptBin "deploy-config" ''
     set -e
     # lint
@@ -37,18 +38,34 @@ let
 
     if ! $(mount | grep /boot >/dev/null)
     then
-      echo "/boot is not mounted!
+      echo "/boot is not mounted!"
       exit 1
     fi
 
     if ! $(mount | grep /secure >/dev/null)
     then
-      echo "/secure is not mounted
+      echo "/secure is not mounted"
       exit 1
     fi
 
     sudo ${deploy-config-cmd} $1 
   '';
+
+  deploy-config-non-secure =
+    pkgs.writeShellScriptBin "deploy-config-non-secure" ''
+      set -e
+      # lint
+      format
+
+      if ! $(mount | grep /boot >/dev/null)
+      then
+        echo "/boot is not mounted!"
+        exit 1
+      fi
+
+      sudo ${deploy-config-cmd} $1 
+    '';
+
   collect-garbage =
     pkgs.writeShellScriptBin "collect-garbage" "sudo nix-collect-garbage -d";
   update-niv =
@@ -74,6 +91,7 @@ mkShell {
     #lint
     format
     deploy-config
+    deploy-config-non-secure
   ];
 
   LC_ALL = "en_US.UTF-8";

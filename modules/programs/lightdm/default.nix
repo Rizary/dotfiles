@@ -1,23 +1,23 @@
 { pkgs, config, ... }:
 let
-  sessionScript = pkgs.writeScriptBin "lll" ''
-    #!${pkgs.stdenv.shell}
-    sudo -u ${config.primary-user.name} \
-      mount ${config.primary-user.secure.mountPoint}
-
-    ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
-    ${pkgs.xorg.setxkbmap}/bin/setxkbmap \ 
-      -layout dvorak,ara \
-      -variant dvorak \
-      -option grp:alt_space_toggle,grp_led:scroll
-  '';
+  #sessionScript = pkgs.writeScriptBin "lll" ''
+  #  #!${pkgs.stdenv.shell}
+  #  sudo -u ${config.primary-user.name} \
+  #    mount ${config.primary-user.secure.mountPoint}
+  #
+  #  ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
+  #  ${pkgs.xorg.setxkbmap}/bin/setxkbmap \ 
+  #    -layout dvorak,ara \
+  #    -variant dvorak \
+  #    -option grp:alt_space_toggle,grp_led:scroll
+  #'';
   wallpaper = ../../../wallpaper/Rizilab/rizilab-nordic.png;
 in
 {
   services.xserver.displayManager.lightdm.enable = true;
   services.xserver.displayManager.sddm.enable = false;
   #services.xserver.displayManager.lightdm.autoLogin.enable = true;
-  services.xserver.displayManager.lightdm.autoLogin.user = "rizary";
+  services.xserver.displayManager.autoLogin.user = "rizary";
 
   #services.xserver.displayManager.lightdm.background = "../../../wallpaper/Rizilab/rizilab-nordic.png";
 
@@ -44,5 +44,5 @@ in
     # xloadimage -onroot -fullscreen -background black -center (for background)
   ];
 
-  services.xserver.displayManager.sessionCommands = "${sessionScript}/bin/lll";
+  #services.xserver.displayManager.sessionCommands = "${sessionScript}/bin/lll";
 }

@@ -14,7 +14,7 @@ let
       src = pkgs.fetchurl {
         name = "VSCode_latest_linux-x64.tar.gz";
         url = "https://vscode-update.azurewebsites.net/latest/linux-x64/insider";
-        sha256 = "1d16jmm3h12hrvlmknh6jpcs1mg0vy2bhmbphrmzk6kjqz98cgz1";
+        sha256 = "0l52ll77lbabyiq5pfswdjadfvczgz9x3xxcbipczvrmvayv23ph";
       };
     }
   );
@@ -25,16 +25,13 @@ in
   primary-user.home-manager.programs.vscode.package = vscodeInsiders;
   primary-user.home-manager.programs.vscode.userSettings = userSettings;
   primary-user.home-manager.programs.vscode.extensions = with pkgs.vscode-extensions; [
-    #bbenoist.Nix
     ms-azuretools.vscode-docker
     ms-kubernetes-tools.vscode-kubernetes-tools
     ms-vscode.cpptools
     ms-vscode-remote.remote-ssh
     redhat.vscode-yaml
-    vscodevim.vim
     matklad.rust-analyzer
     llvm-org.lldb-vscode
-    WakaTime.vscode-wakatime
     bbenoist.Nix
     ms-python.python
   ] ++ (
@@ -42,6 +39,15 @@ in
       crates
       better-toml
       vscode-deno
+      vscode-cloak
+      dotenv
+      pale-fire-dark
+      dart-code
+      flutter
+      vscode-direnv
+      fzf-quick-open
+      haskell
+      go
     ]
   );
 

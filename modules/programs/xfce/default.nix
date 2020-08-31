@@ -15,7 +15,6 @@ let
 in
 {
   services.xserver.desktopManager.xfce.enable = true;
-  services.xserver.displayManager.lightdm.enable = false;
   services.xserver.displayManager.sddm.enable = false;
 
   primary-user.home-manager.xsession.scriptPath = ".hm-xsession";
@@ -41,5 +40,5 @@ in
     # xloadimage -onroot -fullscreen -background black -center (for background)
   ];
 
-  services.xserver.desktopManager.sessionCommands = "${sessionScript}/bin/lll";
+  #services.xserver.desktopManager.sessionCommands = "${sessionScript}/bin/lll";
 }

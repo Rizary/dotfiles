@@ -13,7 +13,7 @@ rec {
 
   src = requireFile rec {
     name = "PragmataPro${version}.zip";
-    url = "file:///home/rizary/Scratch/${name}";
+    url = "file:///home/rizary/private_file/${name}";
     sha256 = "19q6d0dxgd9k2mhr31944wpprks1qbqs1h5f400dyl5qzis2dji3";
   };
 

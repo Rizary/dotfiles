@@ -17,11 +17,9 @@
     ../../hardware/monitors
 
     # desktop security
-    ../../security/gpg
-    ../../security/pass
-    #../../security/secure
-    ../../security/ssh
-    ../../security/sshd
+    #../../security/gpg
+    #../../security/ssh
+    #../../security/sshd
 
     # databases
     ../../databases/mongodb
@@ -35,23 +33,17 @@
     ../../programs/dunst
     ../../programs/gtk
     ../../programs/lightdm
+    ../../programs/xfce
     ../../programs/log
     ../../programs/opengl
-    #../../programs/rofi-pass
-    #../../programs/screen-locker
     ../../programs/urxvt
-    #../../programs/xmobar
-    ../../programs/tmux
-    #../../programs/xmonad
     ../../programs/xorg
     ../../programs/fzf
-    #../../programs/firefox
-    #../../programs/chromium
     ../../programs/mpv
     ../../programs/ranger
     ../../programs/flameshot
-    #../../programs/xdotool
     ../../programs/playerctl
+    ../../programs/vscode
 
 
     # theming and fonts related program
