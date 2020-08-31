@@ -16,6 +16,7 @@
     ../../security/umask
 
     ../../programs/bash
+    ../../programs/git
     ../../programs/direnv
     ../../programs/dvorak
     ../../programs/syncthing
