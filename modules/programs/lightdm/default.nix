@@ -6,7 +6,7 @@ let
   #    mount ${config.primary-user.secure.mountPoint}
   #
   #  ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
-  #  ${pkgs.xorg.setxkbmap}/bin/setxkbmap \ 
+  #  ${pkgs.xorg.setxkbmap}/bin/setxkbmap \
   #    -layout dvorak,ara \
   #    -variant dvorak \
   #    -option grp:alt_space_toggle,grp_led:scroll
@@ -15,8 +15,7 @@ let
 in
 {
   services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.displayManager.sddm.enable = false;
-  #services.xserver.displayManager.lightdm.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "rizary";
 
   #services.xserver.displayManager.lightdm.background = "../../../wallpaper/Rizilab/rizilab-nordic.png";
@@ -28,8 +27,9 @@ in
       manage = "window";
       name = "home-manager";
       start = ''
+        export SHELL="/home/rizary/.nix-profile/bin/bash"
         ${pkgs.runtimeShell} $HOME/.hm-xsession &
-        waitPID=$! 
+        waitPID=$!
       '';
     }
 

@@ -1,3 +1,4 @@
+{ pkgs, config, ... }:
 {
   # Files
   "files.exclude" = {
@@ -98,7 +99,6 @@
   "debug.openDebug" = "neverOpen";
   "debug.showInStatusBar" = "never";
   "debug.toolBarLocation" = "hidden";
-
   # Search
   "search.quickOpen.includeHistory" = false;
   "search.smartCase" = true;
@@ -111,12 +111,13 @@
   };
 
   # Terminal
-  "terminal.integrated.shell.linux" = "/run/current-system/sw/bin/bash";
+  "terminal.integrated.shell.linux" = "/home/rizary/.nix-profile/bin/bash";
   "terminal.integrated.copyOnSelection" = true;
   "terminal.integrated.fontSize" = 16;
   "terminal.integrated.inheritEnv" = false;
   "terminal.integrated.confirmOnExit" = true;
   "terminal.integrated.cursorStyle" = "line";
+  "terminal.integrated.cwd" = "\${fileDirname}";
   "terminal.integrated.commandsToSkipShell" = [ "workbench.action.toggleSidebarVisibility" "-workbench.action.quickOpen" ];
 
   # Explorer

@@ -7,8 +7,9 @@
     # theme
     ../../config/data/theme
 
-    ../../config/boot/systemd-boot
+    #../../config/boot/systemd-boot
     ../../config/boot/logind
+    ../../config/boot/grub-boot
 
     ../../config/data/xdg-user-dirs
 

@@ -63,6 +63,18 @@ in
     };
   };
 
+  dark-plus-full-black = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "dark-plus-full-black";
+      publisher = "dhruvdh";
+      version = "0.1.0";
+      sha256 = "0wndhmqdsf362xxi76yvvyxadl9knl7vw3s4jzy5c8ra8an81dsh";
+    };
+    meta = {
+      license = lib.licenses.gpl3;
+    };
+  };
+
   pale-fire-dark = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "pale-fire-dark";

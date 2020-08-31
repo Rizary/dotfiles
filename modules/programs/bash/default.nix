@@ -1,5 +1,6 @@
-{ ... }:
+{ lib, pkgs, ... }:
 {
+  primary-user.home-manager.home.packages = lib.mkForce [ pkgs.bash ];
   primary-user.home-manager.programs.bash.enable = true;
   primary-user.home-manager.programs.bash.enableAutojump = true;
   primary-user.home-manager.programs.bash.initExtra = ''

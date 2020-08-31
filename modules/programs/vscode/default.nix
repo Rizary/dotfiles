@@ -1,6 +1,6 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 let
-  userSettings = import ./settings.nix;
+  userSettings = import ./settings.nix { inherit pkgs config; };
   marketPlaceExt = import ./marketplace-extensions.nix {
     inherit (pkgs) vscode-utils;
     inherit lib;
