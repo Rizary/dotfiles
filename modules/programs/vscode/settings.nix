@@ -111,7 +111,7 @@
   };
 
   # Terminal
-  "terminal.integrated.shell.linux" = "/home/rizary/.nix-profile/bin/bash";
+  "terminal.integrated.shell.linux" = "/run/current-system/sw/bin/bash";
   "terminal.integrated.copyOnSelection" = true;
   "terminal.integrated.fontSize" = 16;
   "terminal.integrated.inheritEnv" = false;

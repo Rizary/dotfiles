@@ -33,7 +33,7 @@ data Gaps' = Gaps'
   }
 
 gs :: Gaps'
-gs = Gaps' { u = 20, d = 20, x = 20, x' = 20 }
+gs = Gaps' { u = 2, d = 2, x = 2, x' = 2 }
 
 gapses :: l a -> ModifiedLayout Gaps.Gaps l a
 gapses = Gaps.gaps [(U, u gs), (R, x gs), (L, x gs), (D, d gs)]

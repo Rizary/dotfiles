@@ -28,13 +28,13 @@ startXmonad screenId myModMask paths =
   { XMonad.workspaces = Workspaces.workspaces
   , XMonad.modMask = myModMask
   , XMonad.terminal = "urxvtc"
-  , XMonad.borderWidth = 3
+  , XMonad.borderWidth = 2
   , XMonad.normalBorderColor = Theme.base03
-  , XMonad.focusedBorderColor = Theme.base07 
+  , XMonad.focusedBorderColor = Theme.base07
   , XMonad.keys = Keybindings.keybindings screenId
   , XMonad.mouseBindings = Mousebindings.mousebindings
   , XMonad.layoutHook = Layouts.layoutHook
-  , XMonad.manageHook = WindowRules.myManageHook 
+  , XMonad.manageHook = WindowRules.myManageHook
   , XMonad.startupHook = WindowRules.myStartupHook paths
   , XMonad.logHook = Bars.multiPP Statusbar.optionsXMobarPP Statusbar.optionsXMobarPP--Statusbar.statusbar >>= DynamicLog.xmonadPropLog
   }

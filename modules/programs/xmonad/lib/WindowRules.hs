@@ -26,7 +26,7 @@ floatsManageHook = XMonad.composeAll $ map (--> XMonad.doFloat)
   [ (XMonad.className =? "pavucontrol-qt") ]
 
 programManageHook :: XMonad.ManageHook
-programManageHook = XMonad.composeAll 
+programManageHook = XMonad.composeAll
   [ --(XMonad.className =? "Firefox") --> XMonad.doShift "\xf0ac"
     (XMonad.className =? "Google-chrome-unstable") --> XMonad.doShift "\xf144"
   ]
@@ -47,6 +47,7 @@ myStartupHook paths = do
     (WindowGo.ifWindow (XMonad.className =? "Firefox") myManageHook (SpawnOn.spawnOn "\xf0ac" "firefox"))
     (WindowGo.ifWindow (XMonad.className =? "Google-chrome-unstable") myManageHook (SpawnOn.spawnOn "\xf144" "google-chrome-unstable"))
     Bars.dynStatusBarStartup (xmobarCreator paths) xmobarDestroyer
+    SpawnOnce.spawnOnce "xrandr --output Virtual-1 --mode \"1920x1080\""
     SpawnOnce.spawnOnce "autorandr -c"
 
 

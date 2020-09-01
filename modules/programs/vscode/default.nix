@@ -47,6 +47,7 @@ in
       vscode-direnv
       fzf-quick-open
       haskell
+      language-haskell
       go
     ]
   );

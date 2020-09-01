@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  #primary-user.extraGroups = [ "libvirtd" "docker" "vboxusers" "kvm" "networkmanager" ];
+  primary-user.extraGroups = [ "libvirtd" "docker" "vboxusers" "kvm" "networkmanager" ];
   #services.xserver.displayManager.sessionCommands = ''
   # ${pkgs.virtmanager}/bin/virt-manager &
 
@@ -9,7 +9,7 @@
 
   # Docker related config
   virtualisation.docker.enable = false; #true;
-  #virtualisation.docker.enableOnBoot = true;
+  virtualisation.docker.enableOnBoot = true;
   #virtualisation.docker.extraOptions = "--dns 172.17.0.1";
   #networking.firewall.interfaces.docker0.allowedTCPPorts = [ 53 9053 ];
   #networking.firewall.interfaces.docker0.allowedUDPPorts = [ 53 9053 ];
@@ -36,7 +36,7 @@
   # if having virgl gpu issues uncomment
   #seccomp_sandbox = 0
   #'';
-  virtualisation.libvirtd.qemuOvmf = true;
+  #virtualisation.libvirtd.qemuOvmf = true;
   #virtualisation.libvirtd.onBoot = "ignore";
   #virtualisation.libvirtd.onShutdown = "shutdown";
   #services.dnsmasq.extraConfig = ''
@@ -52,7 +52,7 @@
   #services.xserver.videoDrivers = lib.mkOverride 50 [ "qxl" "modesetting" ];
 
   # Kubernetes related config
-  # export KUBECONFIG=/etc/kubernetes/cluster-admin.kubeconfig will make kubectl use this kubeconfig to access and authenticate the cluster
+  #export KUBECONFIG=/etc/kubernetes/cluster-admin.kubeconfig #will make kubectl use this kubeconfig to access and authenticate the cluster
   #
   #
   #services.kubernetes.roles = [ "master" "node" ];

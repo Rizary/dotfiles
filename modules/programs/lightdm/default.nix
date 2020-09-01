@@ -1,34 +1,33 @@
 { pkgs, config, ... }:
 let
-  #sessionScript = pkgs.writeScriptBin "lll" ''
-  #  #!${pkgs.stdenv.shell}
-  #  sudo -u ${config.primary-user.name} \
-  #    mount ${config.primary-user.secure.mountPoint}
-  #
-  #  ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
-  #  ${pkgs.xorg.setxkbmap}/bin/setxkbmap \
-  #    -layout dvorak,ara \
-  #    -variant dvorak \
-  #    -option grp:alt_space_toggle,grp_led:scroll
-  #'';
-  wallpaper = ../../../wallpaper/Rizilab/rizilab-nordic.png;
+  sessionScript = pkgs.writeScriptBin "lll" ''
+      #!${pkgs.stdenv.shell}
+    export SHELL=/run/current-system/sw/bin/bash
+      xrandr --output Virtual-1 --mode "1920x1080"
+      ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
+      ${pkgs.xorg.setxkbmap}/bin/setxkbmap \
+        -layout dvorak,ara \
+        -variant dvorak \
+        -option grp:alt_space_toggle,grp_led:scroll
+  '';
+  wallpaper = ./../../../wallpaper/Rizilab/rizilab-nordic.png;
 in
 {
   services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.enable = false;
   services.xserver.displayManager.autoLogin.user = "rizary";
 
-  #services.xserver.displayManager.lightdm.background = "../../../wallpaper/Rizilab/rizilab-nordic.png";
+  services.xserver.displayManager.lightdm.background = "${wallpaper}";
 
-  primary-user.home-manager.xsession.scriptPath = ".hm-xsession";
+  primary-user.home-manager.xsession.scriptPath = ".xsession";
 
   services.xserver.displayManager.session = [
     {
       manage = "window";
       name = "home-manager";
       start = ''
-        export SHELL="/home/rizary/.nix-profile/bin/bash"
-        ${pkgs.runtimeShell} $HOME/.hm-xsession &
+        xrandr --output Virtual-1 --mode "1920x1080"
+        ${pkgs.runtimeShell} $HOME/.xsession &
         waitPID=$!
       '';
     }
@@ -44,5 +43,5 @@ in
     # xloadimage -onroot -fullscreen -background black -center (for background)
   ];
 
-  #services.xserver.displayManager.sessionCommands = "${sessionScript}/bin/lll";
+  services.xserver.displayManager.sessionCommands = "${sessionScript}/bin/lll";
 }

@@ -147,6 +147,18 @@ in
     };
   };
 
+  language-haskell = buildVscodeMarketplaceExtension {
+    mktplcRef = {
+      name = "language-haskell";
+      publisher = "justusadam";
+      version = "3.3.0";
+      sha256 = "1285bs89d7hqn8h8jyxww7712070zw2ccrgy6aswd39arscniffs";
+    };
+    meta = {
+      license = lib.licenses.bsd3;
+    };
+  };
+
   go = buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "go";

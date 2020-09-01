@@ -1,3 +1,6 @@
+# Other
+client_id
+
 # Haskell Specific
 .stack-work/
 error.log

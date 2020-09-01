@@ -18,7 +18,7 @@ in
   services.xserver.desktopManager.xfce.noDesktop = true;
 
   primary-user.home-manager.xsession.enable = true;
-  primary-user.home-manager.xsession.windowManager.command = "";
+  # primary-user.home-manager.xsession.windowManager.command = "";
   primary-user.home-manager.xsession.scriptPath = ".hm-xsession";
 
   services.xserver.desktopManager.session = [
@@ -26,19 +26,19 @@ in
       name = "home-manager";
       bgSupport = true;
       start = ''
-        ${pkgs.runtimeShell} $HOME/.hm-xsession &
+        ${pkgs.stdenv.shell} $HOME/.hm-xsession &
         waitPID=$!
       '';
     }
 
-    {
-      name = "setup-desktop";
-      bgSupport = true;
-      start = ''
-        ${pkgs.runtimeShell} setxkbmap -layout us -variant dvorak
-        ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
-      '';
-    }
+    # {
+    #   name = "setup-desktop";
+    #   bgSupport = true;
+    #   start = ''
+    #     ${pkgs.runtimeShell} setxkbmap -layout us -variant dvorak
+    #     ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
+    #   '';
+    # }
     # xloadimage -onroot -fullscreen -background black -center (for background)
   ];
 

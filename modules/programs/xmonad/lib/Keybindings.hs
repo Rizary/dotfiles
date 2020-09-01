@@ -43,7 +43,7 @@ keybindings screenId conf@(XMonad.XConfig {XMonad.modMask = modM}) = Map.fromLis
   --
   -- Launch emacs
   , ((modM .|. XMonad.controlMask, XMonad.xK_c), XMonad.spawn "emacs ~/Projects")
-  , ((modM .|. XMonad.controlMask, XMonad.xK_e), XMonad.spawn "code-insiders ~/Projects/rizilab-workspace.code-workspace")
+  , ((modM .|. XMonad.controlMask, XMonad.xK_e), XMonad.spawn "code-insiders ~/Projects")
   -- Floating/fullscreen toggle
   , ((modM, XMonad.xK_space), Navigation2D.switchLayer)
   , ((modM .|. XMonad.shiftMask, XMonad.xK_space), XMonad.withFocused toggleFloating) -- make focused window float
