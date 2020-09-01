@@ -21,7 +21,7 @@ in
   ];
 
   config.primary-user.extraGroups = lib.mkIf (cfg.name != null) ([ "wheel" ]);
-  config.primary-user.uid = lib.mkIf (cfg.name != null) (lib.mkDefault 1001);
+  config.primary-user.uid = lib.mkIf (cfg.name != null) (lib.mkDefault 1000);
   config.users.users.${cfg.name}.isNormalUser = lib.mkIf (cfg.name != null) true;
   config.nix.trustedUsers = [ "root" cfg.name ];
 }
