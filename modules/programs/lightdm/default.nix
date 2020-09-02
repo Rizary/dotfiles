@@ -1,14 +1,14 @@
 { pkgs, config, ... }:
 let
   sessionScript = pkgs.writeScriptBin "lll" ''
-      #!${pkgs.stdenv.shell}
+    #!${pkgs.stdenv.shell}
     export SHELL=/run/current-system/sw/bin/bash
-      xrandr --output Virtual-1 --mode "1920x1080"
-      ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
-      ${pkgs.xorg.setxkbmap}/bin/setxkbmap \
-        -layout dvorak,ara \
-        -variant dvorak \
-        -option grp:alt_space_toggle,grp_led:scroll
+    xrandr --output Virtual-1 --mode "1920x1080"
+    ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
+    ${pkgs.xorg.setxkbmap}/bin/setxkbmap \
+      -layout dvorak,ara \
+      -variant dvorak \
+      -option grp:alt_space_toggle,grp_led:scroll
   '';
   wallpaper = ./../../../wallpaper/Rizilab/rizilab-nordic.png;
 in
@@ -19,7 +19,7 @@ in
 
   services.xserver.displayManager.lightdm.background = "${wallpaper}";
 
-  primary-user.home-manager.xsession.scriptPath = ".xsession";
+  primary-user.home-manager.xsession.scriptPath = ".hm-xsession";
 
   services.xserver.displayManager.session = [
     {
@@ -27,21 +27,18 @@ in
       name = "home-manager";
       start = ''
         xrandr --output Virtual-1 --mode "1920x1080"
-        ${pkgs.runtimeShell} $HOME/.xsession &
+        ${pkgs.runtimeShell} setxkbmap -layout us -variant dvorak
+        ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
+        ${pkgs.runtimeShell} $HOME/.hm-xsession &
         waitPID=$!
       '';
     }
 
-    {
-      manage = "window";
-      name = "setup-desktop";
-      start = ''
-        ${pkgs.runtimeShell} setxkbmap -layout us -variant dvorak
-        ${pkgs.runtimeShell} feh --bg-fill ${wallpaper}
-      '';
-    }
     # xloadimage -onroot -fullscreen -background black -center (for background)
   ];
 
+  #   services.xserver.displayManager.defaultSession = "";
+  services.xserver.displayManager.xserverArgs = [ "-ac" ];
   services.xserver.displayManager.sessionCommands = "${sessionScript}/bin/lll";
+
 }

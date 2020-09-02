@@ -23,7 +23,7 @@
     ../../programs/flameshot
     ../../programs/lorri
     ../../programs/status-notifier-watcher
-    ../../programs/emacs
+    #../../programs/emacs
     ../../programs/pavucontrol
   ];
 }

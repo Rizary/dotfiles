@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "hlissner",
         "repo": "doom-emacs",
-        "rev": "577e8b8102e17b173f9a4e0f55752a56aae45132",
-        "sha256": "0rvy45z7yjvqwl5m0rc0ksb3xwmqi4kkr0k61nc0sf19hrda7iqb",
+        "rev": "c55391d4ac937569ed8be8e658020b33edd98ce4",
+        "sha256": "04v122qmdmdj3d3qs3a0sf1ys9v7xzlxvz637sgfm1s76lg8skf6",
         "type": "tarball",
-        "url": "https://github.com/hlissner/doom-emacs/archive/577e8b8102e17b173f9a4e0f55752a56aae45132.tar.gz",
+        "url": "https://github.com/hlissner/doom-emacs/archive/c55391d4ac937569ed8be8e658020b33edd98ce4.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-overlay": {
@@ -17,10 +17,10 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "88d65fe6903b7c1ac26cdba6cf17ee3a4371bf30",
-        "sha256": "1aqswkiqv2vmnh7g66s1ia507hwq7caz7ayn4znv5kv9iwr5qcxb",
+        "rev": "a3039d789e9eeb9af58b84bd64fc0966336d093a",
+        "sha256": "1mn9z3njx5q5vi455gmgcnivb3cfklzmpw7mybrjkw2dnfd26mkb",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/88d65fe6903b7c1ac26cdba6cf17ee3a4371bf30.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/a3039d789e9eeb9af58b84bd64fc0966336d093a.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
@@ -29,10 +29,10 @@
         "homepage": "",
         "owner": "rycee",
         "repo": "home-manager",
-        "rev": "fceef469c2ec99232d847f1d9d6b32665d915bbb",
-        "sha256": "1sz12g0dc02qpak40dyzlcnhbjxva85by4i2w7l2clr6r091nwlg",
+        "rev": "4b702bf6b79843ebd3d6165362ce17f9a1327c9b",
+        "sha256": "0ldlgrr0dg3nrj8majfiabcws86bfv2003rsm8p4li22i1zlghj3",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/fceef469c2ec99232d847f1d9d6b32665d915bbb.tar.gz",
+        "url": "https://github.com/rycee/home-manager/archive/4b702bf6b79843ebd3d6165362ce17f9a1327c9b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "naersk": {
@@ -77,10 +77,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "aa7c73344fe144c218e3f211d3a574189d6bcea2",
-        "sha256": "1al2fdvfkmcx6m98nqb0jw5byw452k696kzj1sb4aaha1p38a0fq",
+        "rev": "840116150c162d0fca5d2e596664442e4cc38e7b",
+        "sha256": "19wgzsnhc2klw0s2r4x4pabg42zn4qqsigpbs2dqfkcwarsn65ar",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/aa7c73344fe144c218e3f211d3a574189d6bcea2.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/840116150c162d0fca5d2e596664442e4cc38e7b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-mozilla": {
@@ -113,10 +113,10 @@
         "homepage": "https://www.nordtheme.com/ports/tmux",
         "owner": "arcticicestudio",
         "repo": "nord-tmux",
-        "rev": "25c64f5fc4ff716fae7256d9a8f6af4724644edc",
-        "sha256": "14xhh49izvjw4ycwq5gx4if7a0bcnvgsf3irywc3qps6jjcf5ymk",
+        "rev": "4e2dc2a5065f5e8e67366700f803c733682e8f8c",
+        "sha256": "0l97cqbnq31f769jak31ffb7bkf8rrg72w3vd0g3fjpq0717864a",
         "type": "tarball",
-        "url": "https://github.com/arcticicestudio/nord-tmux/archive/25c64f5fc4ff716fae7256d9a8f6af4724644edc.tar.gz",
+        "url": "https://github.com/arcticicestudio/nord-tmux/archive/4e2dc2a5065f5e8e67366700f803c733682e8f8c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "olai": {
