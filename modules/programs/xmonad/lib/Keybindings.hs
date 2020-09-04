@@ -56,6 +56,7 @@ keybindings screenId conf@(XMonad.XConfig {XMonad.modMask = modM}) = Map.fromLis
 
   , ((modM, XMonad.xK_Return), XMonad.spawn "urxvtc")
   , ((modM .|. XMonad.controlMask,  XMonad.xK_Return), XMonad.spawn "urxvt")
+  , ((modM .|. XMonad.controlMask, XMonad.xK_x), XMonad.spawn "alacritty")
 
   -- Screen Locker
   , ((modM .|. XMonad.shiftMask, XMonad.xK_Return), XMonad.spawn $ "i3lock-fancy")
