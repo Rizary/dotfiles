@@ -9,7 +9,10 @@
   #networking.nat.internalInterfaces = [ "virbr0" ];
   networking.firewall.allowedTCPPorts = [ 80 443 8000 8080 ];
   #networking.nat.enable = true;
-  networking.networkmanager.enable = true;
+  #networking.networkmanager.enable = true;
   #networking.networkmanager.insertNameservers = [ "127.0.0.1" "8.8.8.8" "8.8.4.4" ];
   #networking.resolvconf.enable = true;
+  networking.useDHCP = false;
+  networking.interfaces.ens3.useDHCP = true;
+
 }
