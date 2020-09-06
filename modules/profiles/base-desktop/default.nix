@@ -6,6 +6,7 @@
 
     ../../config/data/session-vars
 
+    ../../config/nix/base
     ../../config/nix/nix-path
     ../../config/nix/nixpkgs
     ../../config/nix/plugins
