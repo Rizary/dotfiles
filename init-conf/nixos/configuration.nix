@@ -6,7 +6,8 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
 
@@ -102,7 +103,7 @@
     extraGroups = [ "wheel" "rizary" ]; # Enable ‘sudo’ for the user.
   };
 
-  nix.trustedUsers = [ "root" "rizary"];
+  nix.trustedUsers = [ "root" "rizary" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
@@ -113,4 +114,3 @@
   system.stateVersion = "20.03"; # Did you read the comment?
 
 }
-

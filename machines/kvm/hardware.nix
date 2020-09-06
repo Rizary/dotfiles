@@ -3,13 +3,33 @@
 {
   imports = [
     <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-    <nixpkgs/nixos/modules/profiles/qemu-guest.nix>
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.initrd.availableKernelModules = [ "ata_piix" "floppy" "sd_mod" "sr_mod" ];
+  boot.initrd.availableKernelModules = [
+    "ata_piix"
+    "floppy"
+    "sd_mod"
+    "sr_mod"
+
+    # QEMU KERNEL
+    "virtio_net"
+    "virtio_pci"
+    "virtio_mmio"
+    "virtio_blk"
+    "9p"
+    "9pnet_virtio"
+  ];
   boot.kernelParams = [ "video=hyperv_fb:1920x1080 elevator=noop" ];
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelModules = [
+    "kvm-intel"
+    "ext4"
+
+    # QEMU KERNEL
+    "virtio_balloon"
+    "virtio_console"
+    "virtio_rng"
+  ];
   services.xserver.videoDrivers = [ "hyperv_fb" ];
   services.xserver.modules = [ pkgs.xorg.xf86videofbdev ];
   #services.urxvtd.enable = true;
