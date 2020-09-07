@@ -19,8 +19,8 @@
 
     # desktop security
     #../../security/gpg
-    #../../security/ssh
-    #../../security/sshd
+    ../../security/ssh
+    ../../security/sshd
 
     # databases
     ../../databases/mongodb
