@@ -1,5 +1,4 @@
-with import <nixpkgs> {};
-
+with import <nixpkgs> { };
 let
   pname = "fix-vscode-remote";
   script = pkgs.writeShellScriptBin pname ''

@@ -6,7 +6,7 @@
 
     # adding features on nix config
     extraOptions = ''
-        keep-outputs = true
+      keep-outputs = true
       keep-derivations = true
       experimental-features = nix-command flakes recursive-nix
     '';

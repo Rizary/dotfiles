@@ -5,10 +5,10 @@
         "homepage": "",
         "owner": "hlissner",
         "repo": "doom-emacs",
-        "rev": "ae3a2fa8c27d8e392294904ec6986f860a57f38e",
-        "sha256": "1f3vz9f10qqcxb9lwa51jkvg01v276gb1ssg2gc9jmny2m84d987",
+        "rev": "1456108d5bef89195b2b63f962e0ae9d24f4c652",
+        "sha256": "0j37v0b7jfpaacdf03dq2dm423m24m76m80081vdvykgys5kn45s",
         "type": "tarball",
-        "url": "https://github.com/hlissner/doom-emacs/archive/ae3a2fa8c27d8e392294904ec6986f860a57f38e.tar.gz",
+        "url": "https://github.com/hlissner/doom-emacs/archive/1456108d5bef89195b2b63f962e0ae9d24f4c652.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "emacs-overlay": {
@@ -17,22 +17,22 @@
         "homepage": "",
         "owner": "nix-community",
         "repo": "emacs-overlay",
-        "rev": "01110aac988368987272ed097d9702807cdfd18b",
-        "sha256": "1bxj7mwbfw1g0k1fgwwnqvpx5lhz9dw457pw051s131gsdi6ld90",
+        "rev": "3186c4b61cf78cf7ee4f63f85237af6a89205abf",
+        "sha256": "10x5l9n10f195y6lkszwxsnawfzavxrss4qgp4il1synrgpagqj8",
         "type": "tarball",
-        "url": "https://github.com/nix-community/emacs-overlay/archive/01110aac988368987272ed097d9702807cdfd18b.tar.gz",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/3186c4b61cf78cf7ee4f63f85237af6a89205abf.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "home-manager": {
         "branch": "master",
         "description": "Manage a user environment using Nix",
         "homepage": "",
-        "owner": "rycee",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "41b1af808f1de69c31f3fd164d5274154ee782e4",
-        "sha256": "1m3nww8fq4874jcpkgni1vy5zzhpg9wvbqp04x76x0dwahbkx8l6",
+        "rev": "472ca211cac604efdf621337067a237be9df389e",
+        "sha256": "1gbfsnd7zsxwqryxd4r6jz9sgdz6ghlkapws1cdxshrbxlwhqad1",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/41b1af808f1de69c31f3fd164d5274154ee782e4.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/472ca211cac604efdf621337067a237be9df389e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "naersk": {
@@ -77,10 +77,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "d32c43763939a777bfcde097a283fb0e5b8c1c34",
-        "sha256": "1nmnakjxfawzj8jcy08xn7b06lb48j11ayrwz22z2cnjrf3kjzvp",
+        "rev": "1074c0a37f2bb032767d24620123d7817eead9d0",
+        "sha256": "1q64cxf0lbm0fzyw6sxi3bzv8bkp4j4v0pp9n6jhq5wwh8b9bm8j",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/d32c43763939a777bfcde097a283fb0e5b8c1c34.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/1074c0a37f2bb032767d24620123d7817eead9d0.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs-mozilla": {
@@ -118,11 +118,5 @@
         "type": "tarball",
         "url": "https://github.com/arcticicestudio/nord-tmux/archive/4e2dc2a5065f5e8e67366700f803c733682e8f8c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "olai": {
-        "ref": "develop",
-        "repo": "https://www.gitlab.com/Rizary/olai",
-        "rev": "c86aef1de9247efc2a7cb6a7e7099073f6fb4b2b",
-        "type": "git"
     }
 }
