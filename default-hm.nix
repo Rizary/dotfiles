@@ -13,16 +13,6 @@ let
 
   home-manager = pkgs.callPackage "${sources.home-manager}/home-manager" { path = sources.home-manager; };
   install-home-manager = pkgs.callPackage "${sources.home-manager}/home-manager/install.nix" { inherit home-manager; };
-  install-hm = pkgs.writeShellScript "install-hm" ''
-    export dotfiles="$(nix-build --argstr host kvm --no-out-link)"
-    export NIX_PATH="${nix-path}"
-    nix-shell -A install-home-manager
-  '';
-
-  deploy-hm = pkgs.writeShellScriptBin "deploy-hm" ''
-    ${install-hm}
-  '';
-
   nix-linter = pkgs.callPackage sources.nix-linter { };
   build-nix-path-env = path:
     builtins.concatStringsSep ":" (
@@ -42,6 +32,16 @@ let
     export dotfiles="$(nix-build --argstr host $1 --no-out-link)"
     export NIX_PATH="${nix-path}"
     nixos-rebuild switch --show-trace
+  '';
+
+  install-hm = pkgs.writeShellScript "install-hm" ''
+    export dotfiles="$(nix-build --argstr host kvm --no-out-link)"
+    export NIX_PATH="${nix-path}"
+    nix-shell -A install-home-manager
+  '';
+
+  deploy-hm = pkgs.writeShellScriptBin "deploy-hm" ''
+    install-hm
   '';
 
   deploy-config = pkgs.writeShellScriptBin "deploy-config" ''
@@ -86,33 +86,7 @@ let
       nix-prefetch-git https://github.com/nmattia/niv /ref/heads/master \
         --fetch-submodules --deepClone > niv/github.json
     '';
-in
-with pkgs;
-mkShell {
-  nativeBuildInputs = [
-    collect-garbage
-    nix-prefetch-git
-    #cabal2nix
-    nixpkgs-fmt
-    #nix-linter.nix-linter
-  ];
+in with pkgs; rec {
+ 
+} 
 
-  buildInputs = [
-    git
-    niv
-    update-niv
-    #lint
-    format
-    deploy-config
-    deploy-config-non-secure
-    deploy-hm
-  ];
-
-  LC_ALL = "en_US.UTF-8";
-  shellHook = ''
-    export NIX_GHC="${haskellPackages.ghc}/bin/ghc"
-    export NIX_GHCPKG="${haskellPackages.ghc}/bin/ghc-pkg"
-    export NIX_GHC_DOCDIR="${haskellPackages.ghc}/share/doc/ghc/html"
-    export NIX_GHC_LIBDIR=$( $NIX_GHC --print-libdir )
-  '';
-}
