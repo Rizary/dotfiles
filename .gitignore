@@ -1,3 +1,6 @@
+# Other
+client_id
+
 # Haskell Specific
 .stack-work/
 error.log
@@ -73,4 +76,14 @@ lib*.pc
 /tmp_install/
 /static/images/
 
+<<<<<<< HEAD
+=======
+# emacs unnecessary file
+*~
+\#*\#
+auto-save-list
+tramp
+.\#*
 
+.org-id-locations
+>>>>>>> flakes

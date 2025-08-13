@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 { config, lib, pkgs, ... }:
+=======
+{ lib, pkgs, ... }:
+>>>>>>> flakes
 with lib;
 {
   imports = [ <nixpkgs/nixos/modules/profiles/hardened.nix> ];

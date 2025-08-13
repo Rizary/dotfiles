@@ -1,0 +1,34 @@
+{ pkgs, lib, ... }:
+
+{
+  primary-user.home-manager.home.packages = lib.mkForce [ pkgs.tmux ];
+  primary-user.home-manager.programs.tmux.enable = true;
+  primary-user.home-manager.programs.tmux.newSession = true;
+  primary-user.home-manager.programs.tmux.plugins = with pkgs; [
+    tmuxPlugins.resurrect
+    {
+      plugin = tmuxPlugins.continuum;
+      extraConfig = ''
+        # determine 256 colours support
+        
+        if "[[ \$\{TERM\} =~ 256color || \$\{TERM\} == fbterm ]]" 'set -g default-terminal screen-256color'
+        run-shell "~/.config/tmux/nord-tmux/nord.tmux"
+        set -g @nord_tmux_no_patched_font "1"
+
+        # default settings
+        
+        set -g default-shell /run/current-system/sw/bin/urxvt
+        set -g default-command 'urxvt'
+        set -g status on
+        set -g mouse on
+
+        # session saving
+        
+        set -g @continuum-restore 'on'
+        set -g @continuum-save-interval '60'
+  
+      '';
+    }
+    tmuxPlugins.nord-tmux
+  ];
+}

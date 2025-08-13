@@ -1,14 +1,62 @@
 {
+    "doom-emacs": {
+        "branch": "develop",
+        "description": "An Emacs configuration for the stubborn martian vimmer",
+        "homepage": "",
+        "owner": "hlissner",
+        "repo": "doom-emacs",
+        "rev": "1456108d5bef89195b2b63f962e0ae9d24f4c652",
+        "sha256": "0j37v0b7jfpaacdf03dq2dm423m24m76m80081vdvykgys5kn45s",
+        "type": "tarball",
+        "url": "https://github.com/hlissner/doom-emacs/archive/1456108d5bef89195b2b63f962e0ae9d24f4c652.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "emacs-overlay": {
+        "branch": "master",
+        "description": "Bleeding edge emacs overlay [maintainer=@adisbladis] ",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "emacs-overlay",
+        "rev": "3186c4b61cf78cf7ee4f63f85237af6a89205abf",
+        "sha256": "10x5l9n10f195y6lkszwxsnawfzavxrss4qgp4il1synrgpagqj8",
+        "type": "tarball",
+        "url": "https://github.com/nix-community/emacs-overlay/archive/3186c4b61cf78cf7ee4f63f85237af6a89205abf.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "home-manager": {
         "branch": "master",
         "description": "Manage a user environment using Nix",
         "homepage": "",
-        "owner": "rycee",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "0f1c9f25cf03cd5ed62db05c461af7e13f84a7b6",
-        "sha256": "1xf49z5sa460m03pl5lf4flvfm95gk4p0fgib86xnbfs4ifnfar1",
+        "rev": "472ca211cac604efdf621337067a237be9df389e",
+        "sha256": "1gbfsnd7zsxwqryxd4r6jz9sgdz6ghlkapws1cdxshrbxlwhqad1",
         "type": "tarball",
-        "url": "https://github.com/rycee/home-manager/archive/0f1c9f25cf03cd5ed62db05c461af7e13f84a7b6.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/472ca211cac604efdf621337067a237be9df389e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "naersk": {
+        "branch": "master",
+        "description": "Build rust crates in Nix. No configuration, no code generation. IFD and sandbox friendly.",
+        "homepage": "",
+        "owner": "nmattia",
+        "repo": "naersk",
+        "rev": "529e910a3f423a8211f8739290014b754b2555b6",
+        "sha256": "0bcy9nmyaan5jvp0wg80wkizc9j166ns685rdr1kbhkvdpywv46y",
+        "type": "tarball",
+        "url": "https://github.com/nmattia/naersk/archive/529e910a3f423a8211f8739290014b754b2555b6.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nix-doom-emacs": {
+        "branch": "master",
+        "description": "doom-emacs packaged for Nix",
+        "homepage": "",
+        "owner": "rizary",
+        "repo": "nix-doom-emacs",
+        "rev": "46c09a0e236edeeefe4146f8473624ecb8688472",
+        "sha256": "04jxrw4cpgi2i1cjk6sapmmxih43b43cs0l4q7g81v2fnshkmfi2",
+        "type": "tarball",
+        "url": "https://github.com/rizary/nix-doom-emacs/archive/46c09a0e236edeeefe4146f8473624ecb8688472.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nix-linter": {
@@ -17,10 +65,10 @@
         "homepage": "",
         "owner": "Synthetica9",
         "repo": "nix-linter",
-        "rev": "4aaf60195cd2d9f9e2345fbdf4aac48e1451292c",
-        "sha256": "0c7rcjaxd8z0grwambsw46snv7cg66h3pszw3549z4xz0i60yq87",
+        "rev": "8f1037ddb3c03a12f285b4a9702e73c0eb15f972",
+        "sha256": "0ghlr8pvhps75y4c4nxkdfkl0v0rrk7mc1n5nwp3cfyyn2zl6w94",
         "type": "tarball",
-        "url": "https://github.com/Synthetica9/nix-linter/archive/4aaf60195cd2d9f9e2345fbdf4aac48e1451292c.tar.gz",
+        "url": "https://github.com/Synthetica9/nix-linter/archive/8f1037ddb3c03a12f285b4a9702e73c0eb15f972.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -29,16 +77,46 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "96d73edaf33f4c9ee452f65504bfdfab9a653eaa",
-        "sha256": "1qgxfaa23f982b6a9alghl3f8hgm61b4097bmkvn8084n05iv9sm",
+        "rev": "1074c0a37f2bb032767d24620123d7817eead9d0",
+        "sha256": "1q64cxf0lbm0fzyw6sxi3bzv8bkp4j4v0pp9n6jhq5wwh8b9bm8j",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/96d73edaf33f4c9ee452f65504bfdfab9a653eaa.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/1074c0a37f2bb032767d24620123d7817eead9d0.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "olai": {
-        "ref": "develop",
-        "repo": "https://www.gitlab.com/Rizary/olai",
-        "rev": "c86aef1de9247efc2a7cb6a7e7099073f6fb4b2b",
-        "type": "git"
+    "nixpkgs-mozilla": {
+        "branch": "master",
+        "description": "mozilla related nixpkgs (extends nixos/nixpkgs repo)",
+        "homepage": null,
+        "owner": "mozilla",
+        "repo": "nixpkgs-mozilla",
+        "rev": "efda5b357451dbb0431f983cca679ae3cd9b9829",
+        "sha256": "11wqrg86g3qva67vnk81ynvqyfj0zxk83cbrf0p9hsvxiwxs8469",
+        "type": "tarball",
+        "url": "https://github.com/mozilla/nixpkgs-mozilla/archive/efda5b357451dbb0431f983cca679ae3cd9b9829.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nord-dircolors": {
+        "branch": "develop",
+        "description": "An arctic, north-bluish clean and elegant dircolors theme.",
+        "homepage": "https://www.nordtheme.com/ports/dircolors",
+        "owner": "arcticicestudio",
+        "repo": "nord-dircolors",
+        "rev": "addb3b427e008d23affc721450fde86f27566f1d",
+        "sha256": "0s7bd38269z4b9j6f90nscjkbdbh23z3mlg89fnk7ndyrpf5dqlj",
+        "type": "tarball",
+        "url": "https://github.com/arcticicestudio/nord-dircolors/archive/addb3b427e008d23affc721450fde86f27566f1d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nord-tmux": {
+        "branch": "develop",
+        "description": "An arctic, north-bluish clean and elegant tmux color theme.",
+        "homepage": "https://www.nordtheme.com/ports/tmux",
+        "owner": "arcticicestudio",
+        "repo": "nord-tmux",
+        "rev": "4e2dc2a5065f5e8e67366700f803c733682e8f8c",
+        "sha256": "0l97cqbnq31f769jak31ffb7bkf8rrg72w3vd0g3fjpq0717864a",
+        "type": "tarball",
+        "url": "https://github.com/arcticicestudio/nord-tmux/archive/4e2dc2a5065f5e8e67366700f803c733682e8f8c.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

@@ -1,0 +1,4 @@
+{ ... }:
+{
+  primary-user.home-manager.services.status-notifier-watcher.enable = true;
+}

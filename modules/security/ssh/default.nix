@@ -1,21 +1,21 @@
-{ pkgs, lib, ...}:
-let
-  ssh-path = lib.makeBinPath [
-    pkgs.coreutils
-    pkgs.gnused
-    pkgs.gnugrep
-    pkgs.git
-    pkgs.openssh
-  ];
-in
+{ ... }:
 {
-  primary-user.home-manager = {
-    home.file = {
-      ".ssh/known_hosts".sourc = ./know_hosts;
-      ".ssh/authorized_keys".source = ./authorized_keys;
-      ".ssh/environment".text = "Path=${ssh-path}";
+  #primary-user.home-manager.home.file.".ssh/known_hosts".text = "${builtins.toString ./known_hosts}";
+
+  primary-user.home-manager.programs.ssh.enable = true;
+  #primary-user.home-manager.programs.ssh.hashKnownHosts = true;
+  primary-user.home-manager.programs.ssh.matchBlocks = {
+    "gitlab.com" = {
+      identityFile = "/home/rizary/.ssh/nixos_kvm";
     };
 
-    program.ssh.enable = true;
+    "github.com" = {
+      identityFile = "/home/rizary/.ssh/nixos_kvm";
+    };
+
+    "gitlab.haskell.org" = {
+      identityFile = "/home/rizary/.ssh/nixos_kvm";
+    };
+    #inherit (import ../../../../../../secure/ssh/matchblocks.nix { }) "github.com" "gitlab.com" "gitlab.haskell.com";
   };
 }

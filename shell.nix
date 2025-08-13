@@ -1,6 +1,6 @@
 { sources ? import ./niv/sources.nix }:
 let
-  pkgs = import sources.nixpkgs {};
+  pkgs = import sources.nixpkgs { };
   niv = pkgs.symlinkJoin {
     name = "niv";
     paths = [ sources.niv ];
@@ -10,9 +10,22 @@ let
         --add-flags "--sources-file ${toString ./niv/sources.json}"
     '';
   };
-  nix-linter = pkgs.callPackage sources.nix-linter {};
+
+  home-manager = pkgs.callPackage "${sources.home-manager}/home-manager" { path = sources.home-manager; };
+  install-home-manager = pkgs.callPackage "${sources.home-manager}/home-manager/install.nix" { inherit home-manager; };
+  install-hm = pkgs.writeShellScript "install-hm" ''
+    export dotfiles="$(nix-build --argstr host kvm --no-out-link)"
+    export NIX_PATH="${nix-path}"
+    nix-shell -A install-home-manager
+  '';
+
+  deploy-hm = pkgs.writeShellScriptBin "deploy-hm" ''
+    ${install-hm}
+  '';
+
+  nix-linter = pkgs.callPackage sources.nix-linter { };
   build-nix-path-env = path:
-    builtins.concatStringSep ":" (
+    builtins.concatStringsSep ":" (
       pkgs.lib.mapAttrsToList (k: v: "${k}=${v}") path
     );
   nix-path = build-nix-path-env {
@@ -22,32 +35,50 @@ let
     home-manager = sources.home-manager;
   };
   files = "$(find . -name '*.nix' -not -wholename './niv/sources.nix')";
-  lint = pkgs.writeShellScriptBin "lint" "nix-linter ${files}";
+  #lint = pkgs.writeShellScriptBin "lint" "nix-linter ${files}";
   format = pkgs.writeShellScriptBin "format" "nixpkgs-fmt ${files}";
+
   deploy-config-cmd = pkgs.writeShellScript "deploy-config-cmd" ''
     export dotfiles="$(nix-build --argstr host $1 --no-out-link)"
     export NIX_PATH="${nix-path}"
     nixos-rebuild switch --show-trace
   '';
-  deploy-config = pkgs.writeShellScritBin "deploy-config" ''
+
+  deploy-config = pkgs.writeShellScriptBin "deploy-config" ''
     set -e
-    lint
+    # lint
     format
 
     if ! $(mount | grep /boot >/dev/null)
     then
-      echo "/boot is not mounted!
+      echo "/boot is not mounted!"
       exit 1
     fi
 
     if ! $(mount | grep /secure >/dev/null)
     then
-      echo "/secure is not mounted
+      echo "/secure is not mounted"
       exit 1
     fi
 
-    sudo ${deploy-config-cmd}
+    sudo ${deploy-config-cmd} $1 
   '';
+
+  deploy-config-non-secure =
+    pkgs.writeShellScriptBin "deploy-config-non-secure" ''
+      set -e
+      # lint
+      format
+
+      if ! $(mount | grep /boot >/dev/null)
+      then
+        echo "/boot is not mounted!"
+        exit 1
+      fi
+
+      sudo ${deploy-config-cmd} $1 
+    '';
+
   collect-garbage =
     pkgs.writeShellScriptBin "collect-garbage" "sudo nix-collect-garbage -d";
   update-niv =
@@ -55,39 +86,33 @@ let
       nix-prefetch-git https://github.com/nmattia/niv /ref/heads/master \
         --fetch-submodules --deepClone > niv/github.json
     '';
-
 in
-  with pkgs;
-  mkShell {
-    nativeBuildInputs = [
-      git
-      collect-garbage
-      nix-prefetch-git
-      nix-prefetch-url
-      cabal2nix
-      nixpkgs-fmt
-      nix-linter.nix-linter
-    ];
+with pkgs;
+mkShell {
+  nativeBuildInputs = [
+    collect-garbage
+    nix-prefetch-git
+    #cabal2nix
+    nixpkgs-fmt
+    #nix-linter.nix-linter
+  ];
 
-    buildInputs = [
-      ghc
-      hakyll
-      cabal-install
-      ghcid
-      ghcide
-      niv
-      nix-linter.nix-linter
-      lint
-      format
-      deploy
-    ];
+  buildInputs = [
+    git
+    niv
+    update-niv
+    #lint
+    format
+    deploy-config
+    deploy-config-non-secure
+    deploy-hm
+  ];
 
-    LC_ALL = "en_US.UTF-8";
-    shellHook = ''
-      export NIX_GHC="${haskellPackages.ghc}/bin/ghc"
-      export NIX_GHCPKG="${haskellPackages.ghc}/bin/ghc-pkg"
-      export NIX_GHC_DOCDIR="${haskellPackages.ghc}/share/doc/ghc/html"
-      export NIX_GHC_LIBDIR=$( $NIX_GHC --print-libdir )
-    '';
-  }
-
+  LC_ALL = "en_US.UTF-8";
+  shellHook = ''
+    export NIX_GHC="${haskellPackages.ghc}/bin/ghc"
+    export NIX_GHCPKG="${haskellPackages.ghc}/bin/ghc-pkg"
+    export NIX_GHC_DOCDIR="${haskellPackages.ghc}/share/doc/ghc/html"
+    export NIX_GHC_LIBDIR=$( $NIX_GHC --print-libdir )
+  '';
+}

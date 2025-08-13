@@ -8,4 +8,8 @@
     default-sample-rate = "192000";
   };
   hardware.pulseaudio.package = pkgs.pulseaudioFull;
+
+  primary-user.extraGroups = [ "audio" ];
+
+  sound.enable = true;
 }

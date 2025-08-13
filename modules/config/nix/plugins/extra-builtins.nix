@@ -1,5 +1,8 @@
 { exec, ... }:
+<<<<<<< HEAD
 
+=======
+>>>>>>> flakes
 let
   stringify = pkgs: "${pkgs.gnused}/bin/sed '1s/^/\"/;$s/$/\"/'";
 
@@ -20,7 +23,10 @@ let
 
   passFileName = name: "pass-${builtins.replaceStrings [ "/" ] [ "-" ] name}";
 in
+<<<<<<< HEAD
 
+=======
+>>>>>>> flakes
 {
   password = pkgs: config: name:
     builtins.elemAt (passSplit pkgs config name) 0;
@@ -35,4 +41,16 @@ in
         passSplit pkgs config name
       )
     );
+<<<<<<< HEAD
+=======
+
+  publicSshKey = pkgs: config:
+    runCmd pkgs (
+      pkgs.writeShellScript "get-public-ssh-key" ''
+        sudo -u ${config.primary-user.name} \
+          GNUPGHOME=${config.primary-user.secure.gnupg} \
+          ${pkgs.gnupg}/bin/gpg --export-ssh-key $(cat ${config.primary-user.secure.passwords}/.gpg-id)
+      ''
+    );
+>>>>>>> flakes
 }

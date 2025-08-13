@@ -1,7 +1,10 @@
 {
   "url": "https://github.com/nmattia/niv.git",
-  "rev": "abd0de3269fd712955d27b70e32921841c7b8bb7",
-  "date": "2019-12-17T23:39:35+01:00",
-  "sha256": "0b38n1ad00s1qqyw3ml3pypf8i1pw4aqw0bpa02qq9iv7sp3x0gz",
-  "fetchSubmodules": true
+  "rev": "303f442c43f918bc43400ab4a0b662a82ca7748b",
+  "date": "2020-08-03T16:03:49+02:00",
+  "path": "/nix/store/59d24vfi1bzvnd0rk66hkh1hr17vzywr-niv",
+  "sha256": "19z1qypd6zd4qzhrhjm7j55v85fzf8wln8l9vslvn9dpspcwxv7c",
+  "fetchSubmodules": true,
+  "deepClone": true,
+  "leaveDotGit": false
 }

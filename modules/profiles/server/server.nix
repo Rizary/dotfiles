@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 { config, lib, pkgs, ... }:
+=======
+{ ... }:
+>>>>>>> flakes
 with lib;
 {
   imports = [ ./hardening.nix ];
@@ -6,5 +10,9 @@ with lib;
   services.openssh.passwordAuthentication = false;
   services.fail2ban.enable = true;
 
+<<<<<<< HEAD
   networking.firewall.allowedTCPPorts = [22];
+=======
+  networking.firewall.allowedTCPPorts = [ 22 ];
+>>>>>>> flakes
 }

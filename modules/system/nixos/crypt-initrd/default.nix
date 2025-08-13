@@ -1,10 +1,16 @@
 { config, lib, ... }:
+<<<<<<< HEAD
 
+=======
+>>>>>>> flakes
 let
   cfg = config.boot.crypt-initrd;
   keyMountPoint = "/key";
 in
+<<<<<<< HEAD
 
+=======
+>>>>>>> flakes
 {
   options.boot.crypt-initrd = {
     enable = lib.mkEnableOption "initrd to boot encrypted root";
@@ -58,9 +64,15 @@ in
 
   config = lib.mkIf cfg.enable {
     boot.initrd = {
+<<<<<<< HEAD
       kernelModules = [ cfg.key.device.fsType "usb_storage" "loop" ];
 
       preLVMCommands = lib.mkMerge [
+=======
+      kernelModules = [ "loop" ];
+
+      postDeviceCommands = lib.mkMerge [
+>>>>>>> flakes
         (
           lib.mkBefore ''
             mkdir -m 0755 -p ${keyMountPoint}
@@ -76,6 +88,10 @@ in
               -t ${cfg.key.device.fsType} \
               -o ro \
               "${cfg.key.device.device}" ${keyMountPoint}
+<<<<<<< HEAD
+=======
+            hwclock -s
+>>>>>>> flakes
           ''
         )
         (
@@ -87,11 +103,19 @@ in
         )
       ];
 
+<<<<<<< HEAD
       luks.devices.crypt = {
         device = cfg.device;
         keyFile = keyMountPoint + cfg.key.keyPath;
         header = keyMountPoint + cfg.key.headerPath;
         preLVM = true;
+=======
+      luks.devices."enc" = {
+        device = cfg.device;
+        keyFile = keyMountPoint + cfg.key.keyPath;
+        header = keyMountPoint + cfg.key.headerPath;
+        preLVM = false;
+>>>>>>> flakes
       };
     };
   };

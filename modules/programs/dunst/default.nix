@@ -1,4 +1,4 @@
-{ ... }: 
+{ ... }:
 {
   primary-user.home-manager.services.dunst = {
     enable = true;

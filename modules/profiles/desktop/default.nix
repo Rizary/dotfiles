@@ -2,15 +2,29 @@
 {
   imports = [
     # base is a common thing for all profiles
+<<<<<<< HEAD
     ../base
 
     ../../config/boot/grub-boot
+=======
+    ../base-desktop
+
+    # android setup
+    ../../android
+    ../../config/data/theme
+
+    ../../config/boot/systemd-boot
+>>>>>>> flakes
     ../../config/boot/logind
 
     ../../config/data/xdg-user-dirs
 
     # networking
     ../../hardware/network/lan
+<<<<<<< HEAD
+=======
+    ../../hardware/monitors
+>>>>>>> flakes
 
     # desktop security
     ../../security/gpg
@@ -27,6 +41,7 @@
     ../../config/nix/binary-cache
 
     # programs related to desktop configuration
+<<<<<<< HEAD
     ../../programs/audio
     ../../programs/dunst
     ../../programs/gtk
@@ -46,4 +61,47 @@
     # timezone
     ../../config/locale
   ];
+=======
+    #../../programs/all-fonts
+    ../../programs/audio
+    ../../programs/evince
+    ../../programs/dunst
+    ../../programs/gtk
+    ../../programs/lightdm
+    ../../programs/log
+    ../../programs/opengl
+    #../../programs/rofi-pass
+    ../../programs/screen-locker
+    ../../programs/urxvt
+    ../../programs/xmobar
+    #../../programs/tmux
+    ../../programs/xclip
+    ../../programs/xmonad
+    ../../programs/xorg
+    ../../programs/fzf
+    ../../programs/firefox
+    ../../programs/chromium
+    ../../programs/mpv
+    ../../programs/ranger
+    ../../programs/ripgrep-all
+    ../../programs/ripgrep
+    ../../programs/redshift
+    ../../programs/flameshot
+    ../../programs/vscode
+    ../../programs/xdotool
+    ../../programs/playerctl
+    ../../programs/obs-studio
+    ../../programs/feh
+    ../../printers
+    ../../virtualisation
+
+    # devops tools
+    ../../devops
+
+    # timezone
+    ../../config/locale
+  ];
+
+  primary-user.secure.enableMount = true;
+>>>>>>> flakes
 }

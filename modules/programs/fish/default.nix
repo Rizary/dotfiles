@@ -1,9 +1,15 @@
 { pkgs, ... }:
 
+#let
+#  cfg = config.colorTheme;
+#  removeOctothorpe = builtins.replaceStrings [ "#" ] [ "" ];
+
+#in
 {
   primary-user.shell = "${pkgs.fish}/bin/fish";
   primary-user.home-manager.programs.fish.enable = true;
-  #primary-user.home-manager.programs.fish.shellAliases = {};
+  primary-user.home-manager.home.file.".config/fish/functions".source = ./functions;
+  primary-user.home-manager.home.file.".config/fish/functions".recursive = true;
   primary-user.home-manager.programs.fish.shellAbbrs = {
     gco = "git checkout";
     gcob = "git checkout -b";
@@ -27,7 +33,21 @@
     gla = "git config -l | grep alias | cut -c 7-";
 
   };
+<<<<<<< HEAD
   #primary-user.home-manager.programs.fish.shellInit
   #primary-user.home-manager.programs.fish.promptInit
+=======
+  primary-user.home-manager.programs.fish.shellInit = ''
+    setxkbmap -layout us -variant dvorak
+  '';
+
+  primary-user.home-manager.programs.fish.interactiveShellInit = ''
+    direnv hook fish | source
+  '';
+
+  primary-user.home-manager.programs.fish.promptInit = ''
+
+  '';
+>>>>>>> flakes
 
 }
